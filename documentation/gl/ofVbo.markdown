@@ -1921,42 +1921,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ofVbo()
-
-<!--
-_syntax: ofVbo()_
-_name: ofVbo_
-_returns: _
-_returns_description: _
-_parameters: _
-_access: public_
-_version_started: _
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Simple constructor for the ofVbo. When the ofVbo is first created there are no vertices or normals within it.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ### ofVbo(&mom)
 
 <!--
@@ -1992,6 +1956,42 @@ ofVbo v1;
 // filll v1;
 ofVbo v2(v1); // v2 now contains all of v1s properties in a separate VBO
 ~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofVbo()
+
+<!--
+_syntax: ofVbo()_
+_name: ofVbo_
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: _
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Simple constructor for the ofVbo. When the ofVbo is first created there are no vertices or normals within it.
 
 
 
@@ -2189,6 +2189,44 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###void setColorData(*color0r, total, usage, stride = 0)
+
+<!--
+_syntax: setColorData(*color0r, total, usage, stride = 0)_
+_name: setColorData_
+_returns: void_
+_returns_description: _
+_parameters: const float *color0r, int total, int usage, int stride=0_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+This sets the color data for the ofVbo from a pointer to an array of floats. The colors are RGB and are floats from 0.f - 1.f
+
+The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void setColorData(*colors, total, usage)
 
 <!--
@@ -2224,44 +2262,6 @@ ofFloatColor c[12];
 // fill in the colors and vertices
 vbo.setColorData( &c[0], 12, GL_STATIC_DRAW );
 ~~~~
-
-The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void setColorData(*color0r, total, usage, stride = 0)
-
-<!--
-_syntax: setColorData(*color0r, total, usage, stride = 0)_
-_name: setColorData_
-_returns: void_
-_returns_description: _
-_parameters: const float *color0r, int total, int usage, int stride=0_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-This sets the color data for the ofVbo from a pointer to an array of floats. The colors are RGB and are floats from 0.f - 1.f
 
 The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY
 
@@ -2463,6 +2463,80 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###void setNormalData(*normal0x, total, usage, stride = 0)
+
+<!--
+_syntax: setNormalData(*normal0x, total, usage, stride = 0)_
+_name: setNormalData_
+_returns: void_
+_returns_description: _
+_parameters: const float *normal0x, int total, int usage, int stride=0_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+This sets the normals data for the ofVbo from a pointer to an array of floats, x,y,z, for each face, so a 3D cube would require an array of 18 floats, 3 for each face.
+
+The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setNormalData(*normals, total, usage)
+
+<!--
+_syntax: setNormalData(*normals, total, usage)_
+_name: setNormalData_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 *normals, int total, int usage_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void setNormalData(*normals, total, usage)
 
 <!--
@@ -2527,14 +2601,50 @@ The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_CO
 
 <!----------------------------------------------------------------------------->
 
-###void setNormalData(*normal0x, total, usage, stride = 0)
+###void setTexCoordBuffer(&buffer, stride, offset = 0)
 
 <!--
-_syntax: setNormalData(*normal0x, total, usage, stride = 0)_
-_name: setNormalData_
+_syntax: setTexCoordBuffer(&buffer, stride, offset = 0)_
+_name: setTexCoordBuffer_
 _returns: void_
 _returns_description: _
-_parameters: const float *normal0x, int total, int usage, int stride=0_
+_parameters: ofBufferObject &buffer, int stride, int offset=0_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setTexCoordData(*texCoord0x, total, usage, stride = 0)
+
+<!--
+_syntax: setTexCoordData(*texCoord0x, total, usage, stride = 0)_
+_name: setTexCoordData_
+_returns: void_
+_returns_description: _
+_parameters: const float *texCoord0x, int total, int usage, int stride=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -2555,7 +2665,7 @@ _inlined_description: _
 
 _description: _
 
-This sets the normals data for the ofVbo from a pointer to an array of floats, x,y,z, for each face, so a 3D cube would require an array of 18 floats, 3 for each face.
+This sets the texCoord data for the ofVbo from a pointer to an array of floats, ST, for each face, so a 3D cube would require an array of 16 floats, 2 for each vertex.
 
 The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY
 
@@ -2565,16 +2675,16 @@ The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_CO
 
 <!----------------------------------------------------------------------------->
 
-###void setTexCoordBuffer(&buffer, stride, offset = 0)
+###void setTexCoordData(*texCoords, total, usage)
 
 <!--
-_syntax: setTexCoordBuffer(&buffer, stride, offset = 0)_
-_name: setTexCoordBuffer_
+_syntax: setTexCoordData(*texCoords, total, usage)_
+_name: setTexCoordData_
 _returns: void_
 _returns_description: _
-_parameters: ofBufferObject &buffer, int stride, int offset=0_
+_parameters: const glm::vec2 *texCoords, int total, int usage_
 _access: public_
-_version_started: 0.9.0_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -2639,14 +2749,50 @@ The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_CO
 
 <!----------------------------------------------------------------------------->
 
-###void setTexCoordData(*texCoord0x, total, usage, stride = 0)
+###void setVertexBuffer(&buffer, numCoords, stride, offset = 0)
 
 <!--
-_syntax: setTexCoordData(*texCoord0x, total, usage, stride = 0)_
-_name: setTexCoordData_
+_syntax: setVertexBuffer(&buffer, numCoords, stride, offset = 0)_
+_name: setVertexBuffer_
 _returns: void_
 _returns_description: _
-_parameters: const float *texCoord0x, int total, int usage, int stride=0_
+_parameters: ofBufferObject &buffer, int numCoords, int stride, int offset=0_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setVertexData(*vert0x, numCoords, total, usage, stride = 0)
+
+<!--
+_syntax: setVertexData(*vert0x, numCoords, total, usage, stride = 0)_
+_name: setVertexData_
+_returns: void_
+_returns_description: _
+_parameters: const float *vert0x, int numCoords, int total, int usage, int stride=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -2667,7 +2813,7 @@ _inlined_description: _
 
 _description: _
 
-This sets the texCoord data for the ofVbo from a pointer to an array of floats, ST, for each face, so a 3D cube would require an array of 16 floats, 2 for each vertex.
+This sets the vertex data for the ofVbo from a pointer to an array of floats. The numCoords determines whether you're creating a 3D or 2D vbo, i.e. a 3D cube would require an array of 24 floats, and numCoords to be 8.
 
 The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY
 
@@ -2677,16 +2823,52 @@ The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_CO
 
 <!----------------------------------------------------------------------------->
 
-###void setVertexBuffer(&buffer, numCoords, stride, offset = 0)
+###void setVertexData(*verts, total, usage)
 
 <!--
-_syntax: setVertexBuffer(&buffer, numCoords, stride, offset = 0)_
-_name: setVertexBuffer_
+_syntax: setVertexData(*verts, total, usage)_
+_name: setVertexData_
 _returns: void_
 _returns_description: _
-_parameters: ofBufferObject &buffer, int numCoords, int stride, int offset=0_
+_parameters: const glm::vec3 *verts, int total, int usage_
 _access: public_
-_version_started: 0.9.0_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setVertexData(*verts, total, usage)
+
+<!--
+_syntax: setVertexData(*verts, total, usage)_
+_name: setVertexData_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec2 *verts, int total, int usage_
+_access: public_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -2789,44 +2971,6 @@ The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_CO
 
 <!----------------------------------------------------------------------------->
 
-###void setVertexData(*vert0x, numCoords, total, usage, stride = 0)
-
-<!--
-_syntax: setVertexData(*vert0x, numCoords, total, usage, stride = 0)_
-_name: setVertexData_
-_returns: void_
-_returns_description: _
-_parameters: const float *vert0x, int numCoords, int total, int usage, int stride=0_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-This sets the vertex data for the ofVbo from a pointer to an array of floats. The numCoords determines whether you're creating a 3D or 2D vbo, i.e. a 3D cube would require an array of 24 floats, and numCoords to be 8.
-
-The possible options for usage are: GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void unbind()
 
 <!--
@@ -2899,42 +3043,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void updateColorData(*colors, total)
-
-<!--
-_syntax: updateColorData(*colors, total)_
-_name: updateColorData_
-_returns: void_
-_returns_description: _
-_parameters: const ofFloatColor *colors, int total_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-If the color data for each vertex of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the vertex colors at any time.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void updateColorData(*color0r, total)
 
 <!--
@@ -2964,6 +3072,42 @@ _inlined_description: _
 _description: _
 
 If the vertex colors of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the colors at any time using an array of floats.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void updateColorData(*colors, total)
+
+<!--
+_syntax: updateColorData(*colors, total)_
+_name: updateColorData_
+_returns: void_
+_returns_description: _
+_parameters: const ofFloatColor *colors, int total_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+If the color data for each vertex of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the vertex colors at any time.
 
 
 
@@ -3043,6 +3187,78 @@ Updates all the data within the VBO from the data in the ofMesh.
 
 <!----------------------------------------------------------------------------->
 
+###void updateNormalData(*normal0x, total)
+
+<!--
+_syntax: updateNormalData(*normal0x, total)_
+_name: updateNormalData_
+_returns: void_
+_returns_description: _
+_parameters: const float *normal0x, int total_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+If the normals of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the normal data at any time using an array of floats.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void updateNormalData(*normals, total)
+
+<!--
+_syntax: updateNormalData(*normals, total)_
+_name: updateNormalData_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 *normals, int total_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void updateNormalData(*normals, total)
 
 <!--
@@ -3079,14 +3295,14 @@ If the normals of the VBO have been declared as GL_DYNAMIC_DRAW, then you can up
 
 <!----------------------------------------------------------------------------->
 
-###void updateNormalData(*normal0x, total)
+###void updateTexCoordData(*texCoord0x, total)
 
 <!--
-_syntax: updateNormalData(*normal0x, total)_
-_name: updateNormalData_
+_syntax: updateTexCoordData(*texCoord0x, total)_
+_name: updateTexCoordData_
 _returns: void_
 _returns_description: _
-_parameters: const float *normal0x, int total_
+_parameters: const float *texCoord0x, int total_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -3107,7 +3323,43 @@ _inlined_description: _
 
 _description: _
 
-If the normals of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the normal data at any time using an array of floats.
+If the texture coords of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the tex coords at any time using an array of floats.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void updateTexCoordData(*texCoords, total)
+
+<!--
+_syntax: updateTexCoordData(*texCoords, total)_
+_name: updateTexCoordData_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec2 *texCoords, int total_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -3151,14 +3403,14 @@ If the texture coordinates of the VBO have been declared as GL_DYNAMIC_DRAW, the
 
 <!----------------------------------------------------------------------------->
 
-###void updateTexCoordData(*texCoord0x, total)
+###void updateVertexData(*ver0x, total)
 
 <!--
-_syntax: updateTexCoordData(*texCoord0x, total)_
-_name: updateTexCoordData_
+_syntax: updateVertexData(*ver0x, total)_
+_name: updateVertexData_
 _returns: void_
 _returns_description: _
-_parameters: const float *texCoord0x, int total_
+_parameters: const float *ver0x, int total_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -3179,7 +3431,79 @@ _inlined_description: _
 
 _description: _
 
-If the texture coords of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the tex coords at any time using an array of floats.
+If the vertices of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the indices at any time using an array of floats.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void updateVertexData(*verts, total)
+
+<!--
+_syntax: updateVertexData(*verts, total)_
+_name: updateVertexData_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 *verts, int total_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void updateVertexData(*verts, total)
+
+<!--
+_syntax: updateVertexData(*verts, total)_
+_name: updateVertexData_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec2 *verts, int total_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -3252,42 +3576,6 @@ _inlined_description: _
 _description: _
 
 If the vertices of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the vertices at any time.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void updateVertexData(*ver0x, total)
-
-<!--
-_syntax: updateVertexData(*ver0x, total)_
-_name: updateVertexData_
-_returns: void_
-_returns_description: _
-_parameters: const float *ver0x, int total_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-If the vertices of the VBO have been declared as GL_DYNAMIC_DRAW, then you can update the indices at any time using an array of floats.
 
 
 

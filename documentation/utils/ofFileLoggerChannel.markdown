@@ -134,6 +134,48 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+### ofFileLoggerChannel(&path, append)
+
+<!--
+_syntax: ofFileLoggerChannel(&path, append)_
+_name: ofFileLoggerChannel_
+_returns: _
+_returns_description: _
+_parameters: const filesystem::path &path, bool append_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Create an ofFileLoggerChannel with parameters.
+
+**Parameters:**
+
+path The file path for the log file.
+
+append True if the log data should be added to an existing file.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ### ofFileLoggerChannel()
 
 <!--
@@ -170,46 +212,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ofFileLoggerChannel(&path, append)
-
-<!--
-_syntax: ofFileLoggerChannel(&path, append)_
-_name: ofFileLoggerChannel_
-_returns: _
-_returns_description: _
-_parameters: const string &path, bool append_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Create an ofFileLoggerChannel with parameters.
-
-Parameters:
-path The file path for the log file.
-append True if the log data should be added to an existing file.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void setFile(&path, append = false)
 
 <!--
@@ -217,7 +219,7 @@ _syntax: setFile(&path, append = false)_
 _name: setFile_
 _returns: void_
 _returns_description: _
-_parameters: const string &path, bool append=false_
+_parameters: const filesystem::path &path, bool append=false_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -232,8 +234,10 @@ _inlined_description: _
 
 Set the log file.
 
-Parameters:
+**Parameters:**
+
 path The file path for the log file.
+
 append True if the log data should be added to an existing file.
 
 

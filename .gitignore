@@ -7,3 +7,8 @@ cache
 .doit.db
 .doit.db.db
 /nikola
+.vscode
+.history
+cache
+cache.latest
+nikola.beta

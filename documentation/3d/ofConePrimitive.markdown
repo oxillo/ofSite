@@ -104,12 +104,12 @@ Beware of the cone texture coordinates, they're a little strange.
 
 
 
-###vector< ofIndexType > getCapIndices()
+###int getCapIndices()
 
 <!--
 _syntax: getCapIndices()_
 _name: getCapIndices_
-_returns: vector< ofIndexType >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -176,12 +176,12 @@ This returns an ofMesh made up of the cap (as opposed to the cone)
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofIndexType > getConeIndices()
+###int getConeIndices()
 
 <!--
 _syntax: getConeIndices()_
 _name: getConeIndices_
-_returns: vector< ofIndexType >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -320,12 +320,12 @@ This returns the radius of the cap
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f getResolution()
+###glm::vec3 getResolution()
 
 <!--
 _syntax: getResolution()_
 _name: getResolution_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -536,14 +536,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(radius, height, radiusSegments, heightSegments, capSegments = 2, mode = OF_PRIMITIVE_TRIANGLE_STRIP)
+###void set(radius, height)
 
 <!--
-_syntax: set(radius, height, radiusSegments, heightSegments, capSegments = 2, mode = OF_PRIMITIVE_TRIANGLE_STRIP)_
+_syntax: set(radius, height)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: float radius, float height, int radiusSegments, int heightSegments, int capSegments=2, ofPrimitiveMode mode=OF_PRIMITIVE_TRIANGLE_STRIP_
+_parameters: float radius, float height_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -572,14 +572,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(radius, height)
+###void set(radius, height, radiusSegments, heightSegments, capSegments = 2, mode = OF_PRIMITIVE_TRIANGLE_STRIP)
 
 <!--
-_syntax: set(radius, height)_
+_syntax: set(radius, height, radiusSegments, heightSegments, capSegments = 2, mode = OF_PRIMITIVE_TRIANGLE_STRIP)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: float radius, float height_
+_parameters: float radius, float height, int radiusSegments, int heightSegments, int capSegments=2, ofPrimitiveMode mode=OF_PRIMITIVE_TRIANGLE_STRIP_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _

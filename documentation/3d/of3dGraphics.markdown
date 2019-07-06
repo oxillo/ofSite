@@ -32,7 +32,7 @@ _syntax: drawArrow(&start, &end, headSize)_
 _name: drawArrow_
 _returns: void_
 _returns_description: _
-_parameters: const ofVec3f &start, const ofVec3f &end, float headSize_
+_parameters: const glm::vec3 &start, const glm::vec3 &end, float headSize_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -97,14 +97,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawBox(x, y, z, width, height, depth)
+###void drawBox(&position, size)
 
 <!--
-_syntax: drawBox(x, y, z, width, height, depth)_
+_syntax: drawBox(&position, size)_
 _name: drawBox_
 _returns: void_
 _returns_description: _
-_parameters: float x, float y, float z, float width, float height, float depth_
+_parameters: const glm::vec3 &position, float size_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -117,7 +117,54 @@ _advanced: False_
 
 _inlined_description: _
 
-Draws a rectangular box with the specified dimensions, starting from the specified coordinates.
+Draws a cube with the specified size, starting from the specified position.
+
+A cube is drawn starting from a 3D reference position, with the specified size.
+The cube is drawn with the current color, e.g. set with ofSetColor().
+The cube is drawn filled by default; change this with ofFill();
+
+
+**Parameters:**
+
+position an glm::vec3 which contains the (x,y,z) coordinates for the cube's reference corner.
+
+size The size of the cube.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawBox(&position, width, height, depth)
+
+<!--
+_syntax: drawBox(&position, width, height, depth)_
+_name: drawBox_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &position, float width, float height, float depth_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draws a rectangular box with the specified dimensions, starting from the specified position.
 
 A box is a rectangular solid: an extruded rectangle.
 It is drawn starting from a 3D reference coordinate.
@@ -126,12 +173,109 @@ The box is drawn with the current color, e.g. set with ofSetColor().
 The box is drawn filled by default; change this with ofFill();
 
 
-Parameters:
-x The x-coordinate of the box's origin.
-y The y-coordinate of the box's origin.
-z The z-coordinate of the box's origin.
+**Parameters:**
+
+position an glm::vec3 which contains the (x,y,z) coordinates for the box's reference corner.
+
 width The width of the box.
+
 height The height of the box.
+
+depth The depth of the box.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawBox(size)
+
+<!--
+_syntax: drawBox(size)_
+_name: drawBox_
+_returns: void_
+_returns_description: _
+_parameters: float size_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draws a cube with the specified size, starting from the origin.
+
+The cube is drawn with the current color, e.g. set with ofSetColor().
+The cube is drawn filled by default; change this with ofFill();
+
+
+**Parameters:**
+
+size The size of the cube.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawBox(width, height, depth)
+
+<!--
+_syntax: drawBox(width, height, depth)_
+_name: drawBox_
+_returns: void_
+_returns_description: _
+_parameters: float width, float height, float depth_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draws a rectangular box with the specified dimensions, starting from the origin.
+
+A box is a rectangular solid: an extruded rectangle.
+It is drawn starting from the origin of the current reference frame.
+It has a width (in x), a height (in y), and a depth (in z).
+The box is drawn with the current color, e.g. set with ofSetColor().
+The box is drawn filled by default; change this with ofFill();
+
+
+**Parameters:**
+
+width The width of the box.
+
+height The height of the box.
+
 depth The depth of the box.
 
 
@@ -179,10 +323,14 @@ The cube is drawn with the current color, e.g. set with ofSetColor().
 The cube is drawn filled by default; change this with ofFill();
 
 
-Parameters:
+**Parameters:**
+
 x The x-coordinate of the cube's origin.
+
 y The y-coordinate of the cube's origin.
+
 z The z-coordinate of the cube's origin.
+
 size The size of the cube.
 
 
@@ -199,14 +347,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawBox(&position, width, height, depth)
+###void drawBox(x, y, z, width, height, depth)
 
 <!--
-_syntax: drawBox(&position, width, height, depth)_
+_syntax: drawBox(x, y, z, width, height, depth)_
 _name: drawBox_
 _returns: void_
 _returns_description: _
-_parameters: const ofPoint &position, float width, float height, float depth_
+_parameters: float x, float y, float z, float width, float height, float depth_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -219,7 +367,7 @@ _advanced: False_
 
 _inlined_description: _
 
-Draws a rectangular box with the specified dimensions, starting from the specified position.
+Draws a rectangular box with the specified dimensions, starting from the specified coordinates.
 
 A box is a rectangular solid: an extruded rectangle.
 It is drawn starting from a 3D reference coordinate.
@@ -228,10 +376,18 @@ The box is drawn with the current color, e.g. set with ofSetColor().
 The box is drawn filled by default; change this with ofFill();
 
 
-Parameters:
-position an ofPoint which contains the (x,y,z) coordinates for the box's reference corner.
+**Parameters:**
+
+x The x-coordinate of the box's origin.
+
+y The y-coordinate of the box's origin.
+
+z The z-coordinate of the box's origin.
+
 width The width of the box.
+
 height The height of the box.
+
 depth The depth of the box.
 
 
@@ -248,150 +404,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawBox(&position, size)
+###void drawCone(&position, radius, height)
 
 <!--
-_syntax: drawBox(&position, size)_
-_name: drawBox_
-_returns: void_
-_returns_description: _
-_parameters: const ofPoint &position, float size_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Draws a cube with the specified size, starting from the specified position.
-
-A cube is drawn starting from a 3D reference position, with the specified size.
-The cube is drawn with the current color, e.g. set with ofSetColor().
-The cube is drawn filled by default; change this with ofFill();
-
-
-Parameters:
-position an ofPoint which contains the (x,y,z) coordinates for the cube's reference corner.
-size The size of the cube.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawBox(size)
-
-<!--
-_syntax: drawBox(size)_
-_name: drawBox_
-_returns: void_
-_returns_description: _
-_parameters: float size_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Draws a cube with the specified size, starting from the origin.
-
-The cube is drawn with the current color, e.g. set with ofSetColor().
-The cube is drawn filled by default; change this with ofFill();
-
-
-Parameters:
-size The size of the cube.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawBox(width, height, depth)
-
-<!--
-_syntax: drawBox(width, height, depth)_
-_name: drawBox_
-_returns: void_
-_returns_description: _
-_parameters: float width, float height, float depth_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Draws a rectangular box with the specified dimensions, starting from the origin.
-
-A box is a rectangular solid: an extruded rectangle.
-It is drawn starting from the origin of the current reference frame.
-It has a width (in x), a height (in y), and a depth (in z).
-The box is drawn with the current color, e.g. set with ofSetColor().
-The box is drawn filled by default; change this with ofFill();
-
-
-Parameters:
-width The width of the box.
-height The height of the box.
-depth The depth of the box.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawCone(x, y, z, radius, height)
-
-<!--
-_syntax: drawCone(x, y, z, radius, height)_
+_syntax: drawCone(&position, radius, height)_
 _name: drawCone_
 _returns: void_
 _returns_description: _
-_parameters: float x, float y, float z, float radius, float height_
+_parameters: const glm::vec3 &position, float radius, float height_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawCone(radius, height)
+
+<!--
+_syntax: drawCone(radius, height)_
+_name: drawCone_
+_returns: void_
+_returns_description: _
+_parameters: float radius, float height_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -456,14 +512,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawCone(&position, radius, height)
+###void drawCone(x, y, z, radius, height)
 
 <!--
-_syntax: drawCone(&position, radius, height)_
+_syntax: drawCone(x, y, z, radius, height)_
 _name: drawCone_
 _returns: void_
 _returns_description: _
-_parameters: const ofPoint &position, float radius, float height_
+_parameters: float x, float y, float z, float radius, float height_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -492,11 +548,47 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawCone(radius, height)
+###void drawCylinder(&position, radius, height)
 
 <!--
-_syntax: drawCone(radius, height)_
-_name: drawCone_
+_syntax: drawCylinder(&position, radius, height)_
+_name: drawCylinder_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &position, float radius, float height_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawCylinder(radius, height)
+
+<!--
+_syntax: drawCylinder(radius, height)_
+_name: drawCylinder_
 _returns: void_
 _returns_description: _
 _parameters: float radius, float height_
@@ -600,78 +692,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawCylinder(&position, radius, height)
-
-<!--
-_syntax: drawCylinder(&position, radius, height)_
-_name: drawCylinder_
-_returns: void_
-_returns_description: _
-_parameters: const ofPoint &position, float radius, float height_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawCylinder(radius, height)
-
-<!--
-_syntax: drawCylinder(radius, height)_
-_name: drawCylinder_
-_returns: void_
-_returns_description: _
-_parameters: float radius, float height_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void drawGrid(stepSize, numberOfSteps, labels, x, y, z)
 
 <!--
@@ -744,14 +764,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawIcoSphere(x, y, z, radius)
+###void drawIcoSphere(&position, radius)
 
 <!--
-_syntax: drawIcoSphere(x, y, z, radius)_
+_syntax: drawIcoSphere(&position, radius)_
 _name: drawIcoSphere_
 _returns: void_
 _returns_description: _
-_parameters: float x, float y, float z, float radius_
+_parameters: const glm::vec3 &position, float radius_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawIcoSphere(radius)
+
+<!--
+_syntax: drawIcoSphere(radius)_
+_name: drawIcoSphere_
+_returns: void_
+_returns_description: _
+_parameters: float radius_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -816,14 +872,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawIcoSphere(&position, radius)
+###void drawIcoSphere(x, y, z, radius)
 
 <!--
-_syntax: drawIcoSphere(&position, radius)_
+_syntax: drawIcoSphere(x, y, z, radius)_
 _name: drawIcoSphere_
 _returns: void_
 _returns_description: _
-_parameters: const ofPoint &position, float radius_
+_parameters: float x, float y, float z, float radius_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -852,14 +908,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawIcoSphere(radius)
+###void drawPlane(&position, width, height)
 
 <!--
-_syntax: drawIcoSphere(radius)_
-_name: drawIcoSphere_
+_syntax: drawPlane(&position, width, height)_
+_name: drawPlane_
 _returns: void_
 _returns_description: _
-_parameters: float radius_
+_parameters: glm::vec3 &position, float width, float height_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawPlane(width, height)
+
+<!--
+_syntax: drawPlane(width, height)_
+_name: drawPlane_
+_returns: void_
+_returns_description: _
+_parameters: float width, float height_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -960,78 +1052,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawPlane(&position, width, height)
-
-<!--
-_syntax: drawPlane(&position, width, height)_
-_name: drawPlane_
-_returns: void_
-_returns_description: _
-_parameters: ofPoint &position, float width, float height_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawPlane(width, height)
-
-<!--
-_syntax: drawPlane(width, height)_
-_name: drawPlane_
-_returns: void_
-_returns_description: _
-_parameters: float width, float height_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void drawRotationAxes(radius, stripWidth, circleRes)
 
 <!--
@@ -1040,6 +1060,78 @@ _name: drawRotationAxes_
 _returns: void_
 _returns_description: _
 _parameters: float radius, float stripWidth, int circleRes_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawSphere(&position, radius)
+
+<!--
+_syntax: drawSphere(&position, radius)_
+_name: drawSphere_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &position, float radius_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawSphere(radius)
+
+<!--
+_syntax: drawSphere(radius)_
+_name: drawSphere_
+_returns: void_
+_returns_description: _
+_parameters: float radius_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1140,84 +1232,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawSphere(&position, radius)
-
-<!--
-_syntax: drawSphere(&position, radius)_
-_name: drawSphere_
-_returns: void_
-_returns_description: _
-_parameters: const ofPoint &position, float radius_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawSphere(radius)
-
-<!--
-_syntax: drawSphere(radius)_
-_name: drawSphere_
-_returns: void_
-_returns_description: _
-_parameters: float radius_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###ofVec3f getBoxResolution()
+###glm::vec3 getBoxResolution()
 
 <!--
 _syntax: getBoxResolution()_
 _name: getBoxResolution_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1248,12 +1268,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f getConeResolution()
+###glm::vec3 getConeResolution()
 
 <!--
 _syntax: getConeResolution()_
 _name: getConeResolution_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1277,7 +1297,7 @@ Encoded as "y": heightSegments, the number of subdivisions from the cone's top t
 Encoded as "z": capSegments, the number of annular (ring-shaped) subdivisions of the cone's endcap.
 
 
-Returns: An ofVec3f containing (radiusSegments, heightSegments, capSegments) for cone polygonization.
+**Returns**: An ofVec3f containing (radiusSegments, heightSegments, capSegments) for cone polygonization.
 
 
 
@@ -1293,12 +1313,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f getCylinderResolution()
+###glm::vec3 getCylinderResolution()
 
 <!--
 _syntax: getCylinderResolution()_
 _name: getCylinderResolution_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1365,12 +1385,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec2f getPlaneResolution()
+###glm::vec2 getPlaneResolution()
 
 <!--
 _syntax: getPlaneResolution()_
 _name: getPlaneResolution_
-_returns: ofVec2f_
+_returns: glm::vec2_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1606,9 +1626,12 @@ Set the resolution of a polygonized cone.
 Allows you to set the polygonization resolution of any cones you subsequently draw with ofDrawCone().
 
 
-Parameters:
+**Parameters:**
+
 radiusSegments The number of facets (subdivisions) around the cone's circular footprint.
+
 heightSegments The number of subdivisions from the cone's top to bottom.
+
 capSegments The number of annular (ring-shaped) subdivisions of the cone's endcap.
 
 

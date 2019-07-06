@@ -11,6 +11,7 @@ _extends: _
 ##InlineDescription
 
 
+\advanced
 Internal texture data structure.
 
 Used by ofTexture internally. You won't need to work with this in most cases.
@@ -279,7 +280,7 @@ _inlined_description: _
 
 < GL internal format, e.g. GL_RGB8.
 <
-See also: http://www.opengl.org/wiki/Image_Format
+**See also**: http://www.opengl.org/wiki/Image_Format
 
 
 

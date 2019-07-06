@@ -34,14 +34,50 @@ It has a few default controls built into it:
 
 
 
-###void begin(viewport)
+###void addInteraction(type, mouseButton, key)
 
 <!--
-_syntax: begin(viewport)_
+_syntax: addInteraction(type, mouseButton, key)_
+_name: addInteraction_
+_returns: void_
+_returns_description: _
+_parameters: ofEasyCam::TransformType type, int mouseButton, int key_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void begin(&viewport)
+
+<!--
+_syntax: begin(&viewport)_
 _name: begin_
 _returns: void_
 _returns_description: _
-_parameters: ofRectangle viewport_
+_parameters: const ofRectangle &viewport_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -54,7 +90,7 @@ _advanced: False_
 
 _inlined_description: _
 
- \}
+\}
 \name Rendering
 \{
 
@@ -66,13 +102,125 @@ _description: _
 
 Begin using the camera, e.g.:
 
-c++
-myCamera.begin();
+~~~~{.cpp}
+void draw() {
 
-ofDrawGrid();
-//draw rest of scene
+    myCamera.begin();
 
-myCamera.end();
+    ofDrawGrid();
+    //draw rest of scene
+
+    myCamera.end();
+}
+~~~~
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void begin()
+
+<!--
+_syntax: begin()_
+_name: begin_
+_returns: void_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void clearControlArea()
+
+<!--
+_syntax: clearControlArea()_
+_name: clearControlArea_
+_returns: void_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Clears the area bounds for mouse control so that
+the full viewport is used.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void disableInertia()
+
+<!--
+_syntax: disableInertia()_
+_name: disableInertia_
+_returns: void_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -137,6 +285,42 @@ _advanced: False_
 _inlined_description: _
 
 Disable the mouse's middle button for camera control.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void enableInertia()
+
+<!--
+_syntax: enableInertia()_
+_name: enableInertia_
+_returns: void_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
 
 
 
@@ -224,6 +408,42 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###ofRectangle getControlArea()
+
+<!--
+_syntax: getControlArea()_
+_name: getControlArea_
+_returns: ofRectangle_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Returns the area bounds used for mouse control.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###float getDistance()
 
 <!--
@@ -246,7 +466,7 @@ _inlined_description: _
 
 Get the distance to the target.
 
-Returns: the distance to the target.
+**Returns**: the distance to the target.
 
 
 
@@ -284,7 +504,43 @@ _inlined_description: _
 
 Get the camera's drag coefficient.
 
-Returns: the camera's drag coefficient.
+**Returns**: the camera's drag coefficient.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool getInertiaEnabled()
+
+<!--
+_syntax: getInertiaEnabled()_
+_name: getInertiaEnabled_
+_returns: bool_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Determine if intertia is enabled.
 
 
 
@@ -323,7 +579,7 @@ _inlined_description: _
 Determine if mouse camera control is enabled.
 \todo Rename to isMouseInputEnabled().
 
-Returns: true iff mouse camera control is enabled.
+**Returns**: true iff mouse camera control is enabled.
 
 
 
@@ -362,7 +618,7 @@ _inlined_description: _
 Determine if the middle mouse button is enabled.
 \todo Rename to isMouseMiddleButtonEnabled().
 
-Returns: true iff the mouse's middle button is enabled.
+**Returns**: true iff the mouse's middle button is enabled.
 
 
 
@@ -378,12 +634,49 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofNode & getTarget()
+###bool getRelativeYAxis()
+
+<!--
+_syntax: getRelativeYAxis()_
+_name: getRelativeYAxis_
+_returns: bool_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Determine if the Y axis is set to be relative to the
+camera orientation
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###const ofNode & getTarget()
 
 <!--
 _syntax: getTarget()_
 _name: getTarget_
-_returns: ofNode &_
+_returns: const ofNode &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -400,7 +693,7 @@ _inlined_description: _
 
 Get the camera's target node reference.
 
-Returns: a reference the the camera's target node.
+**Returns**: a reference the the camera's target node.
 
 
 
@@ -438,7 +731,7 @@ _inlined_description: _
 
 Get the current translation key code.
 
-Returns: the current translation key code.
+**Returns**: the current translation key code.
 
 
 
@@ -454,16 +747,88 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void mouseDragged(&mouse)
+###const glm::vec3 & getUpAxis()
 
 <!--
-_syntax: mouseDragged(&mouse)_
-_name: mouseDragged_
-_returns: void_
+_syntax: getUpAxis()_
+_name: getUpAxis_
+_returns: const glm::vec3 &_
 _returns_description: _
-_parameters: ofMouseEventArgs &mouse_
-_access: private_
-_version_started: 0.9.0_
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Get the up axis.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool hasInteraction(mouseButton, key)
+
+<!--
+_syntax: hasInteraction(mouseButton, key)_
+_name: hasInteraction_
+_returns: bool_
+_returns_description: _
+_parameters: int mouseButton, int key_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool hasInteraction(type, mouseButton, key)
+
+<!--
+_syntax: hasInteraction(type, mouseButton, key)_
+_name: hasInteraction_
+_returns: bool_
+_returns_description: _
+_parameters: ofEasyCam::TransformType type, int mouseButton, int key_
+_access: public_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -634,6 +999,78 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###void removeAllInteractions()
+
+<!--
+_syntax: removeAllInteractions()_
+_name: removeAllInteractions_
+_returns: void_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void removeInteraction(type, mouseButton, key)
+
+<!--
+_syntax: removeInteraction(type, mouseButton, key)_
+_name: removeInteraction_
+_returns: void_
+_returns_description: _
+_parameters: ofEasyCam::TransformType type, int mouseButton, int key_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void reset()
 
 <!--
@@ -696,8 +1133,46 @@ Allow the camera to attempt to set the distance based on the camera's
 current viewpoirt.
 
 
-Parameters:
+**Parameters:**
+
 bAutoDistance true to enable auto distance.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setControlArea(&controlArea)
+
+<!--
+_syntax: setControlArea(&controlArea)_
+_name: setControlArea_
+_returns: void_
+_returns_description: _
+_parameters: const ofRectangle &controlArea_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Set the area bounds for mouse control.
+Uses the full viewport by default.
 
 
 
@@ -735,7 +1210,8 @@ _inlined_description: _
 
 Set the camera's distance to the target.
 
-Parameters:
+**Parameters:**
+
 distance The distance to the target.
 
 
@@ -772,7 +1248,7 @@ _advanced: False_
 
 _inlined_description: _
 
-\}
+
 
 
 
@@ -814,7 +1290,8 @@ Drag is affects how quickly the camera starts up and slows down when
 a user interacts with its position using a pointer.
 
 
-Parameters:
+**Parameters:**
+
 drag The normalized coefficient value between 0 and 1.
 
 
@@ -867,6 +1344,126 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###void setRelativeYAxis(relative = true)
+
+<!--
+_syntax: setRelativeYAxis(relative = true)_
+_name: setRelativeYAxis_
+_returns: void_
+_returns_description: _
+_parameters: bool relative=true_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Uses Y axis relative to the camera orientation
+
+By default the Y axis used for interactive rotation
+is vec3(0,1,0) or whatever is set as up axis using
+setUpAxis
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setRotationSensitivity(&sensitivity)
+
+<!--
+_syntax: setRotationSensitivity(&sensitivity)_
+_name: setRotationSensitivity_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &sensitivity_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setRotationSensitivity(x, y, z)
+
+<!--
+_syntax: setRotationSensitivity(x, y, z)_
+_name: setRotationSensitivity_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float z_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Set the input sensitivity of the rotation.
+X and Y axes - when the value is 1.0, moving the mouse from one side to
+the other of the arcball (min(viewport.width, viewport.height)) will
+rotate 180 degrees. When the value is 0.5, the rotation will be 90
+degrees.
+
+**Parameters:**
+
+value Scales the xyz axes rotation factor by these values.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void setTarget(&target)
 
 <!--
@@ -874,7 +1471,7 @@ _syntax: setTarget(&target)_
 _name: setTarget_
 _returns: void_
 _returns_description: _
-_parameters: const ofVec3f &target_
+_parameters: const glm::vec3 &target_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -889,7 +1486,8 @@ _inlined_description: _
 
 Set the camera's target.
 
-Parameters:
+**Parameters:**
+
 target The position of the target.
 
 
@@ -928,7 +1526,8 @@ _inlined_description: _
 
 Set the camera's target.
 
-Parameters:
+**Parameters:**
+
 target The position of the target.
 
 
@@ -970,9 +1569,159 @@ Set the key used to switch between camera rotation and translation.
 Translation will only happen when the translation key is pressed.
 
 
-Parameters:
+**Parameters:**
+
 key The key code for the translation key.
 \todo char is not the right data type for this. Should be int.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setTranslationSensitivity(&sensitivity)
+
+<!--
+_syntax: setTranslationSensitivity(&sensitivity)_
+_name: setTranslationSensitivity_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &sensitivity_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setTranslationSensitivity(x, y, z)
+
+<!--
+_syntax: setTranslationSensitivity(x, y, z)_
+_name: setTranslationSensitivity_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float z_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Set the input sensitivity of the translation.
+
+**Parameters:**
+
+value Scales the xyz axes translation factor by these values.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setUpAxis(&up)
+
+<!--
+_syntax: setUpAxis(&up)_
+_name: setUpAxis_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &up_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Set the camera fixed up axis for interactive
+manipulation.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::vec3 up()
+
+<!--
+_syntax: up()_
+_name: up_
+_returns: glm::vec3_
+_returns_description: _
+_parameters: _
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Returns the up axis vector;
 
 
 
@@ -1031,7 +1780,7 @@ _syntax: updateMouse(&mouse)_
 _name: updateMouse_
 _returns: void_
 _returns_description: _
-_parameters: const ofMouseEventArgs &mouse_
+_parameters: const glm::vec2 &mouse_
 _access: private_
 _version_started: 0072_
 _version_deprecated: _
@@ -1132,42 +1881,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ~ofEasyCam()
-
-<!--
-_syntax: ~ofEasyCam()_
-_name: ~ofEasyCam_
-_returns: _
-_returns_description: _
-_parameters: _
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Destroy the camera.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ##Variables
 
 
@@ -1243,102 +1956,6 @@ _name: bDistanceSet_
 _type: bool_
 _access: private_
 _version_started: 007_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###bool bDoRotate
-
-<!--
-_name: bDoRotate_
-_type: bool_
-_access: private_
-_version_started: 0072_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###bool bDoScrollZoom
-
-<!--
-_name: bDoScrollZoom_
-_type: bool_
-_access: private_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###bool bDoTranslate
-
-<!--
-_name: bDoTranslate_
-_type: bool_
-_access: private_
-_version_started: 0072_
 _version_deprecated: _
 _summary: _
 _visible: True_
@@ -1460,6 +2077,38 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###bool bIsScrolling
+
+<!--
+_name: bIsScrolling_
+_type: bool_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###bool bMouseInputEnabled
 
 <!--
@@ -1492,6 +2141,70 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###bool bRelativeYAxis
+
+<!--
+_name: bRelativeYAxis_
+_type: bool_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofRectangle controlArea
+
+<!--
+_name: controlArea_
+_type: ofRectangle_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+If set, the area mouse control is bound to.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###ofQuaternion curRot
 
 <!--
@@ -1509,6 +2222,70 @@ _advanced: False_
 _inlined_description: _
 
 The current rotation quaternion.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofEasyCam::TransformType currentTransformType
+
+<!--
+_name: currentTransformType_
+_type: ofEasyCam::TransformType_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool doInertia
+
+<!--
+_name: doInertia_
+_type: bool_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
 
 
 
@@ -1620,6 +2397,38 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###int interactions
+
+<!--
+_name: interactions_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###float lastDistance
 
 <!--
@@ -1652,17 +2461,179 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec2f lastMouse
+###int lastPressAxisX
 
 <!--
-_name: lastMouse_
-_type: ofVec2f_
+_name: lastPressAxisX_
+_type: int_
 _access: private_
-_version_started: 0072_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
-_constant: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\name On Press cache
+\{
+camera properties when the mouse is pressed.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int lastPressAxisY
+
+<!--
+_name: lastPressAxisY_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int lastPressAxisZ
+
+<!--
+_name: lastPressAxisZ_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int lastPressMouse
+
+<!--
+_name: lastPressMouse_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int lastPressOrientation
+
+<!--
+_name: lastPressOrientation_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int lastPressPosition
+
+<!--
+_name: lastPressPosition_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
 _advanced: False_
 -->
 
@@ -1716,6 +2687,70 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###ofEventListeners listeners
+
+<!--
+_name: listeners_
+_type: ofEventListeners_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int mouseAtScroll
+
+<!--
+_name: mouseAtScroll_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###ofVec2f mouseVel
 
 <!--
@@ -1732,7 +2767,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+The mouse velocity (mouse position delta).
 
 
 
@@ -1748,109 +2783,13 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###float moveX
+###float prevFarClip
 
 <!--
-_name: moveX_
+_name: prevFarClip_
 _type: float_
 _access: private_
-_version_started: 0072_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###float moveY
-
-<!--
-_name: moveY_
-_type: float_
-_access: private_
-_version_started: 0072_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###float moveZ
-
-<!--
-_name: moveZ_
-_type: float_
-_access: private_
-_version_started: 0072_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###ofVec3f prevAxisX
-
-<!--
-_name: prevAxisX_
-_type: ofVec3f_
-_access: private_
-_version_started: 0.9.0_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
@@ -1860,71 +2799,7 @@ _advanced: False_
 
 _inlined_description: _
 
-The previous X axis.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###ofVec3f prevAxisY
-
-<!--
-_name: prevAxisY_
-_type: ofVec3f_
-_access: private_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-The previous Y axis.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###ofVec3f prevAxisZ
-
-<!--
-_name: prevAxisZ_
-_type: ofVec3f_
-_access: private_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-The previous Z axis.
+previous far and near clip.
 
 
 
@@ -1956,39 +2831,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###ofQuaternion prevOrientation
-
-<!--
-_name: prevOrientation_
-_type: ofQuaternion_
-_access: private_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-The previous camera orientation.
+The previous mouse position.
 
 
 
@@ -2004,55 +2847,56 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f prevPosition
+###float prevNearClip
 
 <!--
-_name: prevPosition_
-_type: ofVec3f_
-_access: private_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-the previous camera position.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###float rotationFactor
-
-<!--
-_name: rotationFactor_
+_name: prevNearClip_
 _type: float_
 _access: private_
-_version_started: 0072_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
-_constant: True_
+_constant: False_
 _advanced: False_
 -->
 
 _inlined_description: _
 
+previous far and near clip.
 
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int rot
+
+<!--
+_name: rot_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+rot and translated are used as a temporary values shared between the mouse callbacks and the update method.
+How much the camera needs to be rotated.
 
 
 
@@ -2100,17 +2944,17 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###float sensitivityXY
+###float sensitivityScroll
 
 <!--
-_name: sensitivityXY_
+_name: sensitivityScroll_
 _type: float_
 _access: private_
-_version_started: 0072_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
-_constant: True_
+_constant: False_
 _advanced: False_
 -->
 
@@ -2132,23 +2976,26 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###float sensitivityZ
+###int sensitivityTranslate
 
 <!--
-_name: sensitivityZ_
-_type: float_
+_name: sensitivityTranslate_
+_type: int_
 _access: private_
-_version_started: 0072_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
-_constant: True_
+_constant: False_
 _advanced: False_
 -->
 
 _inlined_description: _
 
-
+Sensitivity
+These varibles determine how sensitive is the interaction.
+High values mean faster and bigger movements/rotations.
+Low Values mean more presicion.
 
 
 
@@ -2196,6 +3043,70 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###int translate
+
+<!--
+_name: translate_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+How much the camera needs to be translated.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int upAxis
+
+<!--
+_name: upAxis_
+_type: int_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###ofRectangle viewport
 
 <!--
@@ -2212,103 +3123,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###float xRot
-
-<!--
-_name: xRot_
-_type: float_
-_access: private_
-_version_started: 0072_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###float yRot
-
-<!--
-_name: yRot_
-_type: float_
-_access: private_
-_version_started: 0072_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###float zRot
-
-<!--
-_name: zRot_
-_type: float_
-_access: private_
-_version_started: 0072_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
+the current viewport.
 
 
 

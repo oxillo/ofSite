@@ -25,14 +25,50 @@ _extends: ofBaseRenderer_
 
 
 
-###void begin(&fbo, setupPerspective)
+###void begin(&fbo, mode)
 
 <!--
-_syntax: begin(&fbo, setupPerspective)_
+_syntax: begin(&fbo, mode)_
 _name: begin_
 _returns: void_
 _returns_description: _
-_parameters: const ofFbo &fbo, bool setupPerspective_
+_parameters: const ofFbo &fbo, ofFboMode mode_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void bind(&fbo)
+
+<!--
+_syntax: bind(&fbo)_
+_name: bind_
+_returns: void_
+_returns_description: _
+_parameters: const ofFbo &fbo_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -177,42 +213,6 @@ _name: bind_
 _returns: void_
 _returns_description: _
 _parameters: const ofBaseVideoDraws &video_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void bind(&fbo)
-
-<!--
-_syntax: bind(&fbo)_
-_name: bind_
-_returns: void_
-_returns_description: _
-_parameters: const ofFbo &fbo_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -529,14 +529,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void draw(&vbo, drawMode, first, total)
+###void draw(&mesh, renderType)
 
 <!--
-_syntax: draw(&vbo, drawMode, first, total)_
+_syntax: draw(&mesh, renderType)_
 _name: draw_
 _returns: void_
 _returns_description: _
-_parameters: const ofVbo &vbo, GLuint drawMode, int first, int total_
+_parameters: const ofVboMesh &mesh, ofPolyRenderMode renderType_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -565,14 +565,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void draw(&mesh, renderType)
+###void draw(&vbo, drawMode, first, total)
 
 <!--
-_syntax: draw(&mesh, renderType)_
+_syntax: draw(&vbo, drawMode, first, total)_
 _name: draw_
 _returns: void_
 _returns_description: _
-_parameters: const ofVboMesh &mesh, ofPolyRenderMode renderType_
+_parameters: const ofVbo &vbo, GLuint drawMode, int first, int total_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -673,14 +673,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawInstanced(&vbo, drawMode, first, total, primCount)
+###void drawInstanced(&mesh, renderType, primCount)
 
 <!--
-_syntax: drawInstanced(&vbo, drawMode, first, total, primCount)_
+_syntax: drawInstanced(&mesh, renderType, primCount)_
 _name: drawInstanced_
 _returns: void_
 _returns_description: _
-_parameters: const ofVbo &vbo, GLuint drawMode, int first, int total, int primCount_
+_parameters: const ofVboMesh &mesh, ofPolyRenderMode renderType, int primCount_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -709,14 +709,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void drawInstanced(&mesh, renderType, primCount)
+###void drawInstanced(&vbo, drawMode, first, total, primCount)
 
 <!--
-_syntax: drawInstanced(&mesh, renderType, primCount)_
+_syntax: drawInstanced(&vbo, drawMode, first, total, primCount)_
 _name: drawInstanced_
 _returns: void_
 _returns_description: _
-_parameters: const ofVboMesh &mesh, ofPolyRenderMode renderType, int primCount_
+_parameters: const ofVbo &vbo, GLuint drawMode, int first, int total, int primCount_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1328,7 +1328,7 @@ _syntax: setLightPosition(lightIndex, &position)_
 _name: setLightPosition_
 _returns: void_
 _returns_description: _
-_parameters: int lightIndex, const ofVec4f &position_
+_parameters: int lightIndex, const glm::vec4 &position_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1436,7 +1436,7 @@ _syntax: setLightSpotDirection(lightIndex, &direction)_
 _name: setLightSpotDirection_
 _returns: void_
 _returns_description: _
-_parameters: int lightIndex, const ofVec4f &direction_
+_parameters: int lightIndex, const glm::vec4 &direction_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1509,6 +1509,42 @@ _name: setSmoothLighting_
 _returns: void_
 _returns_description: _
 _parameters: bool b_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void unbind(&fbo)
+
+<!--
+_syntax: unbind(&fbo)_
+_name: unbind_
+_returns: void_
+_returns_description: _
+_parameters: const ofFbo &fbo_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1653,42 +1689,6 @@ _name: unbind_
 _returns: void_
 _returns_description: _
 _parameters: const ofBaseVideoDraws &video_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void unbind(&fbo)
-
-<!--
-_syntax: unbind(&fbo)_
-_name: unbind_
-_returns: void_
-_returns_description: _
-_parameters: const ofFbo &fbo_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _

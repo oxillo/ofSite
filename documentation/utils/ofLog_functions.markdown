@@ -36,7 +36,7 @@ _inlined_description: _
 
 Get the currently set global logging level.
 
-Returns: The currently set global logging level.
+**Returns**: The currently set global logging level.
 
 
 
@@ -49,6 +49,47 @@ Get the current log level. This is useful when combined with ofGetLogLevelName()
 ofLogLevel currentLevel = ofGetLogLevel();
 ofLog() << "The current log level is " << ofGetLogLevelName(currentLevel);
 ~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofLogLevel ofGetLogLevel(module)
+
+<!--
+_syntax: ofGetLogLevel(module)_
+_name: ofGetLogLevel_
+_returns: ofLogLevel_
+_returns_description: _
+_parameters: string module_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Get the logging level for a specific module.
+
+**Parameters:**
+
+module specific module name.
+
+**Returns**: The currently set specific module logging level.
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -77,11 +118,48 @@ _inlined_description: _
 
 Get log level name as a string.
 
-Parameters:
+**Parameters:**
+
 level The ofLogLevel you want as a string.
+
 pad True if you want all log level names to be the same length.
 
-Returns: The log level name as a string.
+**Returns**: The log level name as a string.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###shared_ptr< ofBaseLoggerChannel > ofGetLoggerChannel()
+
+<!--
+_syntax: ofGetLoggerChannel()_
+_name: ofGetLoggerChannel_
+_returns: shared_ptr< ofBaseLoggerChannel >_
+_returns_description: _
+_parameters: _
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Get the current logger channel.
 
 
 
@@ -142,7 +220,7 @@ _syntax: ofLogToFile(&path, append = false)_
 _name: ofLogToFile_
 _returns: void_
 _returns_description: _
-_parameters: const string &path, bool append=false_
+_parameters: const filesystem::path &path, bool append=false_
 _version_started: 007_
 _version_deprecated: _
 _summary: _
@@ -156,8 +234,10 @@ _inlined_description: _
 
 Set the logging to output to a file instead of the console.
 
-Parameters:
+**Parameters:**
+
 path The path to the log file to use.
+
 append True if you want to append to the existing file.
 
 
@@ -226,7 +306,8 @@ OF_LOG_SILENT will prevent any messages from being printed.
 The default ofLogLevel is `OF_LOG_NOTICE`.
 
 
-Parameters:
+**Parameters:**
+
 level the ofLogLevel (and below) you want to show
 
 
@@ -356,7 +437,8 @@ can be useful for combining logging methods, logging to a server, logging
 to email or even Twitter.
 
 
-Parameters:
+**Parameters:**
+
 loggerChannel A shared pointer to the logger channel.
 
 

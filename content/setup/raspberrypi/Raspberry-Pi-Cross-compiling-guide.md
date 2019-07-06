@@ -7,12 +7,12 @@ Cross-compiling for the Raspberry Pi
 
 ## Introduction
 
-Creating a cross-compiler is a fairly advanced process but can be useful for heavy use. This guide will give some details on how to create a cross-compiler for use with openFrameworks 0.9.0. For older releases (OF 0.8.4/Wheezy) see [Raspberry Pi Cross-compiling Guide for Wheezy](Raspberry-Pi-Cross-compiling-guide-Wheezy.html)
+Creating a cross-compiler is a fairly advanced process but can be useful for heavy use. This guide will give some details on how to create a cross-compiler for use with openFrameworks 0.9.0. For older releases (OF 0.8.4/Wheezy) see [Raspberry Pi Cross-compiling Guide for Wheezy](../raspberry-pi-cross-compiling-guide-wheezy/)
 
 ## Do you need it?
 The RPI2/arm7 is much faster and can natively compile openFrameworks in about 15 minutes by utilizing all 4 cores (`make -j4`). Applications are typically much faster depending on complexity, use of ofxAddons, etc.
 
-Compiling openFrameworks on the RPI1/arm6 is much slower and can take over an hour. Applications can be much faster however still slow. 
+Compiling openFrameworks on the RPI1/arm6 is much slower and can take over an hour. Applications can be much faster however still slow.
 
 A typical cross-compiler on a modern Desktop PC will compile the OF core library in about 3 minutes.
 
@@ -21,7 +21,7 @@ A typical cross-compiler on a modern Desktop PC will compile the OF core library
 To use a cross-compiler you will need to setup a few things:
 
 <h3>Toolchain</h3>
-This is basically a custom version of GCC that understands your target platform. In order to cross-compile openFrameworks the compiler must support GCC 4.9. Previous versions of GCC do not support the level of C++11 features that openFrameworks requires. Unfortunately that means the [previous cross-compiling tools](https://github.com/raspberrypi/tools) are out-of-date, requiring you to build GCC yourself.
+This is basically a custom version of GCC that understands your target platform. In order to cross-compile openFrameworks the compiler must support GCC 4.9. Previous versions of GCC do not support the level of C++11 features that openFrameworks requires. At the time of openFrameworks 0.9.0 release, the [offical Raspberry Pi tools](https://github.com/raspberrypi/tools) were out-of-date, requiring you to build GCC yourself. The tools were updated with GCC 4.9.3 on February 14, 2016 but have yet to be verified.
 
 <h3>Target Root File System</h3>
 This is a copy of the RPI's file system that the compiler will use to build openFrameworks and applications. It is a copy because you will need to manipulate certain files that if changed directly would cause the RPI to stop working.
@@ -59,5 +59,5 @@ or set via environmental variables
 Using export allows you just use the shorter `make` command throughout a session. You can make these variables permanent by adding the export lines to the end of `~/.profile`.
 
 ## Cross compiling guides for 0.9.0
-[Mac based, uses Debian VM](http://forum.openframeworks.cc/t/cross-compiler-for-of-0-9-0-jessie-arm6-rpi1)
+[Mac based, uses Debian VM, custom compiled  GCC](https://forum.openframeworks.cc/t/cross-compiler-for-of-0-9-0-jessie-arm6-rpi1)
 

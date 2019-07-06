@@ -133,42 +133,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void loadFrom(&serializer)
-
-<!--
-_syntax: loadFrom(&serializer)_
-_name: loadFrom_
-_returns: void_
-_returns_description: _
-_parameters: ofBaseSerializer &serializer_
-_access: public_
-_version_started: 0.8.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###bool mouseDragged(&args)
 
 <!--
@@ -421,6 +385,42 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+### ofxLabel(string, _label, width, height)
+
+<!--
+_syntax: ofxLabel(string, _label, width, height)_
+_name: ofxLabel_
+_returns: _
+_returns_description: _
+_parameters: ofReadOnlyParameter< string, F > _label, float width, float height_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###string operator=(v)
 
 <!--
@@ -529,15 +529,15 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void saveTo(&serializer)
+###bool setValue(mx, my, bCheckBounds)
 
 <!--
-_syntax: saveTo(&serializer)_
-_name: saveTo_
-_returns: void_
+_syntax: setValue(mx, my, bCheckBounds)_
+_name: setValue_
+_returns: bool_
 _returns_description: _
-_parameters: ofBaseSerializer &serializer_
-_access: public_
+_parameters: float mx, float my, bool bCheckBounds_
+_access: protected_
 _version_started: 0.8.0_
 _version_deprecated: _
 _summary: _
@@ -565,15 +565,15 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool setValue(mx, my, bCheckBounds)
+###ofxLabel * setup(&labelName, label, width, height)
 
 <!--
-_syntax: setValue(mx, my, bCheckBounds)_
-_name: setValue_
-_returns: bool_
+_syntax: setup(&labelName, label, width, height)_
+_name: setup_
+_returns: ofxLabel *_
 _returns_description: _
-_parameters: float mx, float my, bool bCheckBounds_
-_access: protected_
+_parameters: const string &labelName, string label, float width, float height_
+_access: public_
 _version_started: 0.8.0_
 _version_deprecated: _
 _summary: _
@@ -637,16 +637,16 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofxLabel * setup(&labelName, label, width, height)
+###ofxLabel * setup(string, _label, width, height)
 
 <!--
-_syntax: setup(&labelName, label, width, height)_
+_syntax: setup(string, _label, width, height)_
 _name: setup_
 _returns: ofxLabel *_
 _returns_description: _
-_parameters: const string &labelName, string label, float width, float height_
+_parameters: ofReadOnlyParameter< string, F > _label, float width, float height_
 _access: public_
-_version_started: 0.8.0_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_

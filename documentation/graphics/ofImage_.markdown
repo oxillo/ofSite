@@ -64,9 +64,12 @@ You need to call update() to update the texture after updating
 the pixels manually.
 
 
-Parameters:
+**Parameters:**
+
 w Width of image to allocate.
+
 h Height of image to allocate.
+
 type The ofImageType.
 
 
@@ -83,7 +86,7 @@ while ( i < img.getPixels().size() ) {
     img.getPixels()[i] = abs(sin( float(i) / 18.f)) * 255.f; // make some op-art
     i++;
 }
-img.reloadTexture();
+img.update();
 ~~~~
 
 It allocates an image of width (w) and height (h). The type can be of three types: OF_IMAGE_GRAYSCALE, OF_IMAGE_COLOR, OF_IMAGE_COLOR_ALPHA. You don't need to call this before loading an image, but for when you want to allocate space ahead of when you are going to use the image.
@@ -132,7 +135,7 @@ void ofApp::setup() {
         img.getPixels()[i] = abs(sin( float(i) / 18.f )) * 255.f;
         i++;
     }
-    img.reloadTexture();
+    img.update();
 
     mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 
@@ -244,7 +247,7 @@ _name: clone_
 _returns: void_
 _returns_description: _
 _parameters: const ofImage_< SrcType > &mom_
-_access: public_
+_access: protected_
 _version_started: 007_
 _version_deprecated: _
 _summary: _
@@ -256,10 +259,7 @@ _advanced: False_
 
 _inlined_description: _
 
-Create an ofImage from another ofImage instance.
 
-This allows you to create an ofImage from another ofImage instance,
-copying all the pixels and the texture data while creating a new textureID.
 
 
 
@@ -304,10 +304,14 @@ This crops the image to the w,h passed in from the x,y position.
 This does an in place crop and **allocates memory**.
 
 
-Parameters:
+**Parameters:**
+
 x x position of upper-left corner of region to crop.
+
 y y position of upper-left corner of region to crop.
+
 w Width of region to crop.
+
 h Height of region to crop.
 
 
@@ -331,7 +335,7 @@ _syntax: cropFrom(&otherImage, x, y, w, h)_
 _name: cropFrom_
 _returns: void_
 _returns_description: _
-_parameters: ofImage_< PixelType > &otherImage, int x, int y, int w, int h_
+_parameters: const ofImage_< PixelType > &otherImage, int x, int y, int w, int h_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -350,11 +354,16 @@ The w,h are measured from the x,y, so passing 100, 100, 300, 300 will grab
 a 300x300 pixel block of data starting from 100, 100.
 
 
-Parameters:
+**Parameters:**
+
 otherImage Image to crop from.
+
 x x position of upper-left corner of region to crop.
+
 y y position of upper-left corner of region to crop.
+
 w Width of region to crop.
+
 h Height of region to crop.
 
 
@@ -369,6 +378,78 @@ ofImage img1, img2;
 img1.loadImage("anImage.png");
 img2.cropFrom(img1, 100, 100, 300, 300);
 ~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void draw(&pos)
+
+<!--
+_syntax: draw(&pos)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &pos_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void draw(&pos, w, h)
+
+<!--
+_syntax: draw(&pos, w, h)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &pos, float w, float h_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -399,8 +480,10 @@ _inlined_description: _
 Draw the image at it's normal size.
 
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
 
 
@@ -410,48 +493,6 @@ y Draw position on the y axis.
 _description: _
 
 Draws the ofImage into the x,y location using the default height and width of the image.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void draw(x, y, z)
-
-<!--
-_syntax: draw(x, y, z)_
-_name: draw_
-_returns: void_
-_returns_description: _
-_parameters: float x, float y, float z_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Draw the texture at it's normal size with depth.
-
-
-Parameters:
-x Draw position on the x axis.
-y Draw position on the y axis.
-z Draw position on the z axis.
-
-
-
-
-
-_description: _
-
-Draws the ofImage into the x,y,z location with the default height and width. You should ensure that you turn on depth sorting using glEnable(GL_DEPTH) before trying to draw multiple objects into z-space.
 
 
 
@@ -482,10 +523,14 @@ _inlined_description: _
 Draw the image at a given size.
 
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
+
 w Draw width.
+
 h Draw height.
 
 
@@ -495,6 +540,51 @@ h Draw height.
 _description: _
 
 Draws the ofImage into the x,y location and with the width and height, with any attendant scaling that may occur from fitting the ofImage into the width and height.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void draw(x, y, z)
+
+<!--
+_syntax: draw(x, y, z)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float z_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draw the texture at it's normal size with depth.
+
+
+**Parameters:**
+
+x Draw position on the x axis.
+
+y Draw position on the y axis.
+
+z Draw position on the z axis.
+
+
+
+
+
+_description: _
+
+Draws the ofImage into the x,y,z location with the default height and width. You should ensure that you turn on depth sorting using glEnable(GL_DEPTH) before trying to draw multiple objects into z-space.
 
 
 
@@ -525,11 +615,16 @@ _inlined_description: _
 Draw the image at a given size with depth.
 
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
+
 z Draw position on the z axis.
+
 w Draw width.
+
 h Draw height.
 
 
@@ -572,12 +667,18 @@ This functions like a clipping mask. Does not altering any pixel
 data.
 
 
-Parameters:
+**Parameters:**
+
 x X position to draw cropped image at.
+
 y Y position to draw cropped image at.
+
 w Width of subsection to draw.
+
 h Height of subsection to draw.
+
 sx X position in image to begin cropping from.
+
 sy Y position in image to begin cropping from.
 
 
@@ -594,55 +695,6 @@ img.drawSubsection(0, 0, 100, 100, mouseX, mouseY);
 ~~~~
 
 An example showing how to use drawSubsection can be found in of_release > examples > graphics > imageSubsectionExample
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawSubsection(x, y, z, w, h, sx, sy)
-
-<!--
-_syntax: drawSubsection(x, y, z, w, h, sx, sy)_
-_name: drawSubsection_
-_returns: void_
-_returns_description: _
-_parameters: float x, float y, float z, float w, float h, float sx, float sy_
-_access: public_
-_version_started: 0071_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Draws a subsection of the image.
-
-This functions like a clipping mask. Does not altering any pixel
-data.
-
-
-Parameters:
-x X position to draw cropped image at.
-y Y position to draw cropped image at.
-z Z position to draw cropped image at.
-w Width of subsection to draw.
-h Height of subsection to draw.
-sx X position in image to begin cropping from.
-sy Y position in image to begin cropping from.
-
-
-
-
-
-_description: _
-
-
 
 
 
@@ -676,14 +728,22 @@ This functions like a clipping mask. Does not altering any pixel
 data.
 
 
-Parameters:
+**Parameters:**
+
 x X position to draw cropped image at.
+
 y Y position to draw cropped image at.
+
 w Width of subsection to draw.
+
 h Height of subsection to draw.
+
 sx X position in image to begin cropping from.
+
 sy Y position in image to begin cropping from.
+
 sw Source width of cropped area.
+
 sh Source height of cropped area.
 
 
@@ -693,6 +753,62 @@ sh Source height of cropped area.
 _description: _
 
 (sw,sh) indicate the source width and height of the cropped area and the (w,h) indicate the size to draw the cropped area at.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawSubsection(x, y, z, w, h, sx, sy)
+
+<!--
+_syntax: drawSubsection(x, y, z, w, h, sx, sy)_
+_name: drawSubsection_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float z, float w, float h, float sx, float sy_
+_access: public_
+_version_started: 0071_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draws a subsection of the image.
+
+This functions like a clipping mask. Does not altering any pixel
+data.
+
+
+**Parameters:**
+
+x X position to draw cropped image at.
+
+y Y position to draw cropped image at.
+
+z Z position to draw cropped image at.
+
+w Width of subsection to draw.
+
+h Height of subsection to draw.
+
+sx X position in image to begin cropping from.
+
+sy Y position in image to begin cropping from.
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -726,16 +842,68 @@ This functions like a clipping mask. Does not altering any pixel
 data.
 
 
-Parameters:
+**Parameters:**
+
 x X position to draw cropped image at.
+
 y Y position to draw cropped image at.
+
 z Z position to draw cropped image at.
+
 w Width of subsection to draw.
+
 h Height of subsection to draw.
+
 sx X position in image to begin cropping from.
+
 sy Y position in image to begin cropping from.
+
 sw Source width of cropped area.
+
 sh Source height of cropped area.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofColor_< PixelType > getColor(index)
+
+<!--
+_syntax: getColor(index)_
+_name: getColor_
+_returns: ofColor_< PixelType >_
+_returns_description: _
+_parameters: int index_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+This returns the ofColor representing the pixels at the index
+passed in.
+
+**Parameters:**
+
+index index into pixel data
+
+**Returns**: The ofColor representing the pixels at the index position passed in.
 
 
 
@@ -774,11 +942,13 @@ _inlined_description: _
 This returns the ofColor representing the pixels at the x and y
 position passed in.
 
-Parameters:
+**Parameters:**
+
 x x position of pixel
+
 y y position of pixel
 
-Returns: The ofColor representing the pixels at the x and y position passed in.
+**Returns**: The ofColor representing the pixels at the x and y position passed in.
 
 
 
@@ -787,48 +957,6 @@ Returns: The ofColor representing the pixels at the x and y position passed in.
 _description: _
 
 This returns the ofColor representing the pixels at the x and y position passed in.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###ofColor_< PixelType > getColor(index)
-
-<!--
-_syntax: getColor(index)_
-_name: getColor_
-_returns: ofColor_< PixelType >_
-_returns_description: _
-_parameters: int index_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-This returns the ofColor representing the pixels at the index
-passed in.
-
-Parameters:
-index index into pixel data
-
-Returns: The ofColor representing the pixels at the index position passed in.
-
-
-
-
-
-_description: _
-
-
 
 
 
@@ -858,7 +986,7 @@ _inlined_description: _
 
 Get height of image as a float.
 
-Returns: Height of image as float.
+**Returns**: Height of image as float.
 
 
 
@@ -940,10 +1068,10 @@ and coloralpha images will have (width*height*4) number of pixels
 (interlaced R,G,B,A).
 
 
-Warning: This is a raw pointer. It's up to you to get this right.
+**Warning**: This is a raw pointer. It's up to you to get this right.
 
 
-Returns: A raw pointer to the pixel data.
+**Returns**: A raw pointer to the pixel data.
 
 
 
@@ -1024,7 +1152,7 @@ mind that if you manipulate the texture directly, there is no simple way
 to copy the data from the texture back to the pixels and keep the ofImage in sync.
 
 
-Returns: A reference to the texture that the ofImage contains.
+**Returns**: A reference to the texture that the ofImage contains.
 
 
 
@@ -1060,7 +1188,9 @@ _advanced: False_
 
 _inlined_description: _
 
+Returns a const reference to the texture that the ofImage contains.
 
+**Returns**: A const reference to the texture that the ofImage contains.
 
 
 
@@ -1098,7 +1228,7 @@ _inlined_description: _
 
 Get width of image as a float.
 
-Returns: Width of image as float.
+**Returns**: Width of image as float.
 
 
 
@@ -1140,13 +1270,17 @@ Grabs pixels from the opengl window specified by the region
 It resizes or allocates the ofImage if it's necessary.
 
 
-Warning: Uses glReadPixels() which can be slow.
+**Warning**: Uses glReadPixels() which can be slow.
 
 
-Parameters:
+**Parameters:**
+
 x x position of upper-left corner of region.
+
 y y position of upper-left corner of region.
+
 w Width of region.
+
 h Height of region.
 
 
@@ -1186,7 +1320,7 @@ _inlined_description: _
 Whether the image has been allocated either by a call to
 allocate or by loading pixel data into the image.
 
-Returns: true if the image has been allocated.
+**Returns**: true if the image has been allocated.
 
 
 
@@ -1226,7 +1360,7 @@ Returns whether the ofImage has a texture or not.
 
 If the ofImage doesn't have a texture, nothing will be drawn to the screen.
 
-Returns: true if the ofImage is using a texture.
+**Returns**: true if the ofImage is using a texture.
 
 
 
@@ -1242,56 +1376,14 @@ Returns whether the ofImage has a texture or not. If not, nothing will be drawn 
 
 <!----------------------------------------------------------------------------->
 
-###bool load(&fileName)
+###bool load(&buffer, &settings)
 
 <!--
-_syntax: load(&fileName)_
+_syntax: load(&buffer, &settings)_
 _name: load_
 _returns: bool_
 _returns_description: _
-_parameters: const string &fileName_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Loads an image given by fileName.
-
-Parameters:
-fileName Program looks for image given by fileName, relative to
-the data folder.
-
-Returns: true if image loaded correctly.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###bool load(&buffer)
-
-<!--
-_syntax: load(&buffer)_
-_name: load_
-_returns: bool_
-_returns_description: _
-_parameters: const ofBuffer &buffer_
+_parameters: const ofBuffer &buffer, const ofImageLoadSettings &settings_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1324,14 +1416,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool load(&file)
+###bool load(&fileName, &settings)
 
 <!--
-_syntax: load(&file)_
+_syntax: load(&fileName, &settings)_
 _name: load_
 _returns: bool_
 _returns_description: _
-_parameters: const ofFile &file_
+_parameters: const filesystem::path &fileName, const ofImageLoadSettings &settings_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1344,11 +1436,16 @@ _advanced: False_
 
 _inlined_description: _
 
-Loads an image from an ofFile instance created by, for
-instance, ofDirectory::getFiles().
+Loads an image given by fileName.
 
-This actually loads the image data into an ofPixels object and then
-into the texture.
+**Parameters:**
+
+fileName Program looks for image given by fileName, relative to
+the data folder.
+
+settings Load options
+
+**Returns**: true if image loaded correctly.
 
 
 
@@ -1386,8 +1483,10 @@ _inlined_description: _
 
 This reflects the pixels of the image across the vertical and/or horizontal axis.
 
-Parameters:
+**Parameters:**
+
 vertical Set to true to reflect image across vertical axis.
+
 horizontal Set to true to reflect image across horizontal axis.
 
 
@@ -1404,87 +1503,14 @@ This reflects the pixels of the image across the vertical and/or horizontal axis
 
 <!----------------------------------------------------------------------------->
 
-### ofImage_()
+### ofImage_(&&mom)
 
 <!--
-_syntax: ofImage_()_
+_syntax: ofImage_(&&mom)_
 _name: ofImage__
 _returns: _
 _returns_description: _
-_parameters: _
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-\name Image Construction
-\{
-
-
-
-
-
-_description: _
-
-This creates an ofImage but doesn't allocate any memory for it, so you can't use the image immediately after creating it.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### ofImage_(&pix)
-
-<!--
-_syntax: ofImage_(&pix)_
-_name: ofImage__
-_returns: _
-_returns_description: _
-_parameters: const ofPixels_< PixelType > &pix_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-This creates an ofImage from an ofPixels object, allocating space for the pixels, and copying the pixels into the texture that the ofImage instance contains.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### ofImage_(&file)
-
-<!--
-_syntax: ofImage_(&file)_
-_name: ofImage__
-_returns: _
-_returns_description: _
-_parameters: const ofFile &file_
+_parameters: ofImage_< PixelType > &&mom_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1513,14 +1539,14 @@ This creates an ofImage from an ofFile instance.
 
 <!----------------------------------------------------------------------------->
 
-### ofImage_(&filename)
+### ofImage_(&fileName, &settings)
 
 <!--
-_syntax: ofImage_(&filename)_
+_syntax: ofImage_(&fileName, &settings)_
 _name: ofImage__
 _returns: _
 _returns_description: _
-_parameters: const string &filename_
+_parameters: const filesystem::path &fileName, const ofImageLoadSettings &settings_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1635,14 +1661,14 @@ This allows you to create an ofImage from another ofImage instance, copying all 
 
 <!----------------------------------------------------------------------------->
 
-###ofImage_< PixelType > & operator=(&pixels)
+### ofImage_(&pix)
 
 <!--
-_syntax: operator=(&pixels)_
-_name: operator=_
-_returns: ofImage_< PixelType > &_
+_syntax: ofImage_(&pix)_
+_name: ofImage__
+_returns: _
 _returns_description: _
-_parameters: ofPixels_< PixelType > &pixels_
+_parameters: const ofPixels_< PixelType > &pix_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1655,8 +1681,43 @@ _advanced: False_
 
 _inlined_description: _
 
-\}
-\name Operators
+
+
+
+
+
+
+_description: _
+
+This creates an ofImage from an ofPixels object, allocating space for the pixels, and copying the pixels into the texture that the ofImage instance contains.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofImage_()
+
+<!--
+_syntax: ofImage_()_
+_name: ofImage__
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\name Image Construction
 \{
 
 
@@ -1665,7 +1726,43 @@ _inlined_description: _
 
 _description: _
 
-Allows you to set an image to pixels. This resizes the image to the size of the ofPixels and reallocates all the of the data within the image.
+This creates an ofImage but doesn't allocate any memory for it, so you can't use the image immediately after creating it.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofImage_< PixelType > & operator=(&&mom)
+
+<!--
+_syntax: operator=(&&mom)_
+_name: operator=_
+_returns: ofImage_< PixelType > &_
+_returns_description: _
+_parameters: ofImage_< PixelType > &&mom_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -1755,6 +1852,44 @@ This allows you to create an ofImage from another ofImage instance, copying all 
 
 <!----------------------------------------------------------------------------->
 
+###ofImage_< PixelType > & operator=(&pixels)
+
+<!--
+_syntax: operator=(&pixels)_
+_name: operator=_
+_returns: ofImage_< PixelType > &_
+_returns_description: _
+_parameters: ofPixels_< PixelType > &pixels_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\}
+\name Operators
+\{
+
+
+
+
+
+_description: _
+
+Allows you to set an image to pixels. This resizes the image to the size of the ofPixels and reallocates all the of the data within the image.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void resetAnchor()
 
 <!--
@@ -1818,8 +1953,10 @@ Resizes the image to a new size (w, h); Can be used to scale up
 or down an image.
 
 
-Parameters:
+**Parameters:**
+
 newWidth New width of image.
+
 newHeight New height of image.
 
 
@@ -1894,7 +2031,8 @@ _inlined_description: _
 
 Rotates the image by a multiple of 90 degrees.
 
-Parameters:
+**Parameters:**
+
 rotation Amount to rotate in multiples of 90. For instance, if you pass
 in 2, then the image will be rotated 180 degrees.
 
@@ -1912,56 +2050,14 @@ Rotates the image by a multiple of 90 degrees, for instance, if you pass in 2, t
 
 <!----------------------------------------------------------------------------->
 
-###void save(fileName, compressionLevel = OF_IMAGE_QUALITY_BEST)
+###bool save(&buffer, imageFormat = OF_IMAGE_FORMAT_PNG, compressionLevel = OF_IMAGE_QUALITY_BEST)
 
 <!--
-_syntax: save(fileName, compressionLevel = OF_IMAGE_QUALITY_BEST)_
+_syntax: save(&buffer, imageFormat = OF_IMAGE_FORMAT_PNG, compressionLevel = OF_IMAGE_QUALITY_BEST)_
 _name: save_
-_returns: void_
+_returns: bool_
 _returns_description: _
-_parameters: string fileName, ofImageQualityType compressionLevel=OF_IMAGE_QUALITY_BEST_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Saves the image to the file path in fileName with the image
-quality specified by compressionLevel.
-
-
-Parameters:
-fileName Saves image to this path, relative to the data folder.
-compressionLevel The ofImageQualityType.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void save(&buffer, compressionLevel = OF_IMAGE_QUALITY_BEST)
-
-<!--
-_syntax: save(&buffer, compressionLevel = OF_IMAGE_QUALITY_BEST)_
-_name: save_
-_returns: void_
-_returns_description: _
-_parameters: ofBuffer &buffer, ofImageQualityType compressionLevel=OF_IMAGE_QUALITY_BEST_
+_parameters: ofBuffer &buffer, ofImageFormat imageFormat=OF_IMAGE_FORMAT_PNG, ofImageQualityType compressionLevel=OF_IMAGE_QUALITY_BEST_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1978,8 +2074,10 @@ This saves the image to the ofBuffer passed with the image
 quality specified by compressionLevel.
 
 
-Parameters:
+**Parameters:**
+
 buffer ofBuffer to save image to.
+
 compressionLevel The ofImageQualityType.
 
 
@@ -1996,14 +2094,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void save(&file, compressionLevel = OF_IMAGE_QUALITY_BEST)
+###bool save(&fileName, compressionLevel = OF_IMAGE_QUALITY_BEST)
 
 <!--
-_syntax: save(&file, compressionLevel = OF_IMAGE_QUALITY_BEST)_
+_syntax: save(&fileName, compressionLevel = OF_IMAGE_QUALITY_BEST)_
 _name: save_
-_returns: void_
+_returns: bool_
 _returns_description: _
-_parameters: const ofFile &file, ofImageQualityType compressionLevel=OF_IMAGE_QUALITY_BEST_
+_parameters: const filesystem::path &fileName, ofImageQualityType compressionLevel=OF_IMAGE_QUALITY_BEST_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -2016,12 +2114,15 @@ _advanced: False_
 
 _inlined_description: _
 
-This saves the image to the ofFile passed with the image quality specified by compressionLevel.
+Saves the image to the file path in fileName with the image
+quality specified by compressionLevel.
 
-Parameters:
-file ofFile to save image to.
-compressionLevel The different compression levels are: `OF_IMAGE_QUALITY_BEST`, `OF_IMAGE_QUALITY_HIGH`,
-`OF_IMAGE_QUALITY_MEDIUM`, `OF_IMAGE_QUALITY_LOW`, `OF_IMAGE_QUALITY_WORST`
+
+**Parameters:**
+
+fileName Saves image to this path, relative to the data folder.
+
+compressionLevel The ofImageQualityType.
 
 
 
@@ -2069,8 +2170,10 @@ represents the width of the image. For yPct, 1.0 represents  the
 height of the image. These values are not capped.
 
 
-Parameters:
+**Parameters:**
+
 xPct X position of the new anchor, specified as a percent of the width of the image.
+
 yPct Y position of the new anchor, specified as a percent of the height of the image.
 
 
@@ -2139,8 +2242,10 @@ in pixels. This can be useful for aligning and centering  images as
 well as rotating an image around its center.
 
 
-Parameters:
+**Parameters:**
+
 x X position of the new anchor.
+
 y Y position of the new anchor.
 
 
@@ -2181,16 +2286,16 @@ myImage.draw(ofGetWidth(), 0);
 
 <!----------------------------------------------------------------------------->
 
-###void setColor(x, y, &color)
+###void setColor(&color)
 
 <!--
-_syntax: setColor(x, y, &color)_
+_syntax: setColor(&color)_
 _name: setColor_
 _returns: void_
 _returns_description: _
-_parameters: int x, int y, const ofColor_< PixelType > &color_
+_parameters: const ofColor_< PixelType > &color_
 _access: public_
-_version_started: 007_
+_version_started: 0073_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -2201,15 +2306,10 @@ _advanced: False_
 
 _inlined_description: _
 
-Sets the pixel at the x,y position passed in.
+Sets all pixels to a color.
 
-The ofColor type needs to match the ofImage type, i.e. ofFloatImage
-requires that you use ofFloatPixels.
+**Parameters:**
 
-
-Parameters:
-x x position of pixel.
-y y position of pixel.
 color Color to set pixel to.
 
 
@@ -2218,7 +2318,7 @@ color Color to set pixel to.
 
 _description: _
 
-This sets the pixel at the x,y position passed in. The ofColor type needs to match the ofImage type, i.e. ofFloatImage requires that you use ofFloatPixels.
+
 
 
 
@@ -2249,8 +2349,10 @@ _inlined_description: _
 Sets the pixel at the given pixel buffer index
 
 
-Parameters:
+**Parameters:**
+
 index Index of pixel to set.
+
 color Color to set pixel to.
 
 
@@ -2267,16 +2369,16 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void setColor(&color)
+###void setColor(x, y, &color)
 
 <!--
-_syntax: setColor(&color)_
+_syntax: setColor(x, y, &color)_
 _name: setColor_
 _returns: void_
 _returns_description: _
-_parameters: const ofColor_< PixelType > &color_
+_parameters: int x, int y, const ofColor_< PixelType > &color_
 _access: public_
-_version_started: 0073_
+_version_started: 007_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -2287,9 +2389,18 @@ _advanced: False_
 
 _inlined_description: _
 
-Sets all pixels to a color.
+Sets the pixel at the x,y position passed in.
 
-Parameters:
+The ofColor type needs to match the ofImage type, i.e. ofFloatImage
+requires that you use ofFloatPixels.
+
+
+**Parameters:**
+
+x x position of pixel.
+
+y y position of pixel.
+
 color Color to set pixel to.
 
 
@@ -2298,7 +2409,7 @@ color Color to set pixel to.
 
 _description: _
 
-
+This sets the pixel at the x,y position passed in. The ofColor type needs to match the ofImage type, i.e. ofFloatImage requires that you use ofFloatPixels.
 
 
 
@@ -2329,7 +2440,8 @@ _inlined_description: _
 This sets the compression level used when creating mipmaps for
 the ofTexture contained by the ofImage.
 
-Parameters:
+**Parameters:**
+
 compression The ofTexCompression to set.
 
 
@@ -2342,67 +2454,6 @@ This sets the compression level used when creating mipmaps for the ofTexture con
     OF_COMPRESS_NONE,
     OF_COMPRESS_SRGB,
     OF_COMPRESS_ARB
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void setFromPixels(*pixels, w, h, type, bOrderIsRGB = true)
-
-<!--
-_syntax: setFromPixels(*pixels, w, h, type, bOrderIsRGB = true)_
-_name: setFromPixels_
-_returns: void_
-_returns_description: _
-_parameters: const PixelType *pixels, int w, int h, ofImageType type, bool bOrderIsRGB=true_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Sets the pixels of the image from an array of values.
-
-Set the pixels of the image from an array of values, for an
-ofFloatImage these need to be floats, for an ofImage  these need to be
-unsigned chars. The w and h values are important so that the correct
-dimensions are set in the  image. This assumes that you're setting the
-pixels from 0,0 or the upper left hand corner of the image. The
-bOrderIsRGB flag allows you pass in pixel data that is BGR by setting
-bOrderIsRGB=false.
-
-
-Parameters:
-pixels Array of pixel values.
-w Width of image being passed in.
-h Height of image being passed in.
-type The image type can be OF_IMAGE_GRAYSCALE, OF_IMAGE_COLOR, or OF_IMAGE_COLOR_ALPHA.
-bOrderIsRGB Pass in pixel data that is BGR by setting bOrderIsRGB=false.
-
-
-
-
-
-_description: _
-
-Set the pixels of the image from an array of values, for an ofFloatImage these need to be floats, for an ofImage these need to be unsigned chars. The w and h values are important so that the correct dimensions are set in the image. This assumes that you're setting the pixels from 0,0 or the upper left hand corner of the image.
-The bOrderIsRGB flag allows you pass in pixel data that is BGR by setting bOrderIsRGB=false.
-
-Copies in the pixel data from  the 'pixels' array. Specify the corresponding width and height of the image you are passing in with 'w' and 'h'. The image type can be OF_IMAGE_GRAYSCALE, OF_IMAGE_COLOR, or OF_IMAGE_COLOR_ALPHA.
-
-Note: that your array has to be at least as big as [ width * height * bytes per pixel ].
-
-If you have a grayscale image, you will have (width*height) number of pixels. Color images will have (width*height*3) number of pixels (interlaced R,G,B), and coloralpha images will have (width*height*4) number of pixels (interlaced R,G,B,A).
-
-Note: You do not need to call allocate() before calling setFromPixels() as setFromPixels() re-allocates itself if needed.
 
 
 
@@ -2451,6 +2502,72 @@ The bOrderIsRGB flag allows you pass in pixel data that is BGR by setting bOrder
 
 <!----------------------------------------------------------------------------->
 
+###void setFromPixels(*pixels, w, h, type, bOrderIsRGB = true)
+
+<!--
+_syntax: setFromPixels(*pixels, w, h, type, bOrderIsRGB = true)_
+_name: setFromPixels_
+_returns: void_
+_returns_description: _
+_parameters: const PixelType *pixels, int w, int h, ofImageType type, bool bOrderIsRGB=true_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Sets the pixels of the image from an array of values.
+
+Set the pixels of the image from an array of values, for an
+ofFloatImage these need to be floats, for an ofImage  these need to be
+unsigned chars. The w and h values are important so that the correct
+dimensions are set in the  image. This assumes that you're setting the
+pixels from 0,0 or the upper left hand corner of the image. The
+bOrderIsRGB flag allows you pass in pixel data that is BGR by setting
+bOrderIsRGB=false.
+
+
+**Parameters:**
+
+pixels Array of pixel values.
+
+w Width of image being passed in.
+
+h Height of image being passed in.
+
+type The image type can be OF_IMAGE_GRAYSCALE, OF_IMAGE_COLOR, or OF_IMAGE_COLOR_ALPHA.
+
+bOrderIsRGB Pass in pixel data that is BGR by setting bOrderIsRGB=false.
+
+
+
+
+
+_description: _
+
+Set the pixels of the image from an array of values, for an ofFloatImage these need to be floats, for an ofImage these need to be unsigned chars. The w and h values are important so that the correct dimensions are set in the image. This assumes that you're setting the pixels from 0,0 or the upper left hand corner of the image.
+The bOrderIsRGB flag allows you pass in pixel data that is BGR by setting bOrderIsRGB=false.
+
+Copies in the pixel data from  the 'pixels' array. Specify the corresponding width and height of the image you are passing in with 'w' and 'h'. The image type can be OF_IMAGE_GRAYSCALE, OF_IMAGE_COLOR, or OF_IMAGE_COLOR_ALPHA.
+
+Note: that your array has to be at least as big as [ width * height * bytes per pixel ].
+
+If you have a grayscale image, you will have (width*height) number of pixels. Color images will have (width*height*3) number of pixels (interlaced R,G,B), and coloralpha images will have (width*height*4) number of pixels (interlaced R,G,B,A).
+
+Note: You do not need to call allocate() before calling setFromPixels() as setFromPixels() re-allocates itself if needed.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void setImageType(type)
 
 <!--
@@ -2480,7 +2597,8 @@ Converting down, for example from color to grayscale, loses
 information and is a destructive change.
 
 
-Parameters:
+**Parameters:**
+
 type The type of image, one of the following:
 `OF_IMAGE_GRAYSCALE`, `OF_IMAGE_COLOR`, `OF_IMAGE_COLOR_ALPHA`
 
@@ -2527,7 +2645,8 @@ _inlined_description: _
 Turns on or off the allocation and use of a texture.
 
 
-Parameters:
+**Parameters:**
+
 bUse Allocate and use a texture or not.
 
 

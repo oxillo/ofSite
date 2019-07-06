@@ -1,8 +1,11 @@
+## -*- coding: utf-8 -*-
 ---
-date: 2013/03/07 10:00:00
-title: Map과 함께 놀아봅시다, 정확히 std::map말이죠 
-summary: std:: 의 non-vector 컨테이너에 대한 개요
-author: Joshua Noble
+.. date: 2013/03/07 10:00:00
+.. title: Map과 함께 놀아봅시다, 정확히 std::map말이죠 
+.. summary: std:: 의 non-vector 컨테이너에 대한 개요
+.. author: Joshua Noble
+.. translator: Yi donghoon
+.. translator_site: http://icq4ever.net
 ---
 
 <!-- This tutorial is composed by these sections: -->
@@ -142,7 +145,7 @@ images.insert(map<string, ofTexture>::value_type("Paris", pImage));
 ### map에서 요소 삭제하기
 
 <!-- To delete an element from a map we use `erase` -->
-map에서 요소를 살제할려면, `erase`를 사용합니다.
+map에서 요소를 삭제할려면, `erase`를 사용합니다.
 
 ~~~~{.cpp}
 images.erase("London");

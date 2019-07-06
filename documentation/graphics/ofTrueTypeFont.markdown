@@ -70,7 +70,7 @@ _syntax: drawChar(c, x, y, vFlipped)_
 _name: drawChar_
 _returns: void_
 _returns_description: _
-_parameters: int c, float x, float y, bool vFlipped_
+_parameters: uint32_t c, float x, float y, bool vFlipped_
 _access: protected_
 _version_started: 006_
 _version_deprecated: _
@@ -106,7 +106,7 @@ _syntax: drawCharAsShape(c, x, y, vFlipped, filled)_
 _name: drawCharAsShape_
 _returns: void_
 _returns_description: _
-_parameters: int c, float x, float y, bool vFlipped, bool filled_
+_parameters: uint32_t c, float x, float y, bool vFlipped, bool filled_
 _access: protected_
 _version_started: 006_
 _version_deprecated: _
@@ -157,9 +157,12 @@ _inlined_description: _
 
 Draw a string s at position x,y
 
-Parameters:
+**Parameters:**
+
 s String to draw
+
 x X position of string
+
 y Y position of string
 
 
@@ -176,7 +179,7 @@ ofTrueTypeFont myfont;
 .....
 
 // in setup:
-myfont.loadFont("arial.ttf", 32);
+myfont.load("arial.ttf", 32);
 
 // in draw:
 myfont.drawString("hi!!", 100,100);
@@ -185,8 +188,16 @@ myfont.drawString("hi!!", 100,100);
 Your strings can even be multiline:
 ~~~~{.cpp}
 
-myfont.drawString("a test of multiline text", 300,300);
+myfont.drawString("a test of\nmultiline text", 300,300);
 ~~~~
+
+Or:
+~~~~{.cpp}
+
+myfont.drawString(R"(a test of
+multiline text)", 300,300);
+~~~~
+
 
 you can also using dynamically gengerated strings. For example, to print the frame rate:
 ~~~~{.cpp}
@@ -227,8 +238,10 @@ Draws the string as if it was geometrical shapes.
 Uses the information contained in ofTTFContour and ofTTFCharacter.
 
 
-Parameters:
+**Parameters:**
+
 x X position of shapes
+
 y Y position of shapes
 
 
@@ -308,7 +321,7 @@ The meaning of "character" coordinate depends on the font. Some fonts take accen
 others do not, and still others define it simply to be the highest coordinate over all glyphs.
 
 
-Returns: the font ascender height in pixels.
+**Returns**: the font ascender height in pixels.
 
 
 
@@ -324,14 +337,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofTTFCharacter getCharacterAsPoints(character, vflip = true, filled = true)
+###ofPath getCharacterAsPoints(character, vflip = true, filled = true)
 
 <!--
 _syntax: getCharacterAsPoints(character, vflip = true, filled = true)_
 _name: getCharacterAsPoints_
-_returns: ofTTFCharacter_
+_returns: ofPath_
 _returns_description: _
-_parameters: int character, bool vflip=true, bool filled=true_
+_parameters: uint32_t character, bool vflip=true, bool filled=true_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -344,7 +357,7 @@ _advanced: False_
 
 _inlined_description: _
 
-\todo Documentation.
+\todo
 
 
 
@@ -388,7 +401,43 @@ others do not, and still others define it simply to be the lowest coordinate ove
 This value will be negative for descenders below the baseline (which is typical).
 
 
-Returns: the font descender height in pixels.
+**Returns**: the font descender height in pixels.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::vec2 getFirstGlyphPosForTexture(&str, vflip)
+
+<!--
+_syntax: getFirstGlyphPosForTexture(&str, vflip)_
+_name: getFirstGlyphPosForTexture_
+_returns: glm::vec2_
+_returns_description: _
+_parameters: const string &str, bool vflip_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
 
 
 
@@ -467,7 +516,43 @@ Glyphs are drawn starting from (0,0) in the returned box (though note that the b
 extend in any direction out from the origin).
 
 
-Returns: the font descender height in pixels.
+**Returns**: the font descender height in pixels.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###const ofTrueTypeFont::glyphProps & getGlyphProperties(glyph)
+
+<!--
+_syntax: getGlyphProperties(glyph)_
+_name: getGlyphProperties_
+_returns: const ofTrueTypeFont::glyphProps &_
+_returns_description: _
+_parameters: uint32_t glyph_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
 
 
 
@@ -490,7 +575,7 @@ _syntax: getKerning(c, prevC)_
 _name: getKerning_
 _returns: int_
 _returns_description: _
-_parameters: int c, int prevC_
+_parameters: uint32_t c, uint32_t prevC_
 _access: protected_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -545,7 +630,7 @@ You can control this by the ofTrueTypeFont::setLetterSpacing() function. 1.0 = d
 less then 1.0 would be tighter spacing, greater then 1.0 would be wider spacing.
 
 
-Returns: the letter spacing of font object.
+**Returns**: the letter spacing of font object.
 
 
 
@@ -583,7 +668,7 @@ _inlined_description: _
 
 Computes line height based on font size.
 
-Returns: the current line height.
+**Returns**: the current line height.
 
 
 
@@ -599,12 +684,12 @@ The line height is computed, based on the font size, and can be adjusted. Useful
 
 <!----------------------------------------------------------------------------->
 
-###int getNumCharacters()
+###size_t getNumCharacters()
 
 <!--
 _syntax: getNumCharacters()_
 _name: getNumCharacters_
-_returns: int_
+_returns: size_t_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -625,7 +710,7 @@ If you allocate the font using different parameters, you can load in partial
 and full character sets, this helps you know how many characters it can represent.
 
 
-Returns: Number of characters in loaded character set.
+**Returns**: Number of characters in loaded character set.
 
 
 
@@ -663,7 +748,7 @@ _inlined_description: _
 
 Returns the size of the font.
 
-Returns: Size of font, set when font was loaded.
+**Returns**: Size of font, set when font was loaded.
 
 
 
@@ -705,7 +790,7 @@ It's a scalar for the width of the letter 'p', so 1.0 means that a space will be
 case 'p' of that font. 2.0 means that it's 2 times the size of the lower case 'p', etc.
 
 
-Returns: the width of the space.
+**Returns**: the width of the space.
 
 
 
@@ -721,14 +806,14 @@ This is a variable to represent how wide spaces are sized.   It's a scalar for t
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofTTFCharacter > getStringAsPoints(&str, vflip = true, filled = true)
+###int getStringAsPoints()
 
 <!--
-_syntax: getStringAsPoints(&str, vflip = true, filled = true)_
+_syntax: getStringAsPoints()_
 _name: getStringAsPoints_
-_returns: vector< ofTTFCharacter >_
+_returns: int_
 _returns_description: _
-_parameters: const string &str, bool vflip=true, bool filled=true_
+_parameters: _
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -757,7 +842,7 @@ This returns a vector of ofTTFCharacters (which is actually an ofPath) for a giv
 void testApp::setup(){
 
     ofBackground(0);
-    font.loadFont("vag.ttf", 100, false, false, true);
+    font.load("vag.ttf", 100, false, false, true);
 
 }
 
@@ -770,7 +855,10 @@ void testApp::update(){
 void testApp::draw(){
 
     // get the string as paths
-    vector < ofTTFCharacter > paths = font.getStringAsPoints("hello!");
+    bool vflip = true; // OF flips y coordinate in the default perspective, 
+                       // should be false if using a camera for example
+    bool filled = true; // or false for contours
+    vector < ofPath > paths = font.getStringAsPoints("hello!", vflip, filled);
 
     ofPushMatrix();
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
@@ -822,12 +910,15 @@ _inlined_description: _
 
 Returns the bounding box of a string as a rectangle.
 
-Parameters:
+**Parameters:**
+
 s The string to get bounding box of.
+
 x X position of returned rectangle.
+
 y Y position of returned rectangle.
 
-Returns: the bounding box of a string as a rectangle.
+**Returns**: the bounding box of a string as a rectangle.
 
 
 
@@ -842,7 +933,7 @@ e.g:
 
 //in setup()
 
-franklinBook.loadFont("frabk.ttf", 32);
+franklinBook.load("frabk.ttf", 32);
 
 //in update()
 
@@ -897,6 +988,42 @@ Returns the string as an ofMesh.   Note: this is a mesh that contains vertices a
 
 <!----------------------------------------------------------------------------->
 
+###ofTexture getStringTexture(&s, vflip = true)
+
+<!--
+_syntax: getStringTexture(&s, vflip = true)_
+_name: getStringTexture_
+_returns: ofTexture_
+_returns_description: _
+_parameters: const string &s, bool vflip=true_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###bool hasFullCharacterSet()
 
 <!--
@@ -919,7 +1046,7 @@ _inlined_description: _
 
 Does the font have a full character set?
 
-Returns: true if the font was allocated with a full character set.
+**Returns**: true if the font was allocated with a full character set.
 
 
 
@@ -928,6 +1055,42 @@ Returns: true if the font was allocated with a full character set.
 _description: _
 
 Returns true or false if this font was allocated with a full character set.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###size_t indexForGlyph(glyph)
+
+<!--
+_syntax: indexForGlyph(glyph)_
+_name: indexForGlyph_
+_returns: size_t_
+_returns_description: _
+_parameters: uint32_t glyph_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -993,7 +1156,7 @@ _inlined_description: _
 
 Is the font anti-aliased?
 
-Returns: true if the font was set to be anti-aliased.
+**Returns**: true if the font was set to be anti-aliased.
 
 
 
@@ -1031,7 +1194,7 @@ _inlined_description: _
 
 Has the font been loaded successfully?
 
-Returns: true if the font was loaded.
+**Returns**: true if the font was loaded.
 
 
 
@@ -1047,6 +1210,78 @@ Returns true or false if the font is loaded properly.
 
 <!----------------------------------------------------------------------------->
 
+###bool isValidGlyph(uint32_t)
+
+<!--
+_syntax: isValidGlyph(uint32_t)_
+_name: isValidGlyph_
+_returns: bool_
+_returns_description: _
+_parameters: uint32_t _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void iterateString(&str, x, y, vFlipped, (uint32_t, f)
+
+<!--
+_syntax: iterateString(&str, x, y, vFlipped, (uint32_t, f)_
+_name: iterateString_
+_returns: void_
+_returns_description: _
+_parameters: const string &str, float x, float y, bool vFlipped, function< void (uint32_t, glm::vec2) > f_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###bool load(&filename, fontsize, _bAntiAliased = true, _bFullCharacterSet = true, makeContours = false, simplifyAmt = 0.3f, dpi = 0)
 
 <!--
@@ -1054,7 +1289,7 @@ _syntax: load(&filename, fontsize, _bAntiAliased = true, _bFullCharacterSet = tr
 _name: load_
 _returns: bool_
 _returns_description: _
-_parameters: const string &filename, int fontsize, bool _bAntiAliased=true, bool _bFullCharacterSet=true, bool makeContours=false, float simplifyAmt=0.3f, int dpi=0_
+_parameters: const filesystem::path &filename, int fontsize, bool _bAntiAliased=true, bool _bFullCharacterSet=true, bool makeContours=false, float simplifyAmt=0.3f, int dpi=0_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1076,16 +1311,167 @@ the simplification amount for those contours and the dpi of the font.
 default (without dpi), non-full char set, anti aliased, 96 dpi
 
 
-Parameters:
+**Parameters:**
+
 filename The name of the font file to load.
+
 fontsize The size in pixels to load the font.
+
 _bAntiAliased true if the font should be anti-aliased.
+
 _bFullCharacterSet true if the full character set should be cached.
-makeContours true if the vector contours should be cached.
+
+makeControus true if the vector contours should be cached.
+
 simplifyAmt the amount to simplify the vector contours.  Larger number means more simplified.
+
 dpi the dots per inch used to specify rendering size.
 
-Returns: true if the font was loaded correctly.
+**Returns**: true if the font was loaded correctly.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool load(&settings)
+
+<!--
+_syntax: load(&settings)_
+_name: load_
+_returns: bool_
+_returns_description: _
+_parameters: const ofTrueTypeFontSettings &settings_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofTrueTypeFont::glyph loadGlyph(utf8)
+
+<!--
+_syntax: loadGlyph(utf8)_
+_name: loadGlyph_
+_returns: ofTrueTypeFont::glyph_
+_returns_description: _
+_parameters: uint32_t utf8_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofTrueTypeFont(&&mom)
+
+<!--
+_syntax: ofTrueTypeFont(&&mom)_
+_name: ofTrueTypeFont_
+_returns: _
+_returns_description: _
+_parameters: ofTrueTypeFont &&mom_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofTrueTypeFont(&mom)
+
+<!--
+_syntax: ofTrueTypeFont(&mom)_
+_name: ofTrueTypeFont_
+_returns: _
+_returns_description: _
+_parameters: const ofTrueTypeFont &mom_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
 
 
 
@@ -1137,6 +1523,78 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###ofTrueTypeFont & operator=(&&mom)
+
+<!--
+_syntax: operator=(&&mom)_
+_name: operator=_
+_returns: ofTrueTypeFont &_
+_returns_description: _
+_parameters: ofTrueTypeFont &&mom_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofTrueTypeFont & operator=(&mom)
+
+<!--
+_syntax: operator=(&mom)_
+_name: operator=_
+_returns: ofTrueTypeFont &_
+_returns_description: _
+_parameters: const ofTrueTypeFont &mom_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void reloadTextures()
 
 <!--
@@ -1158,6 +1616,42 @@ _advanced: False_
 _inlined_description: _
 
 
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void setDirection(direction)
+
+<!--
+_syntax: setDirection(direction)_
+_name: setDirection_
+_returns: void_
+_returns_description: _
+_parameters: ofTrueTypeFontDirection direction_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+**Returns**: current font direction
 
 
 
@@ -1233,7 +1727,8 @@ Sets the letter spacing of the font object.
 
 1.0 = default spacing, less then 1.0 would be tighter spacing, greater then 1.0 would be wider spacing.
 
-Parameters:
+**Parameters:**
+
 spacing Spacing of font object.
 
 
@@ -1275,7 +1770,8 @@ Sets line height for text drawn on screen.
 Note the line height is automatically computed based on the font size, when you load in the font.
 
 
-Parameters:
+**Parameters:**
+
 height Line height for text drawn on screen.
 
 
@@ -1317,7 +1813,8 @@ Sets the size of the space ' ' character.
 This number, which defaults to 1.0, scales the width of the letter 'p' for the space.
 
 
-Parameters:
+**Parameters:**
+
 size Scales the width of the letter 'p' for the space.
 
 
@@ -1359,10 +1856,11 @@ Returns the string height.
 This is essentially the height component of the ofTrueTypeFont::getStringBoundingBox() rectangle.
 
 
-Parameters:
+**Parameters:**
+
 s The string to get the height of.
 
-Returns: the string height.
+**Returns**: the string height.
 
 
 
@@ -1403,10 +1901,11 @@ Returns the string width.
 This is essentially the width component of the ofTrueTypeFont::getStringBoundingBox() rectangle.
 
 
-Parameters:
+**Parameters:**
+
 s The string to get the width of.
 
-Returns: the string width.
+**Returns**: the string width.
 
 
 
@@ -1414,7 +1913,7 @@ Returns: the string width.
 
 _description: _
 
-Returns the string height.  This is essentially the width component of the ofTrueTypeFont::getStringBoundingBox() rectangle.
+Returns the string width.  This is essentially the width component of the ofTrueTypeFont::getStringBoundingBox() rectangle.
 
 
 
@@ -1530,70 +2029,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool bAntiAliased
-
-<!--
-_name: bAntiAliased_
-_type: bool_
-_access: protected_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-A variable which tells you if the font is antiAliased.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###bool bFullCharacterSet
-
-<!--
-_name: bFullCharacterSet_
-_type: bool_
-_access: protected_
-_version_started: 006_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-A variable which tells you if the font contains the full character set, or a subset.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###bool bLoadedOk
 
 <!--
@@ -1619,38 +2054,6 @@ _inlined_description: _
 _description: _
 
 bLoadedOk is a boolean variable containing true if the font was successfully loaded.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###bool bMakeContours
-
-<!--
-_name: bMakeContours_
-_type: bool_
-_access: protected_
-_version_started: 006_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
 
 
 
@@ -1850,38 +2253,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###int dpi
-
-<!--
-_name: dpi_
-_type: int_
-_access: protected_
-_version_started: 0071_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###FT_Face face
 
 <!--
@@ -1914,45 +2285,13 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###string filename
+###float fontUnitScale
 
 <!--
-_name: filename_
-_type: string_
+_name: fontUnitScale_
+_type: float_
 _access: protected_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###int fontSize
-
-<!--
-_name: fontSize_
-_type: int_
-_access: protected_
-_version_started: 006_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
@@ -1985,6 +2324,70 @@ _name: glyphBBox_
 _type: ofRectangle_
 _access: protected_
 _version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int glyphIndexMap
+
+<!--
+_name: glyphIndexMap_
+_type: int_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###const ofTrueTypeFont::glyphProps invalidProps
+
+<!--
+_name: invalidProps_
+_type: const ofTrueTypeFont::glyphProps_
+_access: private_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
@@ -2074,49 +2477,17 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###int nCharacters
+###ofTrueTypeFontSettings settings
 
 <!--
-_name: nCharacters_
-_type: int_
+_name: settings_
+_type: ofTrueTypeFontSettings_
 _access: protected_
-_version_started: 006_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _visible: True_
 _constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-nCharacters contains the number of characters that our font has.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###float simplifyAmt
-
-<!--
-_name: simplifyAmt_
-_type: float_
-_access: protected_
-_version_started: 0071_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: True_
 _advanced: False_
 -->
 
@@ -2234,34 +2605,3 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool useKerning
-
-<!--
-_name: useKerning_
-_type: bool_
-_access: protected_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_visible: True_
-_constant: False_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->

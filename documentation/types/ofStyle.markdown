@@ -85,7 +85,7 @@ _advanced: False_
 
 _inlined_description: _
 
- Destroy the ofStyle.
+Destroy the ofStyle.
 
 
 
@@ -188,7 +188,7 @@ _advanced: False_
 
 _inlined_description: _
 
- The blending mode.
+The blending mode.
 
 
 
@@ -321,7 +321,7 @@ _inlined_description: _
 The render mode for bitmaps (e.g. ofDrawBitmapString).
 
 
-See also: ofDrawBitmapString(const T& textString, float x, float y)
+**See also**: ofDrawBitmapString(const T& textString, float x, float y)
 
 
 
@@ -355,7 +355,7 @@ _inlined_description: _
 
 The width of rendered lines.
 
-Warning: This is not currently implemented in modern OF renderers.
+**Warning**: This is not currently implemented in modern OF renderers.
 
 
 
@@ -393,7 +393,7 @@ ofPolyWindingMode determines how ovelapping parts of the same
 polygon are rendered.
 
 
-See also: ofPolyWindingMode
+**See also**: ofPolyWindingMode
 
 
 
@@ -519,3 +519,4 @@ _description: _
 
 
 <!----------------------------------------------------------------------------->
+

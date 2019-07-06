@@ -134,14 +134,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void draw(renderType)
+###void draw()
 
 <!--
-_syntax: draw(renderType)_
+_syntax: draw()_
 _name: draw_
 _returns: void_
 _returns_description: _
-_parameters: ofPolyRenderMode renderType_
+_parameters: _
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -170,14 +170,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void draw()
+###void draw(renderType)
 
 <!--
-_syntax: draw()_
+_syntax: draw(renderType)_
 _name: draw_
 _returns: void_
 _returns_description: _
-_parameters: _
+_parameters: ofPolyRenderMode renderType_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -494,14 +494,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofIndexType > getIndices(startIndex, endIndex)
+###int getIndices()
 
 <!--
-_syntax: getIndices(startIndex, endIndex)_
+_syntax: getIndices()_
 _name: getIndices_
-_returns: vector< ofIndexType >_
+_returns: int_
 _returns_description: _
-_parameters: int startIndex, int endIndex_
+_parameters: _
 _access: protected_
 _version_started: 0073_
 _version_deprecated: _
@@ -674,12 +674,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec4f & getTexCoords()
+###glm::vec4 & getTexCoords()
 
 <!--
 _syntax: getTexCoords()_
 _name: getTexCoords_
-_returns: ofVec4f &_
+_returns: glm::vec4 &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -710,12 +710,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###const ofVec4f & getTexCoords()
+###const glm::vec4 & getTexCoords()
 
 <!--
 _syntax: getTexCoords()_
 _name: getTexCoords_
-_returns: const ofVec4f &_
+_returns: const glm::vec4 &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -746,12 +746,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec4f * getTexCoordsPtr()
+###glm::vec4 * getTexCoordsPtr()
 
 <!--
 _syntax: getTexCoordsPtr()_
 _name: getTexCoordsPtr_
-_returns: ofVec4f *_
+_returns: glm::vec4 *_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -782,12 +782,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###const ofVec4f * getTexCoordsPtr()
+###const glm::vec4 * getTexCoordsPtr()
 
 <!--
 _syntax: getTexCoordsPtr()_
 _name: getTexCoordsPtr_
-_returns: const ofVec4f *_
+_returns: const glm::vec4 *_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -969,7 +969,7 @@ _syntax: mapTexCoordsFromTexture(&inTexture)_
 _name: mapTexCoordsFromTexture_
 _returns: void_
 _returns_description: _
-_parameters: ofTexture &inTexture_
+_parameters: const ofTexture &inTexture_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -1007,42 +1007,6 @@ _returns: void_
 _returns_description: _
 _parameters: _
 _access: protected_
-_version_started: 0073_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### of3dPrimitive()
-
-<!--
-_syntax: of3dPrimitive()_
-_name: of3dPrimitive_
-_returns: _
-_returns_description: _
-_parameters: _
-_access: public_
 _version_started: 0073_
 _version_deprecated: _
 _summary: _
@@ -1114,6 +1078,42 @@ _name: of3dPrimitive_
 _returns: _
 _returns_description: _
 _parameters: const of3dPrimitive &mom_
+_access: public_
+_version_started: 0073_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### of3dPrimitive()
+
+<!--
+_syntax: of3dPrimitive()_
+_name: of3dPrimitive_
+_returns: _
+_returns_description: _
+_parameters: _
 _access: public_
 _version_started: 0073_
 _version_deprecated: _

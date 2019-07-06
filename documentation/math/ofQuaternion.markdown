@@ -205,42 +205,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void getRotate(&angle, &x, &y, &z)
-
-<!--
-_syntax: getRotate(&angle, &x, &y, &z)_
-_name: getRotate_
-_returns: void_
-_returns_description: _
-_parameters: float &angle, float &x, float &y, float &z_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Return the angle and vector components represented by the quaternion.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void getRotate(&angle, &vec)
 
 <!--
@@ -262,6 +226,42 @@ _advanced: False_
 _inlined_description: _
 
 
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void getRotate(&angle, &x, &y, &z)
+
+<!--
+_syntax: getRotate(&angle, &x, &y, &z)_
+_name: getRotate_
+_returns: void_
+_returns_description: _
+_parameters: float &angle, float &x, float &y, float &z_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Return the angle and vector components represented by the quaternion.
 
 
 
@@ -387,14 +387,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void makeRotate(angle, x, y, z)
+###void makeRotate(&vec1, &vec2)
 
 <!--
-_syntax: makeRotate(angle, x, y, z)_
+_syntax: makeRotate(&vec1, &vec2)_
 _name: makeRotate_
 _returns: void_
 _returns_description: _
-_parameters: float angle, float x, float y, float z_
+_parameters: const ofVec3f &vec1, const ofVec3f &vec2_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -407,10 +407,11 @@ _advanced: False_
 
 _inlined_description: _
 
-\briefSet a quaternion which will perform a rotation of an
-angle around the axis given by the vector(x,y,z).
-
-Define Spherical Linear interpolation method also
+Make a rotation Quat which will rotate vec1 to vec2.
+Generally take a dot product to get the angle between these
+and then use a cross product to get the rotation axis
+Watch out for the two special cases when the vectors
+are co-incident or opposite in direction.
 
 
 
@@ -462,6 +463,45 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###void makeRotate(angle, x, y, z)
+
+<!--
+_syntax: makeRotate(angle, x, y, z)_
+_name: makeRotate_
+_returns: void_
+_returns_description: _
+_parameters: float angle, float x, float y, float z_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\briefSet a quaternion which will perform a rotation of an
+angle around the axis given by the vector(x,y,z).
+
+Define Spherical Linear interpolation method also
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void makeRotate(angle1, &axis1, angle2, &axis2, angle3, &axis3)
 
 <!--
@@ -483,46 +523,6 @@ _advanced: False_
 _inlined_description: _
 
 
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void makeRotate(&vec1, &vec2)
-
-<!--
-_syntax: makeRotate(&vec1, &vec2)_
-_name: makeRotate_
-_returns: void_
-_returns_description: _
-_parameters: const ofVec3f &vec1, const ofVec3f &vec2_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Make a rotation Quat which will rotate vec1 to vec2.
-Generally take a dot product to get the angle between these
-and then use a cross product to get the rotation axis
-Watch out for the two special cases when the vectors
-are co-incident or opposite in direction.
 
 
 
@@ -610,53 +610,16 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ofQuaternion()
+### ofQuaternion(&q)
 
 <!--
-_syntax: ofQuaternion()_
+_syntax: ofQuaternion(&q)_
 _name: ofQuaternion_
 _returns: _
 _returns_description: _
-_parameters: _
+_parameters: const glm::quat &q_
 _access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-\name Constructor
-\{
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### ofQuaternion(x, y, z, w)
-
-<!--
-_syntax: ofQuaternion(x, y, z, w)_
-_name: ofQuaternion_
-_returns: _
-_returns_description: _
-_parameters: float x, float y, float z, float w_
-_access: public_
-_version_started: 007_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -704,6 +667,43 @@ _advanced: False_
 _inlined_description: _
 
 
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofQuaternion()
+
+<!--
+_syntax: ofQuaternion()_
+_name: ofQuaternion_
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\name Constructor
+\{
 
 
 
@@ -791,14 +791,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool operator!=(&q)
+### ofQuaternion(x, y, z, w)
 
 <!--
-_syntax: operator!=(&q)_
-_name: operator!=_
-_returns: bool_
+_syntax: ofQuaternion(x, y, z, w)_
+_name: ofQuaternion_
+_returns: _
 _returns_description: _
-_parameters: const ofQuaternion &q_
+_parameters: float x, float y, float z, float w_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -827,14 +827,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###const ofQuaternion operator*(rhs)
+###bool operator!=(&q)
 
 <!--
-_syntax: operator*(rhs)_
-_name: operator*_
-_returns: const ofQuaternion_
+_syntax: operator!=(&q)_
+_name: operator!=_
+_returns: bool_
 _returns_description: _
-_parameters: float rhs_
+_parameters: const ofQuaternion &q_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -935,12 +935,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofQuaternion & operator*=(rhs)
+###const ofQuaternion operator*(rhs)
 
 <!--
-_syntax: operator*=(rhs)_
-_name: operator*=_
-_returns: ofQuaternion &_
+_syntax: operator*(rhs)_
+_name: operator*_
+_returns: const ofQuaternion_
 _returns_description: _
 _parameters: float rhs_
 _access: public_
@@ -979,6 +979,42 @@ _name: operator*=_
 _returns: ofQuaternion &_
 _returns_description: _
 _parameters: const ofQuaternion &rhs_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofQuaternion & operator*=(rhs)
+
+<!--
+_syntax: operator*=(rhs)_
+_name: operator*=_
+_returns: ofQuaternion &_
+_returns_description: _
+_parameters: float rhs_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1187,42 +1223,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofQuaternion operator/(rhs)
-
-<!--
-_syntax: operator/(rhs)_
-_name: operator/_
-_returns: ofQuaternion_
-_returns_description: _
-_parameters: float rhs_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###const ofQuaternion operator/(&denom)
 
 <!--
@@ -1259,12 +1259,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofQuaternion & operator/=(rhs)
+###ofQuaternion operator/(rhs)
 
 <!--
-_syntax: operator/=(rhs)_
-_name: operator/=_
-_returns: ofQuaternion &_
+_syntax: operator/(rhs)_
+_name: operator/_
+_returns: ofQuaternion_
 _returns_description: _
 _parameters: float rhs_
 _access: public_
@@ -1331,14 +1331,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ostream & operator<<(&os)
+###ofQuaternion & operator/=(rhs)
 
 <!--
-_syntax: operator<<(&os)_
-_name: operator<<_
-_returns: ostream &_
+_syntax: operator/=(rhs)_
+_name: operator/=_
+_returns: ofQuaternion &_
 _returns_description: _
-_parameters: ostream &os_
+_parameters: float rhs_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1440,42 +1440,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###istream & operator>>(&is)
-
-<!--
-_syntax: operator>>(&is)_
-_name: operator>>_
-_returns: istream &_
-_returns_description: _
-_parameters: istream &is_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###float & operator[](i)
 
 <!--
@@ -1549,14 +1513,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(x, y, z, w)
+###void set(&matrix)
 
 <!--
-_syntax: set(x, y, z, w)_
+_syntax: set(&matrix)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: float x, float y, float z, float w_
+_parameters: const ofMatrix4x4 &matrix_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1569,8 +1533,7 @@ _advanced: False_
 
 _inlined_description: _
 
-\name Setters
-\{
+
 
 
 
@@ -1622,14 +1585,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(&matrix)
+###void set(x, y, z, w)
 
 <!--
-_syntax: set(&matrix)_
+_syntax: set(x, y, z, w)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: const ofMatrix4x4 &matrix_
+_parameters: float x, float y, float z, float w_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1642,7 +1605,8 @@ _advanced: False_
 
 _inlined_description: _
 
-
+\name Setters
+\{
 
 
 

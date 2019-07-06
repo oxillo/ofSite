@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 import time
 import markdown
+import socket
 
 # !! This is the configuration of Nikola. !! #
 # !!  You should edit it to your liking.  !! #
@@ -22,7 +23,10 @@ BLOG_AUTHOR = "openFrameworks"  # (translatable)
 BLOG_TITLE = "openFrameworks"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "http://openframeworks.cc/"
+if socket.gethostbyname(socket.gethostname()) == socket.gethostbyname('openframeworks.cc'):
+    SITE_URL = "https://openframeworks.cc/"
+else:
+    SITE_URL = "http://localhost:8000"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://openframeworks.cc/"
@@ -90,14 +94,16 @@ TRANSLATIONS = {
     DEFAULT_LANG: "",
     "ja": "./ja",
     "ko": "./ko",
+    "zh_cn": "./zh_cn",
 }
 
 # Provisional links to current external sites until translations
 # are ready. To test local translations comment out or remove the
 # specific language from here
-EXTERNAL_TRANSLATIONS = {    
-    "ja": "http://openframeworks.jp",
-    "ko": "http://openframeworks.kr",
+EXTERNAL_TRANSLATIONS = {
+#   "ja": "http://openframeworks.jp",
+#   "ko": "http://openframeworks.kr",
+#   "zh_cn": "http://openframeworks.cn",
 }
 
 # What will translated input files be named like?
@@ -140,7 +146,7 @@ NAVIGATION_LINKS = {
         ("/about/", "about"),
         ("/download/", "download"),
         ("/documentation/", "documentation"),
-        ("/tutorials/", "tutorials"),
+        ("/learning/", "learning"),
         ("/gallery/", "gallery"),
         ("/community/", "community"),
         ("/development/", "development"),
@@ -150,7 +156,7 @@ NAVIGATION_LINKS = {
         ("/ja/about/", "about"),
         ("/ja/download/", "download"),
         ("/ja/documentation/", "documentation"),
-        ("/ja/tutorials/", "tutorials"),
+        ("/ja/learning/", "learning"),
         ("/ja/gallery/", "gallery"),
         ("/ja/community/", "community"),
         ("/ja/development/", "development"),
@@ -160,40 +166,59 @@ NAVIGATION_LINKS = {
         ("/ko/about/", "소개"),
         ("/ko/download/", "다운로드"),
         ("/ko/documentation/", "도큐먼트"),
-        ("/ko/tutorials/", "튜토리얼"),
+        ("/ko/learning/", "배우기"),
         ("/ko/gallery/", "갤러리"),
         ("/ko/community/", "커뮤니티"),
         ("/ko/development/", "개발"),
+    ),
+    "zh_cn": (
+        ("/zh_cn/about/", "介绍"),
+        ("/zh_cn/download/", "下载"),
+        ("/zh_cn/documentation/", "文档"),
+        ("/zh_cn/tutorials/", "教程"),
+        ("/zh_cn/gallery/", "案例"),
+        ("/zh_cn/community/", "交流"),
+        ("/zh_cn/development/", "开发"),
     ),
 }
 
 EXTERNAL_LINKS = {
     DEFAULT_LANG: (
-        ("https://forum.openframeworks.cc", "forum"),
-        ("http://ofxaddons.com", "addons"),
-        ("https://github.com/openframeworks", "github"),
-        ("http://openframeworks.cc/list-info", "mailing list"),
-        ("http://webchat.freenode.net/?channels=openframeworks&uio=MT1mYWxzZSY5PXRydWUmMTE9Mjk39", "IRC"),
-        ("http://blog.openframeworks.cc/", "blog"),
+        ("https://forum.openframeworks.cc", "forum", True),
+        ("https://github.com/openframeworks", "github", True),
+        ("http://ofxaddons.com", "addons", True),
+        ("http://ofslack.herokuapp.com/", "slack", True),
+        ("https://blog.openframeworks.cc/", "blog", True),
+        ("/donations", "donations", False),
     ),
 
     "ja": (
-        ("https://forum.openframeworks.cc", "forum"),
-        ("http://ofxaddons.com", "addons"),
-        ("https://github.com/openframeworks", "github"),
-        ("http://openframeworks.cc/list-info", "mailing list"),
-        ("http://webchat.freenode.net/?channels=openframeworks&uio=MT1mYWxzZSY5PXRydWUmMTE9Mjk39", "IRC"),
-        ("http://blog.openframeworks.cc/", "blog"),
+        ("https://forum.openframeworks.cc", "forum", True),
+        ("https://github.com/openframeworks", "github", True),
+        ("http://ofxaddons.com", "addons", True),
+        ("http://ofslack.herokuapp.com/", "slack", True),
+        ("https://blog.openframeworks.cc/", "blog", True),
+        ("/donations", "donations", False),
     ),
 
     "ko": (
-        ("https://forum.openframeworks.cc", "포럼(EN)"),
-        ("https://forum.openframeworks.kr", "포럼(KR)"),
-        ("http://ofxaddons.com", "애드온"),
-        ("https://github.com/openframeworks", "github"),
-        ("http://openframeworks.cc/list-info", "메일링 리스트"),
-        ("http://forum.openframeworks.kr/t/slack/32", "slack"),
-        ("http://blog.openframeworks.cc/", "블로그"),
+        ("https://forum.openframeworks.cc", "포럼(EN)", True),
+        ("https://forum.openframeworks.kr", "포럼(KR)", True),
+        ("https://github.com/openframeworks", "github", True),
+        ("http://ofxaddons.com", "애드온", True),
+        ("http://forum.openframeworks.kr/t/slack/32", "slack", True),
+        ("https://blog.openframeworks.cc/", "블로그", True),
+        ("/donations", "donations", False),
+    ),
+    "zh_cn": (
+        ("https://forum.openframeworks.cc", "论坛(EN)", True),
+        ("https://forum.openframeworks.cn", "论坛(CN)", True),
+        ("https://github.com/openframeworks", "github", True),
+        ("http://ofxaddons.com", "插件", True),
+        ("http://forum.openframeworks.kr/t/slack/32", "slack", True),
+        ("https://guest.jianliao.com/rooms/d9640eb07f", "翻译讨论群", True),
+        ("https://blog.openframeworks.cc/", "博客", True),
+        ("/donations", "donations", False),
     ),
 }
 
@@ -237,13 +262,17 @@ PAGES = (
     ("content/about.md", "", "slideshow.mako"),
     ("content/license.md", "about", "fullpage.mako"),
     ("content/download.md", "", "download.mako"),
+    ("content/donations.md", "", "mediumpage.mako"),
+    ("content/thankyou.md", "donations", "mediumpage.mako"),
     ("content/older.md", "download", "fullpage.mako"),
     ("content/gallery.md", "", "gallery.mako"),
     ("content/community.md", "", "mediumpage.mako"),
-    ("content/development.md", "", "fullpage.mako"),
-    ("tutorials/*.markdown", "tutorials", "tutorial.mako"),
-    ("tutorials/*.asciidoc", "tutorials", "tutorial.mako"),
+    ("content/development.md", "", "development.mako"),
+    ("learning/*.markdown", "learning", "tutorial.mako"),
+    ("learning/*.asciidoc", "learning", "tutorial.mako"),
     ("content/setup/*.md", "setup", "setup_guide.mako"),
+    ("documentation/search_results.md", "documentation", "search_results.mako"),
+    ("documentation/contributing.md", "documentation", "tutorial.mako"),
 )
 # Below this point, everything is optional
 
@@ -331,7 +360,7 @@ COMPILERS = {
 # You can choose what command to use for processing.
 # For example, you can replace asciidoc with asciidoctor
 # Or use the full path to the program.
-# ASCIIDOC_BINARY = "asciidoc"
+ASCIIDOC_BINARY = "asciidoctor"
 
 # Create by default posts in one file format?
 # Set to False for two-file posts, with separate metadata.
@@ -1176,7 +1205,7 @@ UNSLUGIFY_TITLES = True
 USE_BUNDLES = False
 
 # Plugins you don't want to use. Be careful :-)
-# DISABLED_PLUGINS = ["render_galleries"]
+# DISABLED_PLUGINS = ["documentation"]
 
 # Add the absolute paths to directories containing plugins to use them.
 # For example, the `plugins` directory of your clone of the Nikola plugins
@@ -1214,10 +1243,10 @@ DEMOTE_HEADERS = 0
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
 GLOBAL_CONTEXT = {
-    "currentVersion": "0.9.0",
-    "breaking": True,
-    "majorVersion": "0.9.0",
-    "olderVersion": "0.8.4",
+    "currentVersion": "0.10.1",
+    "breaking": False,
+    "majorVersion": "0.10.1",
+    "olderVersion": "0.10.0",
     "external_links": EXTERNAL_LINKS,
     "external_translations": {} if EXTERNAL_TRANSLATIONS==None else EXTERNAL_TRANSLATIONS,
 }
@@ -1226,3 +1255,13 @@ GLOBAL_CONTEXT = {
 # GLOBAL_CONTEXT as parameter when the template is about to be
 # rendered
 GLOBAL_CONTEXT_FILLER = []
+
+
+# This is an example that works well with Nikola's default Bootstrap3 theme.
+# It displays the search field in the navigation bar, and the results
+# in a modal dialog.
+
+SEARCH_FORM = """
+<form action="/documentation/search_results">
+<input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+</form>"""

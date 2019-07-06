@@ -250,8 +250,10 @@ Clears data from one or both of the serial buffers.
 
 Any data in the cleared buffers is discarded.
 
-Parameters:
+**Parameters:**
+
 flushIn If true then it clears the incoming data buffer
+
 flushOut If true then it clears the outgoing data buffer.
 
 
@@ -459,7 +461,7 @@ if ( myByte == OF_SERIAL_NO_DATA ){
 ~~~~
 
 
-Returns: The single byte as integer. If there is no data it will return
+**Returns**: The single byte as integer. If there is no data it will return
 `OF_SERIAL_NO_DATA`, and on error it returns `OF_SERIAL_ERROR`
 
 
@@ -490,14 +492,50 @@ else
 
 <!----------------------------------------------------------------------------->
 
-###int readBytes(*buffer, length)
+###long readBytes(&buffer, length)
+
+<!--
+_syntax: readBytes(&buffer, length)_
+_name: readBytes_
+_returns: long_
+_returns_description: _
+_parameters: ofBuffer &buffer, size_t length_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###long readBytes(*buffer, length)
 
 <!--
 _syntax: readBytes(*buffer, length)_
 _name: readBytes_
-_returns: int_
+_returns: long_
 _returns_description: _
-_parameters: unsigned char *buffer, int length_
+_parameters: unsigned char *buffer, size_t length_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -612,6 +650,42 @@ Be aware that the type of your buffer can only be unsigned char. If you're tryin
 
 <!----------------------------------------------------------------------------->
 
+###long readBytes(*buffer, length)
+
+<!--
+_syntax: readBytes(*buffer, length)_
+_name: readBytes_
+_returns: long_
+_returns_description: _
+_parameters: char *buffer, size_t length_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###bool setup()
 
 <!--
@@ -654,6 +728,54 @@ if( mySerial.setup() ){
 	printf("serial is setup!
 ");	
 }
+~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool setup(deviceNumber, baudrate)
+
+<!--
+_syntax: setup(deviceNumber, baudrate)_
+_name: setup_
+_returns: bool_
+_returns_description: _
+_parameters: int deviceNumber, int baudrate_
+_access: public_
+_version_started: 006_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Opens the serial port based on the order in which is listed and
+sets the baud rate.
+
+The code bellow would open the first serial device found by the system:
+~~~~{.cpp}
+ofSerial mySerial;
+mySerial.setup(0, 9600);
+~~~~
+
+
+
+
+
+_description: _
+
+Opens the serial port based on the order in which is listed and sets the baud rate. The code bellow would open the first serial device found by the system:
+~~~~{.cpp}
+
+ofSerial mySerial;
+mySerial.setup(0, 9600);
 ~~~~
 
 
@@ -722,54 +844,6 @@ mySerial.setup("COM4", 57600);
 
 <!----------------------------------------------------------------------------->
 
-###bool setup(deviceNumber, baudrate)
-
-<!--
-_syntax: setup(deviceNumber, baudrate)_
-_name: setup_
-_returns: bool_
-_returns_description: _
-_parameters: int deviceNumber, int baudrate_
-_access: public_
-_version_started: 006_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Opens the serial port based on the order in which is listed and
-sets the baud rate.
-
-The code bellow would open the first serial device found by the system:
-~~~~{.cpp}
-ofSerial mySerial;
-mySerial.setup(0, 9600);
-~~~~
-
-
-
-
-
-_description: _
-
-Opens the serial port based on the order in which is listed and sets the baud rate. The code bellow would open the first serial device found by the system:
-~~~~{.cpp}
-
-ofSerial mySerial;
-mySerial.setup(0, 9600);
-~~~~
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###bool writeByte(singleByte)
 
 <!--
@@ -825,14 +899,86 @@ if ( !byteWasWritten )
 
 <!----------------------------------------------------------------------------->
 
-###int writeBytes(*buffer, length)
+###bool writeByte(singleByte)
+
+<!--
+_syntax: writeByte(singleByte)_
+_name: writeByte_
+_returns: bool_
+_returns_description: _
+_parameters: char singleByte_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###long writeBytes(&buffer)
+
+<!--
+_syntax: writeBytes(&buffer)_
+_name: writeBytes_
+_returns: long_
+_returns_description: _
+_parameters: const ofBuffer &buffer_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###long writeBytes(*buffer, length)
 
 <!--
 _syntax: writeBytes(*buffer, length)_
 _name: writeBytes_
-_returns: int_
+_returns: long_
 _returns_description: _
-_parameters: unsigned char *buffer, int length_
+_parameters: const unsigned char *buffer, size_t length_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -864,6 +1010,42 @@ This writes bytes into the serial buffer from the buffer pointer passed in:
 unsigned char buf[3] = {'o', 'f', '!'};
 device.writeBytes(&buf[0], 3);
 ~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###long writeBytes(*buffer, length)
+
+<!--
+_syntax: writeBytes(*buffer, length)_
+_name: writeBytes_
+_returns: long_
+_returns_description: _
+_parameters: const char *buffer, size_t length_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 

@@ -11,6 +11,8 @@ _extends: _
 ##InlineDescription
 
 
+an HTTP GET or POST request
+
 
 
 
@@ -39,6 +41,42 @@ _returns_description: _
 _parameters: _
 _access: public_
 _version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\return the unique id for this request
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofHttpRequest(&url, &name, saveTo = false)
+
+<!--
+_syntax: ofHttpRequest(&url, &name, saveTo = false)_
+_name: ofHttpRequest_
+_returns: _
+_returns_description: _
+_parameters: const string &url, const string &name, bool saveTo=false_
+_access: public_
+_version_started: 007_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -101,21 +139,21 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ofHttpRequest(&url, &name, saveTo = false)
+##Variables
+
+
+
+###string body
 
 <!--
-_syntax: ofHttpRequest(&url, &name, saveTo = false)_
-_name: ofHttpRequest_
-_returns: _
-_returns_description: _
-_parameters: const string &url, const string &name, bool saveTo=false_
+_name: body_
+_type: string_
 _access: public_
-_version_started: 007_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
-_constant: False_
-_static: False_
 _visible: True_
+_constant: False_
 _advanced: False_
 -->
 
@@ -137,9 +175,69 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-##Variables
+###string contentType
+
+<!--
+_name: contentType_
+_type: string_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
 
 
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###function< void (const ofHttpResponse &) > done
+
+<!--
+_name: done_
+_type: function< void (const ofHttpResponse &) >_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
 
 ###map< string, string > headers
 
@@ -184,6 +282,38 @@ _version_deprecated: _
 _summary: _
 _visible: True_
 _constant: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###enum Method method
+
+<!--
+_name: method_
+_type: enum Method_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
 _advanced: False_
 -->
 
@@ -280,6 +410,38 @@ _version_deprecated: _
 _summary: _
 _visible: True_
 _constant: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###size_t timeoutSeconds
+
+<!--
+_name: timeoutSeconds_
+_type: size_t_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
 _advanced: False_
 -->
 

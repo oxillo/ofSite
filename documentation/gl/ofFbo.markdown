@@ -17,7 +17,7 @@ _extends: ofBaseDraws, ofBaseHasTexture_
 
 ##Description
 
-At it's core the ofFBO is a container for textures and an optional depth buffer. Kind of like, well, an OpenGL framebuffer, which is what you're normally rendering to. One way, conceptually correct but technically a bit loose, is that it's another renderer that you can write to. You can draw textures to it, draw 3D or 2D objects to it, render the view of cameras inside of it, all with one key difference: it's just an object stored on the graphics card that repreesents a rendered drawing pass. You can have multiple of them, draw all kinds of things inside of them, and then get all the textures out of them to play with in a shader or just draw them directly to the screen. They are, for most purposes, little render buffers that you can render to and store without needing to be drawing to the screen.
+At it's core the ofFBO is a container for textures and an optional depth buffer. Kind of like, well, an OpenGL framebuffer, which is what you're normally rendering to. One way, conceptually correct but technically a bit loose, is that it's another renderer that you can write to. You can draw textures to it, draw 3D or 2D objects to it, render the view of cameras inside of it, all with one key difference: it's just an object stored on the graphics card that represents a rendered drawing pass. You can have multiple of them, draw all kinds of things inside of them, and then get all the textures out of them to play with in a shader or just draw them directly to the screen. They are, for most purposes, little render buffers that you can render to and store without needing to be drawing to the screen.
 
 To start working with an ofFbo, you have to allocate it, the same way that you would with an ofTexture:
 
@@ -98,7 +98,43 @@ _inlined_description: _
 
 _description: _
 
-This method allows you to render the results of a shading pass to all the textures inside the FBO. It's  handy if you have many textures inside your FBO, for instance, a normals texture, a colored depth texture, a color texture, and you want to have a shader render to all of them at once. It calls glDrawBuffers() internally, which you can learn more about [here](http://www.opengl.org/sdk/docs/man/xhtml/glDrawBuffers.xml).
+This method allows you to render the results of a shading pass to all the textures inside the FBO. It's  handy if you have many textures inside your FBO, for instance, a normals texture, a colored depth texture, a color texture, and you want to have a shader render to all of them at once. It calls glDrawBuffers() internally, which you can learn more about [here](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDrawBuffers.xhtml).
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void allocate(settings)
+
+<!--
+_syntax: allocate(settings)_
+_name: allocate_
+_returns: void_
+_returns_description: _
+_parameters: ofFboSettings settings_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+You can also allocate the ofFbo using a Settings object
 
 
 
@@ -144,42 +180,6 @@ This technique does not anti-alias any effects coming out of the shader, because
 
 <!----------------------------------------------------------------------------->
 
-###void allocate(settings)
-
-<!--
-_syntax: allocate(settings)_
-_name: allocate_
-_returns: void_
-_returns_description: _
-_parameters: ofFbo::Settings settings_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-You can also allocate the ofFbo using a Settings object
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void attachTexture(&texture, internalFormat, attachmentPoint)
 
 <!--
@@ -216,14 +216,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void begin(setupScreen = true)
+###void begin(mode)
 
 <!--
-_syntax: begin(setupScreen = true)_
+_syntax: begin(mode)_
 _name: begin_
 _returns: void_
 _returns_description: _
-_parameters: bool setupScreen=true_
+_parameters: ofFboMode mode_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -236,15 +236,33 @@ _advanced: False_
 
 _inlined_description: _
 
-   Sets up the framebuffer and binds it for rendering.
+Sets up the framebuffer and binds it for rendering.
 
-Warning:  This is a convenience method, and is considered unsafe
+The mode parameter indicates which defaults are set when binding
+the fbo.
+
+The default OF_FBOMODE_PERSPECTIVE | OF_FBOMODE_MATRIXFLIP
+will set the screen perspective to the OF default for the fbo size, the
+correct viewport to cover the full fbo and will flip the orientation
+matrix in y so when drawing the fbo later or accesing it from a shader
+it's correctly oriented
+
+Passing OF_FBOMODE_PERSPECTIVE will only set perspective and viewport
+
+Passing OF_FBOMODE_MATRIXFLIP won't set the perspective but will flip
+the matrix.
+
+Passing OF_FBOMODE_NODEFAULTS won't change anything and just bind the fbo
+and set it as current rendering surface in OF
+
+
+**Warning**:  This is a convenience method, and is considered unsafe
           in multi-window and/or multi-renderer scenarios.
           If you use more than one renderer, use each renderer's
-          explicit void ofBaseGLRenderer::begin(const ofFbo & fbo, bool setupPerspective)
+          explicit void ofBaseGLRenderer::begin(const ofFbo & fbo, ofFboMode mode)
           method instead.
 
-See also:       void ofBaseGLRenderer::begin(const ofFbo & fbo, bool setupPerspective)
+**See also**:       void ofBaseGLRenderer::begin(const ofFbo & fbo, ofFboMode mode)
 
 
 
@@ -282,7 +300,7 @@ _inlined_description: _
 
    Bind OpenGL GL_FRAMEBUFFER target to this ofFbo
 
-Warning:  If you use this method, you need to manually keep track of the
+**Warning**:  If you use this method, you need to manually keep track of the
           currently bound framebuffer, if you ever want to restore state.
           * use ofBaseGLRenderer::getCurrentFramebuffer() to query the current
           framebuffer binding state within the renderer.
@@ -290,9 +308,9 @@ Warning:  If you use this method, you need to manually keep track of the
           ofBaseGLRenderer::bind(const ofFbo & fbo) to bind the fbo, to allow
           the renderer to keep track of any bound fbos.
 
-See also:       unbind()
+**See also**:       unbind()
 
-See also:       virtual void ofBaseGLRenderer::bind(const ofFbo & fbo)
+**See also**:       virtual void ofBaseGLRenderer::bind(const ofFbo & fbo)
 
 
 
@@ -310,6 +328,7 @@ fbo.getTextureReference().bind();
 mesh.draw();
 fbo.getTextureReference().unbind();
 ```
+
 
 
 
@@ -409,6 +428,236 @@ _advanced: False_
 _inlined_description: _
 
 
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void clearColorBuffer(&color)
+
+<!--
+_syntax: clearColorBuffer(&color)_
+_name: clearColorBuffer_
+_returns: void_
+_returns_description: _
+_parameters: const ofFloatColor &color_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+glClearBufferfv(GL_COLOR, 0...)
+
+@see: https://www.opengl.org/wiki/GLAPI/glClearBuffer
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void clearColorBuffer(buffer_idx, &color)
+
+<!--
+_syntax: clearColorBuffer(buffer_idx, &color)_
+_name: clearColorBuffer_
+_returns: void_
+_returns_description: _
+_parameters: size_t buffer_idx, const ofFloatColor &color_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+glClearBufferfv(GL_COLOR, buffer_idx...)
+
+@see: https://www.opengl.org/wiki/GLAPI/glClearBuffer
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void clearDepthBuffer(value)
+
+<!--
+_syntax: clearDepthBuffer(value)_
+_name: clearDepthBuffer_
+_returns: void_
+_returns_description: _
+_parameters: float value_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+glClearBufferfv(GL_DEPTH...)
+
+@see: https://www.opengl.org/wiki/GLAPI/glClearBuffer
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void clearDepthStencilBuffer(depth, stencil)
+
+<!--
+_syntax: clearDepthStencilBuffer(depth, stencil)_
+_name: clearDepthStencilBuffer_
+_returns: void_
+_returns_description: _
+_parameters: float depth, int stencil_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+glClearBufferfi(GL_DEPTH_STENCIL...)
+
+@see: https://www.opengl.org/wiki/GLAPI/glClearBuffer
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void clearStencilBuffer(value)
+
+<!--
+_syntax: clearStencilBuffer(value)_
+_name: clearStencilBuffer_
+_returns: void_
+_returns_description: _
+_parameters: int value_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+glClearBufferiv(GL_STENCIL...)
+
+@see: https://www.opengl.org/wiki/GLAPI/glClearBuffer
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void copyTo(&buffer)
+
+<!--
+_syntax: copyTo(&buffer)_
+_name: copyTo_
+_returns: void_
+_returns_description: _
+_parameters: ofBufferObject &buffer_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Copy the fbo to an ofBufferObject.
+
+**Parameters:**
+
+buffer the target buffer to copy to.
 
 
 
@@ -680,7 +929,7 @@ _inlined_description: _
 
    Ends the current framebuffer render context.
 
-See also:       void begin(bool setupScreen=true) const;
+**See also**:       void begin(bool setupScreen=true) const;
 
 
 
@@ -688,7 +937,7 @@ See also:       void begin(bool setupScreen=true) const;
 
 _description: _
 
-Any drawing that you do after end() is drawn into the fbo rather than the screen. This is how you stop drawing things into your ofFbo instance.
+Any drawing that you do after end() is drawn to the screen rather than into the fbo buffer. This is how you stop drawing things into your ofFbo instance.
 
 
 
@@ -1093,14 +1342,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofTexture & getTexture(attachmentPoint)
+###const ofTexture & getTexture()
 
 <!--
-_syntax: getTexture(attachmentPoint)_
+_syntax: getTexture()_
 _name: getTexture_
-_returns: ofTexture &_
+_returns: const ofTexture &_
 _returns_description: _
-_parameters: int attachmentPoint_
+_parameters: _
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1129,14 +1378,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###const ofTexture & getTexture()
+###ofTexture & getTexture(attachmentPoint)
 
 <!--
-_syntax: getTexture()_
+_syntax: getTexture(attachmentPoint)_
 _name: getTexture_
-_returns: const ofTexture &_
+_returns: ofTexture &_
 _returns_description: _
-_parameters: _
+_parameters: int attachmentPoint_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1417,16 +1666,16 @@ This is the maximum number of MSAA samples that your graphic card supports.
 
 <!----------------------------------------------------------------------------->
 
-### ofFbo()
+### ofFbo(&&mom)
 
 <!--
-_syntax: ofFbo()_
+_syntax: ofFbo(&&mom)_
 _name: ofFbo_
 _returns: _
 _returns_description: _
-_parameters: _
+_parameters: ofFbo &&mom_
 _access: public_
-_version_started: 007_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -1445,7 +1694,7 @@ _inlined_description: _
 
 _description: _
 
-This is the default constructor for the ofFbo.
+
 
 
 
@@ -1482,6 +1731,78 @@ _inlined_description: _
 _description: _
 
 Copies all data from the mom fbo
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofFbo()
+
+<!--
+_syntax: ofFbo()_
+_name: ofFbo_
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+This is the default constructor for the ofFbo.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofFbo & operator=(&&fbo)
+
+<!--
+_syntax: operator=(&&fbo)_
+_name: operator=_
+_returns: ofFbo &_
+_returns_description: _
+_parameters: ofFbo &&fbo_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -1625,7 +1946,7 @@ _inlined_description: _
 
 _description: _
 
-This allows you to get the pixels from an ofFbo and store it in an ofShortPixels instance. The attachmentPoint parameter allows you indicate which of the textures attached to the fbo you want to grab. The ofShortPixels instance is useful when you want your image as floating point values.
+This allows you to get the pixels from an ofFbo and store it in an ofFloatPixels instance. The attachmentPoint parameter allows you indicate which of the textures attached to the fbo you want to grab. The ofShortPixels instance is useful when you want your image as floating point values.
 
 
 
@@ -1944,9 +2265,9 @@ _inlined_description: _
    Unbinds OpenGL framebuffer target and restores the OpenGL framebuffer
           render target to whatever this ofFbo stores in previousFramebufferBinding.
 
-See also:       bind()
+**See also**:       bind()
 
-See also:       void setPreviousFramebufferBinding(const GLuint& previousFramebufferBinding_) const
+**See also**:       void setPreviousFramebufferBinding(const GLuint& previousFramebufferBinding_) const
 
 
 

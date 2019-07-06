@@ -1,8 +1,9 @@
-rm -r _documentation
-git checkout _documentation
-#cp -r ../../Code/ofSite/_documentation .
-_tools/documentation_update.py
-exit
+#!/usr/bin/env bash
+rm -r documentation
+git checkout documentation
+source nikola/bin/activate
+LD_LIBRARY_PATH=/usr/lib/llvm-6.0/lib/ plugins/documentation/documentation/tools/documentation_update.py
 if [ "$?" == "0" ]; then
-	blogofile build
+	nikola build
 fi
+deactivate

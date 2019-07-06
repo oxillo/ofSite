@@ -23,7 +23,7 @@ Example:
 
 ~~~~{.cpp}
 ofVideoPlayer myPlayer;
-myPlayer.loadMovie("movies/fingers.mov");
+myPlayer.load("movies/fingers.mov");
 ~~~~
 
 You need to call play() for your video to begin playing:
@@ -93,7 +93,15 @@ _advanced: False_
 
 _inlined_description: _
 
+Binds the video texture to the current rendering context.
 
+For advanced users who need to manually manage texture drawing
+without calling draw(). Only binds the texture if one exists.
+
+
+**See also**: ofTexture::bind()
+
+**See also**: http://www.opengl.org/sdk/docs/man4/html/glBindTexture.xhtml
 
 
 
@@ -129,7 +137,12 @@ _advanced: False_
 
 _inlined_description: _
 
+Closes the movie file releases its resources.
 
+This is an alias for closeMovie().
+
+
+**See also**: closeMovie()
 
 
 
@@ -137,7 +150,7 @@ _inlined_description: _
 
 _description: _
 
-Calls the closeMovie() function, which closes the movie file and de-allocates resources.
+
 
 
 
@@ -165,15 +178,18 @@ _advanced: False_
 
 _inlined_description: _
 
+Closes the movie file and releases its resources.
 
+This is an alias for close().
+
+
+**See also**: close()
 
 
 
 
 
 _description: _
-
-Closes the movie file and de-allocates resources.
 
 Example:
 
@@ -182,42 +198,6 @@ ofVideoPlayer myPlayer;
 myPlayer.loadMovie("myMovie.mov"); //Loads video resources
 myPlayer.closeMovie(); //Unloads video resources
 ~~~~
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void draw(x, y, w, h)
-
-<!--
-_syntax: draw(x, y, w, h)_
-_name: draw_
-_returns: void_
-_returns_description: _
-_parameters: float x, float y, float w, float h_
-_access: public_
-_version_started: 006_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Draws the texture of the movie player class at the position (x,y) with the given width (w) and height (h). 
 
 
 
@@ -261,6 +241,42 @@ Draws the texture of the movie player class as the position (x,y) with the inter
 
 <!----------------------------------------------------------------------------->
 
+###void draw(x, y, w, h)
+
+<!--
+_syntax: draw(x, y, w, h)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float w, float h_
+_access: public_
+_version_started: 006_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Draws the texture of the movie player class at the position (x,y) with the given width (w) and height (h). 
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void firstFrame()
 
 <!--
@@ -289,7 +305,7 @@ _inlined_description: _
 
 _description: _
 
-Moves the playhead to the first frame of the movie. This can also be accomplished using setCurrentFrame(0).
+
 
 
 
@@ -325,7 +341,7 @@ _inlined_description: _
 
 _description: _
 
-Get the current frame number.
+
 
 
 
@@ -361,7 +377,7 @@ _inlined_description: _
 
 _description: _
 
-Returns the duration of the movie in seconds as a floating number.
+
 
 
 
@@ -397,7 +413,7 @@ _inlined_description: _
 
 _description: _
 
-Get the height of the movie file.
+
 
 
 
@@ -433,7 +449,7 @@ _inlined_description: _
 
 _description: _
 
-Returns whether the movie has played all the way until the end.
+
 
 
 
@@ -469,7 +485,7 @@ _inlined_description: _
 
 _description: _
 
-Returns whether the video is looping or not.
+
 
 
 
@@ -497,7 +513,12 @@ _advanced: False_
 
 _inlined_description: _
 
+Get the path to the loaded video file.
 
+If no video file is loaded this returns an empty string.
+
+
+**Returns**: A path to the loaded video or an empty string if not loaded.
 
 
 
@@ -505,7 +526,7 @@ _inlined_description: _
 
 _description: _
 
-Returns the path to the file that the ofVideoPlayer is currently playing. If it's not playing any files, then this returns a blank string.
+
 
 
 
@@ -650,7 +671,15 @@ _advanced: False_
 
 _inlined_description: _
 
+Get a pointer to the internal video player implementation.
 
+This returns a pointer to the ofBaseVideoPlayer interface. For
+implementation-specfic features, this can be cast to the subtype
+using dynamic_cast<MyVideoPlayerImplementation>(getPlayer()) or the
+templated getPlayer<MyVideoPlayerImplementation>() method.
+
+
+**Returns**: A pointer to the internal video player implementation.
 
 
 
@@ -658,7 +687,7 @@ _inlined_description: _
 
 _description: _
 
-This returns a [shared pointer](http://thenewcpp.wordpress.com/2012/06/21/shared-pointers/) to the particular implementation of ofVideoPlayer that your system is using.
+
 
 
 
@@ -686,7 +715,15 @@ _advanced: False_
 
 _inlined_description: _
 
+Get a const pointer to the internal video player implementation.
 
+This returns a pointer to the ofBaseVideoPlayer interface. For
+implementation-specfic features, this can be cast to the subtype
+using dynamic_pointer_cast<MyVideoPlayerImplementation>(getPlayer())
+or the templated getPlayer<MyVideoPlayerImplementation>() method.
+
+
+**Returns**: A const pointer to the internal video player implementation.
 
 
 
@@ -722,7 +759,14 @@ _advanced: False_
 
 _inlined_description: _
 
+Get a pointer to the internal video player implementation.
 
+Calling getPlayer<MyVideoPlayerImplementation>() is equivalent to
+dynamic_pointer_cast<MyVideoPlayerImplementation>(getPlayer()).
+
+
+**Returns**: A pointer to the internal video player implementation or
+			 nullptr if the cast fails.
 
 
 
@@ -758,7 +802,14 @@ _advanced: False_
 
 _inlined_description: _
 
+Get a const pointer to the internal video player implementation.
 
+Calling getPlayer<MyVideoPlayerImplementation>() is equivalent to
+dynamic_pointer_cast<MyVideoPlayerImplementation>(getPlayer()).
+
+
+**Returns**: A const pointer to the internal video player implementation
+			 or nullptr if the cast fails.
 
 
 
@@ -802,7 +853,7 @@ _inlined_description: _
 
 _description: _
 
-Returns the position of the playhead from 0-1, where 0 is the start and 1 is the end of the video.
+
 
 
 
@@ -838,7 +889,7 @@ _inlined_description: _
 
 _description: _
 
-Returns the speed that the movie is being played at as a floating point number. 1 = normal speed, 0 = paused, -1 = backwards. 
+
 
 
 
@@ -918,12 +969,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofTexture > & getTexturePlanes()
+###int & getTexturePlanes()
 
 <!--
 _syntax: getTexturePlanes()_
 _name: getTexturePlanes_
-_returns: vector< ofTexture > &_
+_returns: int &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -954,12 +1005,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###const vector< ofTexture > & getTexturePlanes()
+###const int & getTexturePlanes()
 
 <!--
 _syntax: getTexturePlanes()_
 _name: getTexturePlanes_
-_returns: const vector< ofTexture > &_
+_returns: const int &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1018,7 +1069,7 @@ _inlined_description: _
 
 _description: _
 
-Get the number of frames that the movie file being played contains.
+
 
 
 
@@ -1054,7 +1105,7 @@ _inlined_description: _
 
 _description: _
 
-Get the width of the movie file.
+
 
 
 
@@ -1082,7 +1133,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+Initialize the default player implementations.
 
 
 
@@ -1422,7 +1473,7 @@ _inlined_description: _
 
 _description: _
 
-Advances the playhead by one frame.
+
 
 
 
@@ -1494,7 +1545,7 @@ _inlined_description: _
 
 _description: _
 
-Plays the movie. If the movie has been stopped or paused it will the continue playback at the point it was stopped. You still need to call update() periodically to ensure that you're copying frames to an ofTexture so that they can be drawn.
+
 
 
 
@@ -1530,7 +1581,7 @@ _inlined_description: _
 
 _description: _
 
-Reverses the playhead by one frame.
+
 
 
 
@@ -1674,7 +1725,7 @@ _inlined_description: _
 
 _description: _
 
-Sets the current frame of the video. Should be used only if you know the bounds of the movie ( using totalNumberFrames() ) or store a location using getCurrentFrame();
+
 
 
 
@@ -1710,7 +1761,6 @@ _inlined_description: _
 
 _description: _
 
-Sets the looping state of the movie. Default behavior is OF_LOOP_NORMAL. There are three options:
 ~~~~{.cpp}
 
 OF_LOOP_NONE - don't loop, the movie will stop when it gets to the last frame (or first frame, if playing backwards)
@@ -1752,7 +1802,7 @@ _inlined_description: _
 
 _description: _
 
-Sets the paused state of the movie. Use "true" to pause and false to unpause. 
+
 
 
 
@@ -1788,7 +1838,7 @@ _inlined_description: _
 
 _description: _
 
-Sets the pixel format for the 
+OSX: Choose from OF_PIXELS_RGB or OF_PIXELS_RGBA
 
 
 
@@ -1816,7 +1866,17 @@ _advanced: False_
 
 _inlined_description: _
 
+Set the internal video player implementation.
 
+Advanced users may find it useful to set a custom internal video
+player implementation. The custom video player must implment the
+ofBaseVideoPlayer interface.
+
+
+**Parameters:**
+
+newPlayer Shared pointer to the new video player that extends
+from ofBaseVideoPlayer.
 
 
 
@@ -1896,7 +1956,7 @@ _inlined_description: _
 
 _description: _
 
-Sets the speed of the movie that is playing. 1 = normal, 2 = 2x as fast, 0 = stopped, -1 = backwards, etc; 
+
 
 
 
@@ -1973,7 +2033,7 @@ _inlined_description: _
 
 _description: _
 
-Sets the volume of a movie as it plays. The maximum values is 1.0f, 0.0f is silent.
+
 
 
 
@@ -2009,7 +2069,7 @@ _inlined_description: _
 
 _description: _
 
-Stops the movie. 
+
 
 
 
@@ -2037,7 +2097,13 @@ _advanced: False_
 
 _inlined_description: _
 
+Unbinds the video texture from the current rendering context.
 
+For advanced users who need to manually manage texture drawing
+without calling draw(). Only binds the texture if one exists.
+
+
+**See also**: ofTexture::unbind()
 
 
 
@@ -2073,7 +2139,10 @@ _advanced: False_
 
 _inlined_description: _
 
+Update the video player's internal state to continue playback.
 
+If normal video playback is desired, this method is usually called
+once per animation frame inside of ofApp::update().
 
 
 
@@ -2081,7 +2150,7 @@ _inlined_description: _
 
 _description: _
 
-Calls the idleMovie() function. This function idles the movie player, so that the movie can play. If you don't call it, when the movie is playing then you may encounter problems, especially on windows machines. 
+
 
 
 
@@ -2109,7 +2178,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+True if the video player is using a texture.
 
 
 
@@ -2117,7 +2186,7 @@ _inlined_description: _
 
 _description: _
 
-bUseTexture enables and disables the use of ofTexture in our video player.
+
 
 
 
@@ -2141,7 +2210,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+The internal pixel format.
 
 
 
@@ -2173,7 +2242,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+The stored path to the video's path.
 
 
 
@@ -2205,7 +2274,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+A pointer to the internal video player implementation.
 
 
 
@@ -2237,7 +2306,12 @@ _advanced: False_
 
 _inlined_description: _
 
+A pointer to the internal player's texture if available.
 
+Video players that implement ofBaseVideoPlayer::getTexturePtr()
+can provide a pointer to an internal texture. When possible,
+ofVideoPlayer will use the internal texture to avoid extra pixel
+copies.
 
 
 
@@ -2269,7 +2343,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+A collection of texture planes used by the video player.
 
 
 
@@ -2277,7 +2351,7 @@ _inlined_description: _
 
 _description: _
 
-ofTexture used by the video player class. 
+
 
 
 

@@ -20,9 +20,9 @@ By: Memo Akten, MSA Visuals Ltd. 2011
 
 ##Description
 
-ofCamera provides a camera onto a 3D scene. Some of the different properties of the camera are shown in the picture below:
-![FOV](fov.png)
-The far and near clip planes are the boundaries of what's visible in the camera. If you need more information on these, check http://www.falloutsoftware.com/tutorials/gl/gl0.htm
+ofCamera provides a camera onto a 3D scene. Some of the different properties of the camera are shown in the picture below:<br/>
+![FOV](fov.png)<br/>
+The far and near clip planes are the boundaries of what's visible in the camera. If you need more information on these, check [http://www.falloutsoftware.com/tutorials/gl/gl0.htm](http://www.falloutsoftware.com/tutorials/gl/gl0.htm)
 
 
 
@@ -32,14 +32,50 @@ The far and near clip planes are the boundaries of what's visible in the camera.
 
 
 
-###void begin(viewport)
+###void begin(&viewport)
 
 <!--
-_syntax: begin(viewport)_
+_syntax: begin(&viewport)_
 _name: begin_
 _returns: void_
 _returns_description: _
-_parameters: ofRectangle viewport_
+_parameters: const ofRectangle &viewport_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void begin()
+
+<!--
+_syntax: begin()_
+_name: begin_
+_returns: void_
+_returns_description: _
+_parameters: _
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -59,7 +95,7 @@ void draw() {
     // Begin rendering from the camera's perspective.
     camera.begin();
 
-    ofDrawLine(0, 0, ofGetWidth(), ofGetHeight());
+    ofLine(0, 0, ofGetWidth(), ofGetHeight());
     // Additional rendering ...
 
     // End rendering form the camera's perspective.
@@ -67,7 +103,8 @@ void draw() {
 }
 ~~~~
 
-Parameters:
+**Parameters:**
+
 viewport The camera's rendering viewport.
 
 
@@ -76,7 +113,7 @@ viewport The camera's rendering viewport.
 
 _description: _
 
-set the matrices that the camera will use.
+This function pushes the cameras view and projection matrix to a stack of transformations so that draw calls done within begin() and end() will appear to be viewed from the cameras perspective.
 
 
 
@@ -120,14 +157,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f cameraToWorld(CameraXYZ, viewport)
+###glm::vec3 cameraToWorld(CameraXYZ)
 
 <!--
-_syntax: cameraToWorld(CameraXYZ, viewport)_
+_syntax: cameraToWorld(CameraXYZ)_
 _name: cameraToWorld_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
-_parameters: ofVec3f CameraXYZ, ofRectangle viewport_
+_parameters: glm::vec3 CameraXYZ_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+When you have a position in camera coordinates you can get what it would be in world coordinates, transforming it using the ofCamera.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::vec3 cameraToWorld(CameraXYZ, &viewport)
+
+<!--
+_syntax: cameraToWorld(CameraXYZ, &viewport)_
+_name: cameraToWorld_
+_returns: glm::vec3_
+_returns_description: _
+_parameters: glm::vec3 CameraXYZ, const ofRectangle &viewport_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -185,6 +258,80 @@ _inlined_description: _
 _description: _
 
 Calling disableOrtho() turns off the orthographic mode.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawFrustum(&viewport)
+
+<!--
+_syntax: drawFrustum(&viewport)_
+_name: drawFrustum_
+_returns: void_
+_returns_description: _
+_parameters: const ofRectangle &viewport_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draw a visual representation of the camera's frustum
+\note  This will only be visible when the camera drawing its
+       frustum is viewed through another camera.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawFrustum()
+
+<!--
+_syntax: drawFrustum()_
+_name: drawFrustum_
+_returns: void_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -256,7 +403,7 @@ Ends rendering with the camera.
 
 _description: _
 
-set the matrices
+This removes the cameras view and projection matrix transformations from the stack so that draw calls performed afterward will not be viewed from the perspective of the camera. This is equivalent to performing an openGL PopMatrix call.
 
 
 
@@ -291,7 +438,7 @@ the ratio of the width to height of your display. Intended for
 perspective cameras.
 
 
-Returns: The aspect ratio of this camera's viewport.
+**Returns**: The aspect ratio of this camera's viewport.
 
 
 
@@ -366,7 +513,7 @@ _inlined_description: _
 Get the boolean state which indicates whether the aspect ratio of this camera is forced to a non-default setting.
 
 
-Returns: A boolean: whether or not this camera's aspect ratio is set to a non-default value.
+**Returns**: A boolean: whether or not this camera's aspect ratio is set to a non-default value.
 
 
 
@@ -408,7 +555,7 @@ Get the camera's vertical field of view, in degrees.  This is only
 meaningful for perspective cameras.
 
 
-Returns: The camera's field of view, in degrees.
+**Returns**: The camera's field of view, in degrees.
 
 
 
@@ -424,14 +571,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###float getImagePlaneDistance(viewport)
+###float getImagePlaneDistance(&viewport)
 
 <!--
-_syntax: getImagePlaneDistance(viewport)_
+_syntax: getImagePlaneDistance(&viewport)_
 _name: getImagePlaneDistance_
 _returns: float_
 _returns_description: _
-_parameters: ofRectangle viewport_
+_parameters: const ofRectangle &viewport_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -460,12 +607,12 @@ This allows you to get the image plane distance from any viewport passed in. By 
 
 <!----------------------------------------------------------------------------->
 
-###ofVec2f getLensOffset()
+###glm::vec2 getLensOffset()
 
 <!--
 _syntax: getLensOffset()_
 _name: getLensOffset_
-_returns: ofVec2f_
+_returns: glm::vec2_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -491,7 +638,7 @@ function returns the offset that has been applied, as an ofVec2f.  For
 more information see http://www.orthostereo.com/geometryopengl.html.
 
 
-Returns: The "lens offset" applied to this camera, encoded in an ofVec2f.
+**Returns**: The "lens offset" applied to this camera, encoded in an ofVec2f.
 
 
 
@@ -507,12 +654,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofMatrix4x4 getModelViewMatrix()
+###glm::mat4 getModelViewMatrix()
 
 <!--
 _syntax: getModelViewMatrix()_
 _name: getModelViewMatrix_
-_returns: ofMatrix4x4_
+_returns: glm::mat4_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -529,7 +676,7 @@ _inlined_description: _
 
 Access the model view matrix.
 
-Returns: the current 4x4 model view matrix.
+**Returns**: the current 4x4 model view matrix.
 
 
 
@@ -545,14 +692,14 @@ Access to the projection matrix.
 
 <!----------------------------------------------------------------------------->
 
-###ofMatrix4x4 getModelViewProjectionMatrix(viewport)
+###glm::mat4 getModelViewProjectionMatrix(&viewport)
 
 <!--
-_syntax: getModelViewProjectionMatrix(viewport)_
+_syntax: getModelViewProjectionMatrix(&viewport)_
 _name: getModelViewProjectionMatrix_
-_returns: ofMatrix4x4_
+_returns: glm::mat4_
 _returns_description: _
-_parameters: ofRectangle viewport_
+_parameters: const ofRectangle &viewport_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -566,6 +713,42 @@ _advanced: False_
 _inlined_description: _
 
 \todo getModelViewProjectionMatrix()
+
+
+
+
+
+_description: _
+
+Access to the projection ModelViewProjectionMatrix.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::mat4 getModelViewProjectionMatrix()
+
+<!--
+_syntax: getModelViewProjectionMatrix()_
+_name: getModelViewProjectionMatrix_
+_returns: glm::mat4_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
 
 
 
@@ -653,14 +836,50 @@ Get whether the camera is in orthographic mode.
 
 <!----------------------------------------------------------------------------->
 
-###ofMatrix4x4 getProjectionMatrix(viewport)
+###glm::mat4 getProjectionMatrix(&viewport)
 
 <!--
-_syntax: getProjectionMatrix(viewport)_
+_syntax: getProjectionMatrix(&viewport)_
 _name: getProjectionMatrix_
-_returns: ofMatrix4x4_
+_returns: glm::mat4_
 _returns_description: _
-_parameters: ofRectangle viewport_
+_parameters: const ofRectangle &viewport_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Access to the projection matrix.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::mat4 getProjectionMatrix()
+
+<!--
+_syntax: getProjectionMatrix()_
+_name: getProjectionMatrix_
+_returns: glm::mat4_
+_returns_description: _
+_parameters: _
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -675,7 +894,7 @@ _inlined_description: _
 
 Access the projection matrix.
 
-Returns: the current 4x4 projection matrix.
+**Returns**: the current 4x4 projection matrix.
 
 
 
@@ -727,14 +946,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofRectangle getViewport(&_viewport)
+###ofRectangle getViewport()
 
 <!--
-_syntax: getViewport(&_viewport)_
+_syntax: getViewport()_
 _name: getViewport_
 _returns: ofRectangle_
 _returns_description: _
-_parameters: const ofRectangle &_viewport_
+_parameters: _
 _access: protected_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -747,7 +966,7 @@ _advanced: False_
 
 _inlined_description: _
 
- \}
+
 
 
 
@@ -827,7 +1046,7 @@ Construct a default camera.
 
 _description: _
 
-
+The default camera is positioned at (0, 0, 0) with a 60 degree field of view.  Its up vector is the positive y-axis, and it is looking down the negative z-axis.  Near and far planes are determined by the current viewport size.
 
 
 
@@ -835,14 +1054,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f screenToWorld(ScreenXYZ, viewport)
+###glm::vec3 screenToWorld(ScreenXYZ)
 
 <!--
-_syntax: screenToWorld(ScreenXYZ, viewport)_
+_syntax: screenToWorld(ScreenXYZ)_
 _name: screenToWorld_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
-_parameters: ofVec3f ScreenXYZ, ofRectangle viewport_
+_parameters: glm::vec3 ScreenXYZ_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+When you have a position in screen coordinates you can get what it would be in world coordinates, transforming it using the ofCamera.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::vec3 screenToWorld(ScreenXYZ, &viewport)
+
+<!--
+_syntax: screenToWorld(ScreenXYZ, &viewport)_
+_name: screenToWorld_
+_returns: glm::vec3_
+_returns_description: _
+_parameters: glm::vec3 ScreenXYZ, const ofRectangle &viewport_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -863,7 +1118,8 @@ You'll also need to specify a Z value when providing your screen point.
 This Z value is interpreted as a distance into or away from the screen.
 
 
-Parameters:
+**Parameters:**
+
 ScreenXYZ A point on your screen, whose 3D world coordinates you wish to know.
 
 
@@ -908,7 +1164,8 @@ cameras. The default value (and the value used with orthographic
 cameras) is the ratio of the viewport's width to the viewport's height.
 
 
-Parameters:
+**Parameters:**
+
 aspectRatio The desired aspect ratio, e.g. 1.3333, 1.6, etc.
 
 
@@ -989,7 +1246,8 @@ ofCamera::setAspectRatio()), you can toggle whether or not this value is
 applied.
 
 
-Parameters:
+**Parameters:**
+
 forceAspectRatio Whether or not this camera should use an aspect ratio you have set yourself.
 
 
@@ -1033,7 +1291,8 @@ This only operates with perspective cameras, and will have no effect
 with cameras in orthographic mode.
 
 
-Parameters:
+**Parameters:**
+
 f The desired field of view for the camera, in degrees.
 
 
@@ -1057,7 +1316,7 @@ _syntax: setLensOffset(&lensOffset)_
 _name: setLensOffset_
 _returns: void_
 _returns_description: _
-_parameters: const ofVec2f &lensOffset_
+_parameters: const glm::vec2 &lensOffset_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -1081,7 +1340,8 @@ offset from an ofVec2f argument.  For more information see
 <http://www.orthostereo.com/geometryopengl.html>.
 
 
-Parameters:
+**Parameters:**
+
 lensOffset The "lens offset" to apply to this camera, encoded in
     an ofVec2f.
 
@@ -1157,7 +1417,7 @@ _inlined_description: _
 
 \}
 \name Renderer
- \{
+\{
 
 
 
@@ -1216,7 +1476,7 @@ _syntax: setupOffAxisViewPortal(&topLeft, &bottomLeft, &bottomRight)_
 _name: setupOffAxisViewPortal_
 _returns: void_
 _returns_description: _
-_parameters: const ofVec3f &topLeft, const ofVec3f &bottomLeft, const ofVec3f &bottomRight_
+_parameters: const glm::vec3 &topLeft, const glm::vec3 &bottomLeft, const glm::vec3 &bottomRight_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -1252,7 +1512,7 @@ _syntax: setupPerspective(vFlip = true, fov, nearDist, farDist, &lensOffset)_
 _name: setupPerspective_
 _returns: void_
 _returns_description: _
-_parameters: bool vFlip=true, float fov, float nearDist, float farDist, const ofVec2f &lensOffset_
+_parameters: bool vFlip=true, float fov, float nearDist, float farDist, const glm::vec2 &lensOffset_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -1283,14 +1543,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f worldToCamera(WorldXYZ, viewport)
+###glm::vec3 worldToCamera(WorldXYZ)
 
 <!--
-_syntax: worldToCamera(WorldXYZ, viewport)_
+_syntax: worldToCamera(WorldXYZ)_
 _name: worldToCamera_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
-_parameters: ofVec3f WorldXYZ, ofRectangle viewport_
+_parameters: glm::vec3 WorldXYZ_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+When you have a position in world coordinates you can get what it would be in camera coordinates, transforming it using the ofCamera.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::vec3 worldToCamera(WorldXYZ, &viewport)
+
+<!--
+_syntax: worldToCamera(WorldXYZ, &viewport)_
+_name: worldToCamera_
+_returns: glm::vec3_
+_returns_description: _
+_parameters: glm::vec3 WorldXYZ, const ofRectangle &viewport_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1319,14 +1615,50 @@ When you have a position in world coordinates you can get what it would be in ca
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f worldToScreen(WorldXYZ, viewport)
+###glm::vec3 worldToScreen(WorldXYZ)
 
 <!--
-_syntax: worldToScreen(WorldXYZ, viewport)_
+_syntax: worldToScreen(WorldXYZ)_
 _name: worldToScreen_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
-_parameters: ofVec3f WorldXYZ, ofRectangle viewport_
+_parameters: glm::vec3 WorldXYZ_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+When you have a position in world coordinates you can get what it would be in screen coordinates, transforming it using the ofCamera.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###glm::vec3 worldToScreen(WorldXYZ, &viewport)
+
+<!--
+_syntax: worldToScreen(WorldXYZ, &viewport)_
+_name: worldToScreen_
+_returns: glm::vec3_
+_returns_description: _
+_parameters: glm::vec3 WorldXYZ, const ofRectangle &viewport_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1347,11 +1679,13 @@ appear on your (two-dimensional) display. The screen position's "Z
 coordinate" is set to be the same as your camera's.
 
 
-Parameters:
+**Parameters:**
+
 WorldXYZ A 3D point in the world, whose screen coordinates you wish to know.
+
 viewport (Optional) A viewport. The default is ofGetCurrentViewport().
 
-Returns: An ofVec3f containing the screen coordinates of your 3D point of interest.
+**Returns**: An ofVec3f containing the screen coordinates of your 3D point of interest.
 
 
 

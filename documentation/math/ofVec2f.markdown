@@ -68,9 +68,9 @@ write by half, at the same time making your code much easier to read and
 understand!
 
 
-See also: ofVec3f for 3D vectors
+**See also**: ofVec3f for 3D vectors
 
-See also: ofVec4f for 4D vectors
+**See also**: ofVec4f for 4D vectors
 
 
 
@@ -151,11 +151,13 @@ ofVec2f v2 = ofVec2f(4, 2);
 v1.align(v2) // returns true
 ~~~~
 
-Parameters:
+**Parameters:**
+
 vec The vector to compare alignment with
+
 tolerance an angle tolerance/threshold (specified in degrees) for deciding if the vectors are sufficiently aligned.
 
-Returns: true if both vectors are aligned (pointing in the same direction).
+**Returns**: true if both vectors are aligned (pointing in the same direction).
 
 
 
@@ -199,11 +201,13 @@ _inlined_description: _
 
 Determine if two vectors are aligned with tolerance in radians
 
-Parameters:
+**Parameters:**
+
 vec The vector to compare alignment with
+
 tolerance an angle tolerance/threshold (specified in radians) for deciding if the vectors are sufficiently aligned.
 
-See also: align()
+**See also**: align()
 
 
 
@@ -247,10 +251,11 @@ ofVec2f v2(0,1);
 float angle = v1.angle(v2); // angle is 90
 ~~~~
 
-Parameters:
+**Parameters:**
+
 vec The vector to calculate the angle to
 
-Returns: The angle in degrees (-180...180)
+**Returns**: The angle in degrees (-180...180)
 
 
 
@@ -300,10 +305,11 @@ ofVec2f v2(0,1);
 float angle = v1.angleRad(v2); // angle is HALF_PI
 ~~~~
 
-Parameters:
+**Parameters:**
+
 vec The vector to calculate the angle to
 
-Returns: The angle in radians (-PI...PI)
+**Returns**: The angle in radians (-PI...PI)
 
 
 
@@ -332,7 +338,7 @@ _syntax: average(*points, num)_
 _name: average_
 _returns: ofVec2f &_
 _returns_description: _
-_parameters: const ofVec2f *points, int num_
+_parameters: const ofVec2f *points, size_t num_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -362,11 +368,13 @@ centroid.average( points, numPoints );
 ~~~~
 
 
-Parameters:
+**Parameters:**
+
 points The array of ofVec2f to avarage over
+
 num specifies the number of ofVec2f in the array.
 
-Returns: Vector that is the avarage of the points in the array
+**Returns**: Vector that is the avarage of the points in the array
 
 
 
@@ -432,12 +440,13 @@ what the distances are, you just want the shortest), you can use
 squareDistance() instead.
 
 
-Parameters:
-pnt The point to calculate the distance to
- 
-Returns: The distance as float
+**Parameters:**
 
-See also: squareDistance()
+pnt The point to calculate the distance to
+
+**Returns**: The distance as float
+
+**See also**: squareDistance()
 
 
 
@@ -481,36 +490,35 @@ _advanced: False_
 
 _inlined_description: _
 
-Calculate and return the dot product of this vector with vec.
+Returns the dot product of this vector with 'vec'.
 
-*Dot product* (less commonly known as *Euclidean inner product*) expresses
-the angular relationship between two vectors. In other words it is a measure
-of how *parallel* two vectors are. If they are completely perpendicular the dot
-product is 0; if they are completely parallel their dot product is either 1 if
-they are pointing in the same direction, or -1 if they are pointing in
-opposite directions.
+The *dot product* of two vectors, also known as the *scalar product*, is
+the product of the magnitude of the two vectors and the cosine of the
+angle between them.
 
-![DOT](math/dotproduct.png)
-Image courtesy of Wikipedia
+One interpretation of the dot product is as a measure of how closely two
+vectors align with each other. If they point in exactly the same
+direction, their dot product will simply be the product of their
+magnitudes, if they are perpendicular, their dot product will be 0, and
+if they point in opposite directions, their dot product will be
+negative.
+
+The dot product is in contrast to the *cross product*, which returns a
+vector rather than a scalar.
 
 ~~~~{.cpp}
-ofvec2f a1(1, 0);
-ofVec2f b1(0, 1); // 90 degree angle to a1
-dot = a1.dot(b1); // dot is 0, ie cos(90)
+ofVec2f a1(2, 0); // magnitude 2, parallel to x-axis
+ofVec2f b1(3, 4); // magnitude 5, 53.13 degree angle to a1
+float dot = a1.dot(b1); // dot is 2 * 5 * cos(53.13) = 6.0
 
-ofVec2f a2(1, 0);
-ofVec2f b2(1, 1); // 45 degree angle to a2
-b2.normalize(); // vectors should to be unit vectors (normalized)
-float dot = a2.dot(b2); // dot is 0.707, ie cos(45)
+ofVec2f a2(1, 0); // magnitude 1, parallel to x-axis
+ofVec2f b2(0, 1); // magnitude 1, 90 degree angle to a2
+dot = a2.dot(b2); // dot is 1 * 1 * cos(90) = 0.0
 
-ofVec2f a3(1, 0);
-ofVec2f b3(-1, 0); // 180 degree angle to a3
-dot = a3.dot(b3); // dot is -1, ie cos(180)
+ofVec2f a3(0, 1); // magnitude 1, parallel to y-axis
+ofVec2f b3(0, -1); // magnitude 1, 180 degree angle to a3
+dot = a3.dot(b3); // dot is 1 * 1 * cos(180) = -1.0
 ~~~~
-
-
-Parameters:
-vec The vector to dotproduct
 
 
 
@@ -584,11 +592,13 @@ ofVec3f v4 = v1.getInterpolated( v2, 0.8 ); // v4 is (8, 9)
 ~~~~
 
 
-Parameters:
+**Parameters:**
+
 pnt The point to move towards
+
 p The amount to move towards pnt
 
-See also: interpolate()
+**See also**: interpolate()
 
 
 
@@ -642,13 +652,14 @@ ofVec2f v2Limited = v2.getLimited(3);
 // v2Limited is (2, 1) (same as v2)
 ~~~~
 
- 
-See also: limit()
 
-Parameters:
+**See also**: limit()
+
+**Parameters:**
+
 max The maximum length of the vector to return
 
-Returns: A copy of this vector with its length (magnitude) restricted to a
+**Returns**: A copy of this vector with its length (magnitude) restricted to a
 maximum of max units by scaling down if necessary.
 
 
@@ -701,7 +712,7 @@ they are not perpendicular you will have shearing as part of the mapping, and
 if they are not of unit length you will have scaling as part of the mapping.
 
 
-Returns: A new ofVec2f calculated by copying this vector and then mapping from
+**Returns**: A new ofVec2f calculated by copying this vector and then mapping from
 its default coordinate system -- origin (0,0), X direction (1,0), Y direction
 (0,1) -- to a new coordinate system defined with origin at origin, X direction
 vx, and Y direction vy.
@@ -751,12 +762,13 @@ ofVec3f mid = v1.getMiddle(v2); // mid gets (7.5, 5)
 ~~~~
 
 
-Parameters:
+**Parameters:**
+
 pnt The vector to find the middle to
 
-Returns: The middle between this vector and `pnt`
+**Returns**: The middle between this vector and `pnt`
 
-See also: middle()
+**See also**: middle()
 
 
 
@@ -867,7 +879,7 @@ ofVec2f u = v.getPerpendicular(); // u is (0.928, -0.371)
 ~~~~
 
 
-See also: perpendicular()
+**See also**: perpendicular()
 
 
 
@@ -1004,19 +1016,18 @@ _advanced: False_
 
 _inlined_description: _
 
-Return a new ofVec2f that is the result of rotating this vector by angle
-degrees around the origin.
+Returns a new vector that is the result of rotating this vector
+by 'angle' degrees about the origin.
 
 ~~~~{.cpp}
 ofVec2f v1(1, 0);
-ofVec2f v2 = v1.getRotated( 45 ); // v2 is (√2, √2)
-ofVec3f v3 = v2.getRotated( 45 ); // v3 is (0, 1)
+ofVec2f v2 = v1.getRotated(45); // v2 is (0.707, 0.707)
 ~~~~
 
 
-See also: getRotatedRad()
+**See also**: getRotatedRad()
 
-See also: rotate()
+**See also**: rotate()
 
 
 
@@ -1058,7 +1069,8 @@ _advanced: False_
 
 _inlined_description: _
 
-Like getRotated() but rotates around `pivot` rather than around the origin
+Returns a new vector that is the result of rotating this vector
+by 'angle' degrees about the point 'pivot'.
 
 
 
@@ -1094,13 +1106,12 @@ _advanced: False_
 
 _inlined_description: _
 
-Return a new ofVec2f that is the result of rotating this vector by angle
-radians around the origin.
+Returns a new vector that is the result of rotating this vector
+by 'angle' radians about the origin.
 
 ~~~~{.cpp}
 ofVec2f v1(1, 0);
-ofVec2f v2 = v1.getRotatedRad( PI/4 ); // v2 is (√2, √2)
-ofVec3f v3 = v2.getRotatedRad( PI/4 ); // v3 is (0, 1)
+ofVec2f v2 = v1.getRotatedRad(PI / 4); // v2 is (0.707, 0.707)
 ~~~~
 
 
@@ -1143,7 +1154,8 @@ _advanced: False_
 
 _inlined_description: _
 
-Like getRotatedRad() but rotates around `pivot` rather than around the origin
+Returns a new vector that is the result of rotating this vector
+by 'angle' radians about the origin.
 
 
 
@@ -1188,7 +1200,7 @@ ofVec2f v2 = v1.getScaled( 15 ); // ( 9, 12 ), length is now 15
 ~~~~ofVec2f
 
 
-See also: scale()
+**See also**: scale()
 
 
 
@@ -1248,7 +1260,7 @@ v1.interpolate( v2, 0.5 ); // v1 is now (9.375, 9.6875)
 ~~~~
 
 
-See also: getInterpolated()
+**See also**: getInterpolated()
 
 
 
@@ -1302,11 +1314,13 @@ ofVec2f v2 = ofVec2f(4, 2);
 v1.isAligned(v2) // returns true
 ~~~~
 
-Parameters:
+**Parameters:**
+
 vec The vector to compare alignment with
+
 tolerance an angle tolerance/threshold (specified in degrees) for deciding if the vectors are sufficiently aligned.
 
-Returns: true if both vectors are aligned (pointing in the same direction).
+**Returns**: true if both vectors are aligned (pointing in the same direction).
 
 
 
@@ -1344,11 +1358,13 @@ _inlined_description: _
 
 Determine if two vectors are aligned with tolerance in radians
 
-Parameters:
+**Parameters:**
+
 vec The vector to compare alignment with
+
 tolerance an angle tolerance/threshold (specified in radians) for deciding if the vectors are sufficiently aligned.
 
-See also: isAligned()
+**See also**: isAligned()
 
 
 
@@ -1399,7 +1415,7 @@ lengths are, you just want the shortest), you can use
 lengthSquared() instead.
 
 
-See also: lengthSquared()
+**See also**: lengthSquared()
 
 
 
@@ -1457,7 +1473,7 @@ lengths are, you just want the shortest). It avoids the square root
 calculation that is ordinarily required to calculate a length.
 
 
-See also: length()
+**See also**: length()
 
 
 
@@ -1511,8 +1527,8 @@ v2.limit(3);
 // v2 is unchanged
 ~~~~
 
- 
-See also: limit()
+
+**See also**: limit()
 
 
 
@@ -1566,7 +1582,7 @@ they are not perpendicular you will have shearing as part of the mapping, and
 if they are not of unit length you will have scaling as part of the mapping.
 
 
-See also: perpendicular()
+**See also**: perpendicular()
 
 
 
@@ -1673,7 +1689,7 @@ v1.middle( v2 ); // v1 is now (9.375, 9.6875)
 ~~~~
 
 
-See also: getMiddle()
+**See also**: getMiddle()
 
 
 
@@ -1733,7 +1749,7 @@ ofVec2f v2(5, 5);
 v2.normalize(); // v2 is now (√2, √2)
 ~~~~
 
-See also: getNormalized()
+**See also**: getNormalized()
 
 
 
@@ -1750,6 +1766,208 @@ ofVec2f v1(5, 0);
 v1.normalize(); // v2 is now (1, 0)
 ofVec2f v2(5, 5);
 v2.normalize(); // v2 is now (√2, √2)
+~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofVec2f(&v)
+
+<!--
+_syntax: ofVec2f(&v)_
+_name: ofVec2f_
+_returns: _
+_returns_description: _
+_parameters: const glm::vec2 &v_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\}
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofVec2f(&v)
+
+<!--
+_syntax: ofVec2f(&v)_
+_name: ofVec2f_
+_returns: _
+_returns_description: _
+_parameters: const glm::vec3 &v_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofVec2f(&v)
+
+<!--
+_syntax: ofVec2f(&v)_
+_name: ofVec2f_
+_returns: _
+_returns_description: _
+_parameters: const glm::vec4 &v_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofVec2f(&vec)
+
+<!--
+_syntax: ofVec2f(&vec)_
+_name: ofVec2f_
+_returns: _
+_returns_description: _
+_parameters: const ofVec3f &vec_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Create a 2D vector (ofVec2f) from a 3D vector (ofVec3f) by
+\throwing away the z component of the 3D vector.
+
+~~~~{.cpp}
+ofVec3f mom3d(40, 20, 50); // 3d vector
+ofVec2f v(mom3d); // v.x is 40, v.y is 20
+~~~~
+
+
+
+
+
+_description: _
+
+Create a 2D vector (ofVec2f) from a 3D vector (ofVec3f) by throwing away the z component of the 3D vector.
+
+~~~~{.cpp}
+ofVec3f mom3d(40, 20, 50); // 3d vector 
+ofVec2f v(mom3d); // v.x is 40, v.y is 20
+~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofVec2f(&vec)
+
+<!--
+_syntax: ofVec2f(&vec)_
+_name: ofVec2f_
+_returns: _
+_returns_description: _
+_parameters: const ofVec4f &vec_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Create a 2D vector (ofVec2f) from a 4D vector (ofVec4f) by throwing away the z
+and w components of the 4D vector.
+
+~~~~{.cpp}
+ofVec4f mom4d(40, 20, 50, 80); // 4d vector
+ofVec2f v(mom4d); // v.x is 40, v.y is 20
+~~~~
+
+
+
+
+
+_description: _
+
+Create a 2D vector (ofVec2f) from a 4D vector (ofVec4f) by throwing away the z and w components of the 4D vector.
+
+~~~~{.cpp}
+ofVec3f mom4d(40, 20, 50, 80); // 4d vector 
+ofVec2f v(mom4d); // v.x is 40, v.y is 20
 ~~~~
 
 
@@ -1865,8 +2083,10 @@ ofVec3f v3(0.1, 0.3); // v3.x is 0.1, v3.y is 0.3
 ~~~~
 
 
-Parameters:
+**Parameters:**
+
 x The x component
+
 y The y component
 
 
@@ -1881,100 +2101,6 @@ Construct a 2D vector. Defaults to (0,0).
 ofVec2f v1; // default: v1.x is 0, v1.y is 0
 ofVec2f v2 = ofVec2f(40, 20); // v2.x is 40, v2.y is 20
 ofVec3f v3(0.1, 0.3); // v3.x is 0.1, v3.y is 0.3
-~~~~
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### ofVec2f(&vec)
-
-<!--
-_syntax: ofVec2f(&vec)_
-_name: ofVec2f_
-_returns: _
-_returns_description: _
-_parameters: const ofVec3f &vec_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Create a 2D vector (ofVec2f) from a 3D vector (ofVec3f) by
-\throwing away the z component of the 3D vector.
-
-~~~~{.cpp}
-ofVec3f mom3d(40, 20, 50); // 3d vector
-ofVec2f v(mom3d); // v.x is 40, v.y is 20
-~~~~
-
-
-
-
-
-_description: _
-
-Create a 2D vector (ofVec2f) from a 3D vector (ofVec3f) by throwing away the z component of the 3D vector.
-
-~~~~{.cpp}
-ofVec3f mom3d(40, 20, 50); // 3d vector 
-ofVec2f v(mom3d); // v.x is 40, v.y is 20
-~~~~
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### ofVec2f(&vec)
-
-<!--
-_syntax: ofVec2f(&vec)_
-_name: ofVec2f_
-_returns: _
-_returns_description: _
-_parameters: const ofVec4f &vec_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Create a 2D vector (ofVec2f) from a 4D vector (ofVec4f) by throwing away the z
-and w components of the 4D vector.
-
-~~~~{.cpp}
-ofVec4f mom4d(40, 20, 50, 80); // 4d vector
-ofVec2f v(mom4d); // v.x is 40, v.y is 20
-~~~~
-
-
-
-
-
-_description: _
-
-Create a 2D vector (ofVec2f) from a 4D vector (ofVec4f) by throwing away the z and w components of the 4D vector.
-
-~~~~{.cpp}
-ofVec3f mom4d(40, 20, 50, 80); // 4d vector 
-ofVec2f v(mom4d); // v.x is 40, v.y is 20
 ~~~~
 
 
@@ -2050,7 +2176,7 @@ ofVec2f v3(40, 20);
 ~~~~
 
 
-Returns: true if any component is different to its corresponding
+**Returns**: true if any component is different to its corresponding
 component in vec, ie if 'x != vec.x' or 'y != vec.y', otherwise returns
 false.
 
@@ -2509,52 +2635,6 @@ ofVec3f v3 = v1 - v2; // v3 is (15, -30)
 
 <!----------------------------------------------------------------------------->
 
-###ofVec2f operator-(f)
-
-<!--
-_syntax: operator-(f)_
-_name: operator-_
-_returns: ofVec2f_
-_returns_description: _
-_parameters: const float f_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Returns a new vector with a float value f subtracted from both x and y members.
-
-~~~~{.cpp}
-ofVec2f v1(2, 5);
-ofVec2f v2 = v1 - 10; // (-8, -5)
-~~~~
-
-
-
-
-
-_description: _
-
-Returns a new vector with a float value f subtracted from both x and y members.
-
-~~~~{.cpp}
-ofVec2f v1(2, 5);
-ofVec2f v2 = v1 - 10; // (-8, -5)
-~~~~
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###ofVec2f operator-()
 
 <!--
@@ -2593,6 +2673,52 @@ Returns a new ofVec2f that is the inverted version (mirrored in X and Y) of this
 ~~~~{.cpp}
 ofVec2f v1(2, 5);
 ofVec2f v2 = -v1; // (-2, -5)
+~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofVec2f operator-(f)
+
+<!--
+_syntax: operator-(f)_
+_name: operator-_
+_returns: ofVec2f_
+_returns_description: _
+_parameters: const float f_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Returns a new vector with a float value f subtracted from both x and y members.
+
+~~~~{.cpp}
+ofVec2f v1(2, 5);
+ofVec2f v2 = v1 - 10; // (-8, -5)
+~~~~
+
+
+
+
+
+_description: _
+
+Returns a new vector with a float value f subtracted from both x and y members.
+
+~~~~{.cpp}
+ofVec2f v1(2, 5);
+ofVec2f v2 = v1 - 10; // (-8, -5)
 ~~~~
 
 
@@ -2923,7 +3049,7 @@ ofVec2f v3(40, 20);
 ~~~~
 
 
-Returns: true if each component is the same as the corresponding
+**Returns**: true if each component is the same as the corresponding
 component in vec, ie if x == vec.x and y == vec.y; otherwise returns
 false.
 
@@ -3069,7 +3195,7 @@ ofVec2f v(2, 5);
 v.perpendicular(); // v is (0.928, -0.371)
 ~~~~
 
-See also: getPerpendicular()
+**See also**: getPerpendicular()
 
 
 
@@ -3113,16 +3239,15 @@ _advanced: False_
 
 _inlined_description: _
 
-Rotate this vector by angle degrees around the origin.
+Rotates this vector by 'angle' degrees about the origin.
 
 ~~~~{.cpp}
 ofVec2f v1(1, 0);
-v1.rotate( 45 ); // (√2, √2)
-v1.rotate( 45 ); // (0, 1)
+v1.rotate(45); // v1 is now (0.707, 0.707)
 ~~~~
 
 
-See also: getRotated()
+**See also**: getRotated()
 
 
 
@@ -3164,7 +3289,7 @@ _advanced: False_
 
 _inlined_description: _
 
-Like rotate() but rotates around `pivot` rather than around the origin
+Rotates this vector by 'angle' degrees about the point 'pivot'.
 
 
 
@@ -3200,16 +3325,15 @@ _advanced: False_
 
 _inlined_description: _
 
-Rotate this vector by angle radians around the origin.
+Rotates this vector by 'angle' radians about the origin.
 
 ~~~~{.cpp}
 ofVec2f v1(1, 0);
-v1.rotate( PI/4 ); // (√2, √2)
-v1.rotate( PI/4 ); // (0, 1)
+v1.rotateRad(PI / 4); // v1 is now (0.707, 0.707)
 ~~~~
 
 
-See also: getRotatedRad()
+**See also**: getRotatedRad()
 
 
 
@@ -3251,7 +3375,7 @@ _advanced: False_
 
 _inlined_description: _
 
-Like rotateRad() but rotates around `pivot` rather than around the origin
+Rotates this vector by 'angle' radians about the point 'pivot'.
 
 
 
@@ -3295,7 +3419,7 @@ v1.scale( 15 ); // v1 is now (9, 12), with length 15
 ~~~~
 
 
-See also: getScaled()
+**See also**: getScaled()
 
 
 
@@ -3308,52 +3432,6 @@ Scales this vector up or down so that it has the requested length.
 ~~~~{.cpp}
 ofVec2f v1( 3, 4 ); // length is 5
 v1.scale( 15 ); // v1 is now (9, 12), with length 15
-~~~~
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void set(x, y)
-
-<!--
-_syntax: set(x, y)_
-_name: set_
-_returns: void_
-_returns_description: _
-_parameters: float x, float y_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Set x and y components of this vector with just one function call.
-
-~~~~{.cpp}
-ofVec2f v1;
-v1.set(40, 20);
-~~~~
-
-
-
-
-
-_description: _
-
-Set x and y components of this vector with just one function call.
-
-~~~~{.cpp}
-ofVec2f v1;
-v1.set(40, 20);
 ~~~~
 
 
@@ -3446,6 +3524,48 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###void set(x, y)
+
+<!--
+_syntax: set(x, y)_
+_name: set_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+v1.set(40, 20);
+~~~~
+
+
+
+
+
+_description: _
+
+Set x and y components of this vector with just one function call.
+
+~~~~{.cpp}
+ofVec2f v1;
+v1.set(40, 20);
+~~~~
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###float squareDistance(&pnt)
 
 <!--
@@ -3485,9 +3605,9 @@ shortest). It avoids the square root calculation that is ordinarily required
 to calculate a length.
 
 
-Returns: The distance squared as float
+**Returns**: The distance squared as float
 
-See also: distance()
+**See also**: distance()
 
 
 

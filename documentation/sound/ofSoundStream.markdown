@@ -32,7 +32,7 @@ Some platforms (iOS, for example) will expose additional platform-specific
 sound stream functionality. See the platform-specific examples for demos.
 
 
-Warning: Be aware that audioIn() and audioOut() will be called on a different
+**Warning**: Be aware that audioIn() and audioOut() will be called on a different
 thread from your app's update() / draw() thread.
 
 
@@ -41,7 +41,7 @@ thread from your app's update() / draw() thread.
 
 ##Description
 
-ofSoundStream is used for more low-level access to the sound buffer and uses the RtAudio library developed at McGill University by Gary P. Scavone. RtAudio provides an API that lets you control and read data from the audio hardware of your computer. You can manipulate sound with openFrameworks using two approaches. The first op- tion is to directly manipulate the sound data sent from the sound card by using the ofSoundStream class that is included as a part of the core oF distribution. 
+ofSoundStream is used for more low-level access to the sound buffer and uses the RtAudio library developed at McGill University by Gary P. Scavone. RtAudio provides an API that lets you control and read data from the audio hardware of your computer. You can manipulate sound with openFrameworks using two approaches. The first option is to directly manipulate the sound data sent from the sound card by using the ofSoundStream class that is included as a part of the core oF distribution. 
 The ofBaseApp class defines two callback methods that let you work with sound: audioIn() is called when the system receives any sound, and audioOut() is called before the system sends sound to the sound card. Both of these callbacks require that the ofSoundStreamSetup() method is called before they will be activated. This tells the RtAudio library to start up, begin processing audio from the system microphone (or line in), and send data to the system sound card:
 ofSoundStreamSetup(int nOutputs, int nInputs, int sampleRate, int bufferSize, int nBuffers)
 The ofSoundStreamSetup() method has five parameters:
@@ -156,14 +156,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofSoundDevice > getDeviceList()
+###vector< ofSoundDevice > getDeviceList(api = DEFAULT)
 
 <!--
-_syntax: getDeviceList()_
+_syntax: getDeviceList(api = DEFAULT)_
 _name: getDeviceList_
 _returns: vector< ofSoundDevice >_
 _returns_description: _
-_parameters: _
+_parameters: ofSoundDevice::Api api=DEFAULT_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -192,14 +192,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofSoundDevice > getMatchingDevices(&name, inChannels, outChannels)
+###vector< ofSoundDevice > getMatchingDevices(&name, inChannels, outChannels, api = DEFAULT)
 
 <!--
-_syntax: getMatchingDevices(&name, inChannels, outChannels)_
+_syntax: getMatchingDevices(&name, inChannels, outChannels, api = DEFAULT)_
 _name: getMatchingDevices_
 _returns: vector< ofSoundDevice >_
 _returns_description: _
-_parameters: const string &name, unsigned int inChannels, unsigned int outChannels_
+_parameters: const string &name, unsigned int inChannels, unsigned int outChannels, ofSoundDevice::Api api=DEFAULT_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -376,12 +376,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###unsigned long long getTickCount()
+###uint64_t getTickCount()
 
 <!--
 _syntax: getTickCount()_
 _name: getTickCount_
-_returns: unsigned long long_
+_returns: uint64_t_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -477,78 +477,6 @@ _advanced: False_
 _inlined_description: _
 
 Prints a list of available audio devices to the console
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void setDevice(&device)
-
-<!--
-_syntax: setDevice(&device)_
-_name: setDevice_
-_returns: void_
-_returns_description: _
-_parameters: const ofSoundDevice &device_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-sets the device represented by the stream, see ofSoundStream::getDeviceList().
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void setDeviceID(deviceID)
-
-<!--
-_syntax: setDeviceID(deviceID)_
-_name: setDeviceID_
-_returns: void_
-_returns_description: _
-_parameters: int deviceID_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-sets the device represented by the stream, see ofSoundStream::getDeviceList().
 
 
 
@@ -744,14 +672,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool setup(*app, outChannels, inChannels, sampleRate, bufferSize, nBuffers)
+###bool setup(&settings)
 
 <!--
-_syntax: setup(*app, outChannels, inChannels, sampleRate, bufferSize, nBuffers)_
+_syntax: setup(&settings)_
 _name: setup_
 _returns: bool_
 _returns_description: _
-_parameters: ofBaseApp *app, int outChannels, int inChannels, int sampleRate, int bufferSize, int nBuffers_
+_parameters: const ofSoundStreamSettings &settings_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -764,64 +692,7 @@ _advanced: False_
 
 _inlined_description: _
 
-Sets up and starts the stream.
 
-Parameters:
-app pointer to the app which will own the sound stream.
-outChannels number of requested output channels (i.e. 2 for stereo).
-inChannels number of requested input channels.
-sampleRate requested sample rate (44100 is typical).
-bufferSize requested buffer size (256 is typical). Smaller
-       values will be more responsive, but less stable.
-nBuffers number of buffers to queue. Less buffers will be more
-       responsive, but less stable.
-\return true on success
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###bool setup(outChannels, inChannels, sampleRate, bufferSize, nBuffers)
-
-<!--
-_syntax: setup(outChannels, inChannels, sampleRate, bufferSize, nBuffers)_
-_name: setup_
-_returns: bool_
-_returns_description: _
-_parameters: int outChannels, int inChannels, int sampleRate, int bufferSize, int nBuffers_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Sets up and starts the stream.
-
-Parameters:
-outChannels number of requested output channels (i.e. 2 for stereo).
-inChannels number of requested input channels.
-sampleRate requested sample rate (44100 is typical).
-bufferSize requested buffer size (256 is typical). Smaller values
-       will be more responsive, but less stable.
-nBuffers number of buffers to queue. Less buffers will be more
-       responsive, but less stable.
-\return true on success
 
 
 
@@ -924,6 +795,38 @@ _version_deprecated: _
 _summary: _
 _visible: True_
 _constant: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int tmpDeviceId
+
+<!--
+_name: tmpDeviceId_
+_type: int_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
 _advanced: False_
 -->
 

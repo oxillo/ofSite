@@ -206,6 +206,42 @@ Returns the port number set in the setup() method of the client.
 
 <!----------------------------------------------------------------------------->
 
+###bool isClosingCondition(messageSize, errorCode)
+
+<!--
+_syntax: isClosingCondition(messageSize, errorCode)_
+_name: isClosingCondition_
+_returns: bool_
+_returns_description: _
+_parameters: int messageSize, int errorCode_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###bool isConnected()
 
 <!--
@@ -242,42 +278,6 @@ Returns whether the client is currently connected to a server.
 
 <!----------------------------------------------------------------------------->
 
-### ofxTCPClient()
-
-<!--
-_syntax: ofxTCPClient()_
-_name: ofxTCPClient_
-_returns: _
-_returns_description: _
-_parameters: _
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Constructor. This doesn't prepare your client to send and receive information though, you need to call the setup() method for that.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ### ofxTCPClient(&mom)
 
 <!--
@@ -307,6 +307,42 @@ _inlined_description: _
 _description: _
 
 
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofxTCPClient()
+
+<!--
+_syntax: ofxTCPClient()_
+_name: ofxTCPClient_
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Constructor. This doesn't prepare your client to send and receive information though, you need to call the setup() method for that.
 
 
 
@@ -812,6 +848,42 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###bool setup(&settings)
+
+<!--
+_syntax: setup(&settings)_
+_name: setup_
+_returns: bool_
+_returns_description: _
+_parameters: const ofxTCPSettings &settings_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###bool setup(ip, _port, blocking = false)
 
 <!--
@@ -854,16 +926,16 @@ It returns whether the connection has successfully been made. Don't mistake this
 
 <!----------------------------------------------------------------------------->
 
-###bool setup(_index, blocking)
+###bool setupConnectionIdx(_index, blocking)
 
 <!--
-_syntax: setup(_index, blocking)_
-_name: setup_
+_syntax: setupConnectionIdx(_index, blocking)_
+_name: setupConnectionIdx_
 _returns: bool_
 _returns_description: _
 _parameters: int _index, bool blocking_
-_access: public_
-_version_started: 007_
+_access: private_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_

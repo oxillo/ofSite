@@ -38,7 +38,7 @@ _We need to make sure the CPU has 192MB of RAM in order to compile openFramework
 You now can download the Linux armv6 version of openFrameworks and uncompress it into a folder. Using a Shell, The following commands will download openFrameworks and uncompress it into the folder `/home/pi/openFrameworks`
  
 0. `cd` 
-0. `curl -O http://www.openframeworks.cc/versions/v0.8.4/of_v0.8.4_linuxarmv6l_release.tar.gz` 
+0. `curl -O http://openframeworks.cc/versions/v0.8.4/of_v0.8.4_linuxarmv6l_release.tar.gz` 
 0.  `mkdir openFrameworks`
 0.  `tar vxfz of_v0.8.4_linuxarmv6l_release.tar.gz -C openFrameworks --strip-components 1`
 
@@ -57,8 +57,8 @@ You are now ready to compile openFrameworks!
 ## Speeding up compiling
 Compiling natively on the Raspberry Pi takes a long time. openFrameworks applications typically take much less time than the core library. Taking the time to set up a cross-compiling solution will save you enormous amounts of time. 
 
-[Raspberry Pi DISTCC Guide](Raspberry-Pi-DISTCC-guide.html)    
-[Raspberry Pi Cross Compiling Guide](Raspberry-Pi-Cross-compiling-guide.html)
+[Raspberry Pi DISTCC Guide](../raspberry-pi-distcc-guide/)    
+[Raspberry Pi Cross Compiling Guide](../raspberry-pi-cross-compiling-guide/)
 
 ## Compile your first app
 Like on other platforms, openFrameworks ships with a bunch of examples located in the `openFrameworks/examples` folder. Inside examples the projects are sorted by the categories: 

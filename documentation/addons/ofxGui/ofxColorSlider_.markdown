@@ -205,16 +205,16 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofColor_< ColorType > operator=(&v)
+###void onMaximize()
 
 <!--
-_syntax: operator=(&v)_
-_name: operator=_
-_returns: ofColor_< ColorType >_
+_syntax: onMaximize()_
+_name: onMaximize_
+_returns: void_
 _returns_description: _
-_parameters: const ofColor_< ColorType > &v_
-_access: public_
-_version_started: 0.8.0_
+_parameters: _
+_access: protected_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -241,14 +241,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofxColorSlider_< ColorType > * setup(value, width, height)
+###void onMinimize()
 
 <!--
-_syntax: setup(value, width, height)_
-_name: setup_
-_returns: ofxColorSlider_< ColorType > *_
+_syntax: onMinimize()_
+_name: onMinimize_
+_returns: void_
 _returns_description: _
-_parameters: ofParameter<ofColor_< ColorType>  > value, float width, float height_
+_parameters: _
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofColor_< ColorType > operator=(&v)
+
+<!--
+_syntax: operator=(&v)_
+_name: operator=_
+_returns: ofColor_< ColorType >_
+_returns_description: _
+_parameters: const ofColor_< ColorType > &v_
 _access: public_
 _version_started: 0.8.0_
 _version_deprecated: _
@@ -313,21 +349,21 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-##Variables
-
-
-
-###bool  sliderChanging
+###ofxColorSlider_< ColorType > * setup(value, width, height)
 
 <!--
-_name: sliderChanging_
-_type: bool _
-_access: protected_
+_syntax: setup(value, width, height)_
+_name: setup_
+_returns: ofxColorSlider_< ColorType > *_
+_returns_description: _
+_parameters: ofParameter<ofColor_< ColorType>  > value, float width, float height_
+_access: public_
 _version_started: 0.8.0_
 _version_deprecated: _
 _summary: _
+_constant: False_
+_static: False_
 _visible: True_
-_constant: True_
 _advanced: False_
 -->
 
@@ -349,11 +385,111 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofParameter< ofColor_< ColorType > >  value
+##Variables
+
+
+
+###ofColor originalHeaderBackground
 
 <!--
-_name: value_
-_type: ofParameter< ofColor_< ColorType > > _
+_name: originalHeaderBackground_
+_type: ofColor_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofColor originalHeaderText
+
+<!--
+_name: originalHeaderText_
+_type: ofColor_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofxColorPicker_< ColorType > picker
+
+<!--
+_name: picker_
+_type: ofxColorPicker_< ColorType >_
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_visible: True_
+_constant: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool  sliderChanging
+
+<!--
+_name: sliderChanging_
+_type: bool _
 _access: protected_
 _version_started: 0.8.0_
 _version_deprecated: _

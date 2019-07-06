@@ -82,42 +82,6 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ofTessellator()
-
-<!--
-_syntax: ofTessellator()_
-_name: ofTessellator_
-_returns: _
-_returns_description: _
-_parameters: _
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ### ofTessellator(&mom)
 
 <!--
@@ -147,6 +111,42 @@ Copy constructor to copy properties from one tessellator to another.
 _description: _
 
 Copy constructor to copy properties from one tessellator to another. 
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofTessellator()
+
+<!--
+_syntax: ofTessellator()_
+_name: ofTessellator_
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -328,7 +328,7 @@ using the winding mode set in ofPolyWindingMode.
 
 _description: _
 
-Tessellates a ofPolyline instance into a single ofMesh instance using the winding mode set in ofPolyWindingMode.
+Tessellates a vector of ofPolyline instances into a single ofMesh instance using the winding mode set in ofPolyWindingMode.
 
 
 
@@ -401,14 +401,7 @@ Tessellate multiple polylines into a single polyline.
 
 _description: _
 
-Tessellate multiple polylines into a single polyline.
-
-~~~~{.cpp}
-vector<ofPolyline> sources;
-ofPolyline destination;
-// ... fill vec
-tess.performTessellation(destination, OF_POLY_WINDING_ODD, sources, true ); // true is for 2d
-~~~~
+Tessellates a vector of ofPolyline instances into vector of ofPolyline instances using the winding mode set in ofPolyWindingMode.
 
 
 

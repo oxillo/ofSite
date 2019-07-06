@@ -40,7 +40,6 @@ At least, these model formats are supported:
 - OBJ
 - SMD
 - Collada
-- LWO
 - Ogre XML
 - partly LWS 
 
@@ -914,7 +913,7 @@ _syntax: getCurrentAnimatedMesh(num)_
 _name: getCurrentAnimatedMesh_
 _returns: ofMesh_
 _returns_description: _
-_parameters: int num_
+_parameters: unsigned int num_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -986,7 +985,7 @@ _syntax: getMaterialForMesh(num)_
 _name: getMaterialForMesh_
 _returns: ofMaterial_
 _returns_description: _
-_parameters: int num_
+_parameters: unsigned int num_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1058,7 +1057,7 @@ _syntax: getMesh(num)_
 _name: getMesh_
 _returns: ofMesh_
 _returns_description: _
-_parameters: int num_
+_parameters: unsigned int num_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1159,12 +1158,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< string > getMeshNames()
+###int getMeshNames()
 
 <!--
 _syntax: getMeshNames()_
 _name: getMeshNames_
-_returns: vector< string >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1267,12 +1266,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###int getNumMeshes()
+###unsigned int getNumMeshes()
 
 <!--
 _syntax: getNumMeshes()_
 _name: getNumMeshes_
-_returns: int_
+_returns: unsigned int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1634,7 +1633,7 @@ _syntax: getTextureForMesh(num)_
 _name: getTextureForMesh_
 _returns: ofTexture_
 _returns_description: _
-_parameters: int num_
+_parameters: unsigned int num_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1807,14 +1806,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool loadModel(modelName, optimize = false)
+###bool loadModel(&buffer, optimize = false, *extension)
 
 <!--
-_syntax: loadModel(modelName, optimize = false)_
+_syntax: loadModel(&buffer, optimize = false, *extension)_
 _name: loadModel_
 _returns: bool_
 _returns_description: _
-_parameters: string modelName, bool optimize=false_
+_parameters: ofBuffer &buffer, bool optimize=false, const char *extension_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1843,14 +1842,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###bool loadModel(&buffer, optimize = false, *extension)
+###bool loadModel(modelName, optimize = false)
 
 <!--
-_syntax: loadModel(&buffer, optimize = false, *extension)_
+_syntax: loadModel(modelName, optimize = false)_
 _name: loadModel_
 _returns: bool_
 _returns_description: _
-_parameters: ofBuffer &buffer, bool optimize=false, const char *extension_
+_parameters: string modelName, bool optimize=false_
 _access: public_
 _version_started: 007_
 _version_deprecated: _

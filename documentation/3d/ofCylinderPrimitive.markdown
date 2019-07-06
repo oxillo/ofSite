@@ -102,12 +102,12 @@ cylinder.draw();
 
 
 
-###vector< ofIndexType > getBottomCapIndices()
+###int getBottomCapIndices()
 
 <!--
 _syntax: getBottomCapIndices()_
 _name: getBottomCapIndices_
-_returns: vector< ofIndexType >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -210,12 +210,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofIndexType > getCylinderIndices()
+###int getCylinderIndices()
 
 <!--
 _syntax: getCylinderIndices()_
 _name: getCylinderIndices_
-_returns: vector< ofIndexType >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -354,12 +354,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f getResolution()
+###glm::vec3 getResolution()
 
 <!--
 _syntax: getResolution()_
 _name: getResolution_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -498,12 +498,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofIndexType > getTopCapIndices()
+###int getTopCapIndices()
 
 <!--
 _syntax: getTopCapIndices()_
 _name: getTopCapIndices_
-_returns: vector< ofIndexType >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -642,14 +642,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(radius, height, radiusSegments, heightSegments, capSegments = 2, bCapped = true, mode = OF_PRIMITIVE_TRIANGLE_STRIP)
+###void set(radius, height, bCapped = true)
 
 <!--
-_syntax: set(radius, height, radiusSegments, heightSegments, capSegments = 2, bCapped = true, mode = OF_PRIMITIVE_TRIANGLE_STRIP)_
+_syntax: set(radius, height, bCapped = true)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: float radius, float height, int radiusSegments, int heightSegments, int capSegments=2, bool bCapped=true, ofPrimitiveMode mode=OF_PRIMITIVE_TRIANGLE_STRIP_
+_parameters: float radius, float height, bool bCapped=true_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -678,14 +678,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(radius, height, bCapped = true)
+###void set(radius, height, radiusSegments, heightSegments, capSegments = 2, bCapped = true, mode = OF_PRIMITIVE_TRIANGLE_STRIP)
 
 <!--
-_syntax: set(radius, height, bCapped = true)_
+_syntax: set(radius, height, radiusSegments, heightSegments, capSegments = 2, bCapped = true, mode = OF_PRIMITIVE_TRIANGLE_STRIP)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: float radius, float height, bool bCapped=true_
+_parameters: float radius, float height, int radiusSegments, int heightSegments, int capSegments=2, bool bCapped=true, ofPrimitiveMode mode=OF_PRIMITIVE_TRIANGLE_STRIP_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _

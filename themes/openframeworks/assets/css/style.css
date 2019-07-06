@@ -1,4 +1,6 @@
-@import url("http://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono:400,700);
+@import url(https://fonts.googleapis.com/css?family=Fira+Code:400,700);
 html {
 	height: 100%;
 }
@@ -154,6 +156,7 @@ body {
 	margin: 0px;
 	padding: 10px 0px 0px 0px;
 	position: relative;
+	min-width:921.5px;
 }
 #head-right ul {
 	list-style: none;
@@ -277,11 +280,22 @@ hr.header {
 	padding: 5px 0px 0px 80px;
 	width: 670px;
 }
+.page-left-donations {
+	float: left;
+	padding: 5px 20px 0px 80px;
+	width: 580px;
+}
 .page-right-medium {
 	float: left;
 	margin: 0px;
 	padding: 0px;
 	width: 600px;
+}
+.page-right-donations {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 500px;
 }
 .page-left-wide {
 	float: left;
@@ -417,6 +431,7 @@ a:active {
 	text-decoration: none;
 }
 a.nohover:hover {
+	color: #EE3987;
 	background: none;
 	border: none;
 }
@@ -496,7 +511,7 @@ a.nohover {
 	padding: 8px 0 8px 0;
 	font-size: 1.2em;
 	font-weight: bold;
-		
+
 }
 
 .submenu{
@@ -551,14 +566,14 @@ a.nohover {
     margin-bottom:2em;
 }
 
-.article > p > img{
+.article img{
 	max-width:100%;
 }
 
 .functionslist a{
 	color: #444;
 	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
-	cursor: pointer; 
+	cursor: pointer;
 	cursor: hand;
 	font-size: 0.9em;
 	line-height: 1.8em;
@@ -727,6 +742,13 @@ div.sectiontitle{
 div.sectiontitle h2{
     padding-top:.3em;
 }
+
+.page-wide.sectiontitle small {
+	font-size: 0.65em;
+	color: #666;
+	margin-left: 15px;
+}
+
 .documentation_detail {
 	float: left;
 	line-height: 20px;
@@ -803,9 +825,31 @@ a.docs_class{
 }
 
 /* BEGIN unify formatting for markdown ``inline code blocks`` */
-.class_documentation code, .documentation_detail_description code{
-  font-size: 12px;
-  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;	
+pre {
+	font-family: "Fira Code", "Consolas", Courier,  monospace;
+	line-height: 120%;
+	margin: 0px;
+	/*margin-left: 10px;*/
+	margin-top: 15px;
+	margin-bottom: 15px;
+	/*padding-bottom: 10px;
+	padding-left: 10px;
+	padding-top: 10px;*/
+	white-space: pre-wrap;
+	line-height: normal;
+}
+
+pre code {
+    border-left: 6px solid rgba(197, 213, 229, 0.65);
+	line-height: 160%;
+    padding: 15px 20px !important;
+	display: block;
+}
+
+code {
+	background-color: #F8F8F8;
+    font-size: 14px;
+    font-family: "Fira Code", "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 }
 /* END unify formatting for markdown ``inline code blocks`` */
 
@@ -840,7 +884,15 @@ a.docs_class{
 #editdocs img {
   border: 1px solid rgba(238, 57, 135, 0.3);
   border-radius: 11px;
-  box-shadow: 2px 2px 2px #eee; 
+  box-shadow: 2px 2px 2px #eee;
+}
+#edithowto{
+    float:right;
+}
+#edithowto img {
+  border: 1px solid rgba(238, 57, 135, 0.3);
+  border-radius: 11px;
+  box-shadow: 2px 2px 2px #eee;
 }
 
 #docstitle{
@@ -982,20 +1034,7 @@ a.documentation_class_link, a:link.documentation_class_link, a:visited.documenta
 .documentation-returns-type {
 	font-weight: bold;
 }
-pre {
-	background-color: #fdfde3;
-	font-family: Courier,  monospace; 
-	line-height: 120%;
-	margin: 0px;
-	margin-left: 10px;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	/*padding-bottom: 10px;
-	padding-left: 10px;
-	padding-top: 10px;*/
-	white-space: pre-wrap;
-	line-height: normal;
-}
+
 .faqAnswer {
 	background-color: #FCFCFC;
 	margin: 10px 0 10px 20px;
@@ -1039,7 +1078,7 @@ div.galleryItem {
 div.galleryItem:nth-child(2),div.galleryItem:nth-child(4),div.galleryItem:nth-child(6),div.galleryItem:nth-child(8),div.galleryItem:nth-child(10) {
 	margin-left: 3%;
 }
-div.galleryItem h2 .external-dot {
+div.galleryItem h2 .external-dot, div.galleryItem h2 .internal-dot {
 	color: #ee3987;
 }
 div.galleryItem h2 {
@@ -1070,6 +1109,10 @@ div.galleryItem p {
 	color: #009bca;
 	font-size: 0.9em;
 }
+ .internal-dot {
+ 	color: #ee3987;
+ 	font-size: 0.9em;
+ }
 #download-latest-header h2 {
 	float: left;
 	margin-right: 0.5em;
@@ -1095,7 +1138,7 @@ div.galleryItem p {
 	margin: 0;
 }
 #download-latest-platform-last{
-    margin-right:0; 
+    margin-right:0;
 	border-right: none;
 }
 #download-latest-platform-title{
@@ -1447,4 +1490,162 @@ div.log {padding-left:2em;}
 }
 #footer a:hover{
     background-color: #000;
+}
+
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove the comments around the @import statement below when using this as a custom stylesheet */
+    .admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}
+
+
+.how-tos ul, .getting_started ul, .getting_started ol {
+	padding-left: 0px;
+	list-style-position: inside;
+}
+
+
+.how-tos h2 {
+	padding: 5px 10px;
+}
+
+.tutorial #back-link {
+	margin-bottom: 2.5em;
+}
+
+
+.tutorial h1 {
+	font-size: 3em;
+	margin-bottom: 0.1em;
+}
+
+.donations{
+	padding: 0;/*1.8em;*/
+	/*background-color: #dedede;
+	border-radius: 0.2em;*/
+}
+
+.donations input[type=submit]{
+	background-color:#EE3987;
+	color:#fff;
+	font-family: 'Questrial';
+	font-size: 1.4em;
+	width: 140px;
+	height: 40px;
+	border-radius: 0.2em;
+	border: 0;
+}
+
+.donations input[type=text]{
+	width: 200px;
+	padding: 0.5em;
+	border-style: groove;
+	border-color: #fff;
+	-moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+    -khtml-border-radius: 5px; /* KHTML */
+    border-radius: 5px; /* CSS3 */
+    behavior:url("border-radius.htc");
+}
+
+.donations input[type=text]:focus{
+	border-color: #ee3987;
+}
+
+
+ /* Donations popup */
+
+ .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.25s;
+    animation-name: animatetop;
+	animation-duration: 0.25s;
+	animation-timing-function: ease-out;
+	width: 600px;
+	font-size: 1.1em;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity:0}
+    to {top: 0; opacity:1}
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+	to {top: 0; opacity: 1}
+}
+
+/* The Close Button */
+.close-btn {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #A617CE;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 4px 16px;
+    background-color: #ee3987;
+    color: white;
+}
+
+.modal-header h2 {
+	color: white;
+}
+
+.modal-body {
+	padding: 16px 16px 0 16px;
+	text-align: left;
+}
+
+.modal-footer {
+    padding: 4px 16px 24px 16px;
+    background-color: white;
+    color: white;
+	font-size: 1.2em;
+	text-align: center;
 }

@@ -29,6 +29,285 @@ ofTexture is used to create textures that live on your graphics card from bitmap
 
 
 
+###void allocate(&pix)
+
+<!--
+_syntax: allocate(&pix)_
+_name: allocate_
+_returns: void_
+_returns_description: _
+_parameters: const ofPixels &pix_
+_access: public_
+_version_started: 0071_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Allocate texture using an ofPixels instance.
+
+Pixel type and OpenGL format are determined from pixel settings.
+
+
+**Parameters:**
+
+pix Reference to ofPixels instance.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void allocate(&pix)
+
+<!--
+_syntax: allocate(&pix)_
+_name: allocate_
+_returns: void_
+_returns_description: _
+_parameters: const ofShortPixels &pix_
+_access: public_
+_version_started: 0073_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Allocate texture using an ofShortPixels instance.
+
+Same as void allocate(const ofPixels& pix), except using ofShortPixels.
+
+
+**See also**: allocate(const ofPixels& pix)
+
+**Parameters:**
+
+pix Reference to ofShortPixels instance.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void allocate(&pix)
+
+<!--
+_syntax: allocate(&pix)_
+_name: allocate_
+_returns: void_
+_returns_description: _
+_parameters: const ofFloatPixels &pix_
+_access: public_
+_version_started: 0073_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Allocate texture using an ofFloatPixels instance.
+
+Same as void allocate(const ofPixels& pix), except using ofFloatPixels.
+
+
+**See also**: allocate(const ofPixels& pix)
+
+**Parameters:**
+
+pix Reference to ofFloatPixels instance.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void allocate(&pix, bUseARBExtension)
+
+<!--
+_syntax: allocate(&pix, bUseARBExtension)_
+_name: allocate_
+_returns: void_
+_returns_description: _
+_parameters: const ofPixels &pix, bool bUseARBExtension_
+_access: public_
+_version_started: 0073_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Allocate texture using an ofPixels instance and type.
+
+This lets you overide the default OF texture type in case you need a
+square GL_TEXTURE_2D texture.
+
+
+**Warning**: ARB textures are not available in OpenGL ES.
+
+**See also**: ofEnableArbTex()
+
+**See also**: allocate(const ofPixels& pix)
+
+**Parameters:**
+
+pix Reference to ofPixels instance.
+
+bUseARBExtension Set to true to use rectangular textures.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void allocate(&pix, bUseARBExtension)
+
+<!--
+_syntax: allocate(&pix, bUseARBExtension)_
+_name: allocate_
+_returns: void_
+_returns_description: _
+_parameters: const ofShortPixels &pix, bool bUseARBExtension_
+_access: public_
+_version_started: 0073_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Allocate texture using an ofShortPixels instance and type.
+
+Same as void void allocate(const ofPixels& pix), except using ofShortPixels.
+
+
+**See also**: allocate(const ofShortPixels& pix)
+
+**Parameters:**
+
+pix Reference to ofShortPixels instance.
+
+bUseARBExtension Set to true to use rectangular textures.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void allocate(&pix, bUseARBExtension)
+
+<!--
+_syntax: allocate(&pix, bUseARBExtension)_
+_name: allocate_
+_returns: void_
+_returns_description: _
+_parameters: const ofFloatPixels &pix, bool bUseARBExtension_
+_access: public_
+_version_started: 0073_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Allocate texture using an ofShortPixels instance and type.
+
+Same as void void allocate(const ofPixels& pix), except using ofShortPixels.
+
+
+**See also**: allocate(const ofFloatPixels& pix)
+
+**Parameters:**
+
+pix Reference to ofFloatPixels instance.
+
+bUseARBExtension Set to true to use rectangular textures.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void allocate(&textureData)
 
 <!--
@@ -56,7 +335,8 @@ textures with the same settings. Make sure to set the texture data
 parameters first.
 
 
-Parameters:
+**Parameters:**
+
 textureData The settings to use when allocating the ofTexture.
 
 
@@ -95,9 +375,12 @@ _inlined_description: _
 
 Allocate the texture using the given settings and custom format.
 
-Parameters:
+**Parameters:**
+
 textureData The settings to use when allocating the ofTexture.
+
 glFormat GL texture format: GL_RGBA, GL_LUMINANCE, etc.
+
 pixelType GL pixel type: GL_UNSIGNED_BYTE, GL_FLOAT, etc.
 
 
@@ -151,9 +434,12 @@ ARB rectangular textures if they are supported. (They are not supported
 on OpenGL ES).
 
 
-Parameters:
+**Parameters:**
+
 w Desired width in pixels.
+
 h Desired height in pixels.
+
 glInternalFormat OpenGL internal data format: `GL_RGBA`, `GL_LUMINANCE`, etc.
 
 
@@ -165,52 +451,6 @@ _description: _
 This is the call to allocate opengl texture. The width (w) and height (h) do not necessarily need to be powers of 2, but they do need to be large enough to contain the data you will upload to the texture.  The internal data type describes how opengl will store this texture internally. For example, if you want a grayscale texture, you can use "GL_LUMINANCE". You can uplaod what ever type of data you want (using loadData()) but internally, opengl will store the information as grayscale. Other types include: GL_RGB, GL_RGBA.
 You need to allocate the texture before drawing it or loading data into it.
 uses the currently set OF texture type - default ARB texture
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void allocate(w, h, glInternalFormat, glFormat, pixelType)
-
-<!--
-_syntax: allocate(w, h, glInternalFormat, glFormat, pixelType)_
-_name: allocate_
-_returns: void_
-_returns_description: _
-_parameters: int w, int h, int glInternalFormat, int glFormat, int pixelType_
-_access: public_
-_version_started: 0073_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Allocate texture of a given size and format.
-
-
-See also: allocate(int w, int h, int glInternalFormat)
-
-Parameters:
-w Desired width in pixels.
-h Desired height in pixels.
-glInternalFormat The internal openGL format.
-glFormat The openGL format.
-pixelType GL pixel type: GL_UNSIGNED_BYTE, GL_FLOAT, etc.
-
-
-
-
-
-_description: _
-
-
 
 
 
@@ -245,16 +485,20 @@ This will overide the default OF texture type, in case you need a
 square texture (`GL_TEXTURE_2D`).
 
 
-Warning: ARB textures are not available in OpenGL ES.
+**Warning**: ARB textures are not available in OpenGL ES.
 
-See also: ofEnableArbTex()
+**See also**: ofEnableArbTex()
 
-See also: allocate(int w, int h, int glInternalFormat)
+**See also**: allocate(int w, int h, int glInternalFormat)
 
-Parameters:
+**Parameters:**
+
 w Desired width in pixels.
+
 h Desired height in pixels.
+
 glInternalFormat The internal openGL format.
+
 bUseARBExtension Set to true to use rectangular textures.
 
 
@@ -295,14 +539,20 @@ _inlined_description: _
 Allocate texture of a given size, format, & type.
 
 
-See also: allocate(int w, int h, int glInternalFormat)
+**See also**: allocate(int w, int h, int glInternalFormat)
 
-Parameters:
+**Parameters:**
+
 w Desired width in pixels.
+
 h Desired height in pixels.
+
 glInternalFormat OpenGL data format: `GL_RGBA`, `GL_LUMINANCE`, etc.
+
 bUseARBExtension Set to true to use rectangular textures.
+
 glFormat The OpenGL format.
+
 pixelType OpenGL pixel type: `GL_UNSIGNED_BYTE`, `GL_FLOAT`, etc.
 
 
@@ -319,56 +569,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void allocate(&pix)
+###void allocate(w, h, glInternalFormat, glFormat, pixelType)
 
 <!--
-_syntax: allocate(&pix)_
+_syntax: allocate(w, h, glInternalFormat, glFormat, pixelType)_
 _name: allocate_
 _returns: void_
 _returns_description: _
-_parameters: const ofPixels &pix_
-_access: public_
-_version_started: 0071_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Allocate texture using an ofPixels instance.
-
-Pixel type and OpenGL format are determined from pixel settings.
-
-
-Parameters:
-pix Reference to ofPixels instance.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void allocate(&pix, bUseARBExtension)
-
-<!--
-_syntax: allocate(&pix, bUseARBExtension)_
-_name: allocate_
-_returns: void_
-_returns_description: _
-_parameters: const ofPixels &pix, bool bUseARBExtension_
+_parameters: int w, int h, int glInternalFormat, int glFormat, int pixelType_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -381,199 +589,22 @@ _advanced: False_
 
 _inlined_description: _
 
-Allocate texture using an ofPixels instance and type.
+Allocate texture of a given size and format.
 
-This lets you overide the default OF texture type in case you need a
-square GL_TEXTURE_2D texture.
 
+**See also**: allocate(int w, int h, int glInternalFormat)
 
-Warning: ARB textures are not available in OpenGL ES.
+**Parameters:**
 
-See also: ofEnableArbTex()
+w Desired width in pixels.
 
-See also: allocate(const ofPixels& pix)
+h Desired height in pixels.
 
-Parameters:
-pix Reference to ofPixels instance.
-bUseARBExtension Set to true to use rectangular textures.
+glInternalFormat The internal openGL format.
 
+glFormat The openGL format.
 
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void allocate(&pix)
-
-<!--
-_syntax: allocate(&pix)_
-_name: allocate_
-_returns: void_
-_returns_description: _
-_parameters: const ofShortPixels &pix_
-_access: public_
-_version_started: 0073_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Allocate texture using an ofShortPixels instance.
-
-Same as void allocate(const ofPixels& pix), except using ofShortPixels.
-
-
-See also: allocate(const ofPixels& pix)
-
-Parameters:
-pix Reference to ofShortPixels instance.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void allocate(&pix, bUseARBExtension)
-
-<!--
-_syntax: allocate(&pix, bUseARBExtension)_
-_name: allocate_
-_returns: void_
-_returns_description: _
-_parameters: const ofShortPixels &pix, bool bUseARBExtension_
-_access: public_
-_version_started: 0073_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Allocate texture using an ofShortPixels instance and type.
-
-Same as void void allocate(const ofPixels& pix), except using ofShortPixels.
-
-
-See also: allocate(const ofShortPixels& pix)
-
-Parameters:
-pix Reference to ofShortPixels instance.
-bUseARBExtension Set to true to use rectangular textures.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void allocate(&pix)
-
-<!--
-_syntax: allocate(&pix)_
-_name: allocate_
-_returns: void_
-_returns_description: _
-_parameters: const ofFloatPixels &pix_
-_access: public_
-_version_started: 0073_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Allocate texture using an ofFloatPixels instance.
-
-Same as void allocate(const ofPixels& pix), except using ofFloatPixels.
-
-
-See also: allocate(const ofPixels& pix)
-
-Parameters:
-pix Reference to ofFloatPixels instance.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void allocate(&pix, bUseARBExtension)
-
-<!--
-_syntax: allocate(&pix, bUseARBExtension)_
-_name: allocate_
-_returns: void_
-_returns_description: _
-_parameters: const ofFloatPixels &pix, bool bUseARBExtension_
-_access: public_
-_version_started: 0073_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Allocate texture using an ofShortPixels instance and type.
-
-Same as void void allocate(const ofPixels& pix), except using ofShortPixels.
-
-
-See also: allocate(const ofFloatPixels& pix)
-
-Parameters:
-pix Reference to ofFloatPixels instance.
-bUseARBExtension Set to true to use rectangular textures.
+pixelType GL pixel type: GL_UNSIGNED_BYTE, GL_FLOAT, etc.
 
 
 
@@ -621,10 +652,12 @@ in GLSL.
 See textureBufferInstanceExample and https://www.opengl.org/wiki/Buffer_Texture
 
 
-See also: allocate(const ofBufferObject & buffer, int glInternalFormat)
+**See also**: allocate(const ofBufferObject & buffer, int glInternalFormat)
 
-Parameters:
+**Parameters:**
+
 buffer Reference to ofBufferObject instance.
+
 glInternalFormat Internal pixel format of the data.
 
 
@@ -656,7 +689,7 @@ _summary: _
 _constant: False_
 _static: False_
 _visible: True_
-_advanced: True_
+_advanced: False_
 -->
 
 _inlined_description: _
@@ -667,7 +700,7 @@ For advanced users who need to manually manage texture drawing without
 calling ofTexture::draw.
 
 
-See also: http://www.opengl.org/sdk/docs/man4/html/glBindTexture.xhtml
+**See also**: http://www.opengl.org/sdk/docs/man4/html/glBindTexture.xhtml
 
 
 
@@ -707,9 +740,9 @@ Calls glBindImageTexture on the texture
 
 Binds the texture as an read or write image, only available since OpenGL 4.2
 
-Warning: This is not available in OpenGLES
+**Warning**: This is not available in OpenGLES
 
-See also: http://www.opengl.org/wiki/GLAPI/glBindImageTexture
+**See also**: http://www.opengl.org/wiki/GLAPI/glBindImageTexture
 
 
 
@@ -790,7 +823,8 @@ _inlined_description: _
 
 Copy the texture to an ofBufferObject.
 
-Parameters:
+**Parameters:**
+
 buffer the target buffer to copy to.
 
 
@@ -872,11 +906,11 @@ If you want to change your minFilter later use setTextureMinMagFilter()
 point in your code, use ofTexture::generateMipmap() instead.
 
 
-See also: generateMipmap()
+**See also**: generateMipmap()
 
-See also: enableMipmap()
+**See also**: enableMipmap()
 
-See also: setTextureMinMagFilter()
+**See also**: setTextureMinMagFilter()
 
 
 
@@ -951,7 +985,8 @@ _inlined_description: _
 
 Disable a texture target.
 
-Parameters:
+**Parameters:**
+
 textureLocation the OpenGL texture ID to enable as a target.
 
 
@@ -961,6 +996,125 @@ textureLocation the OpenGL texture ID to enable as a target.
 _description: _
 
 
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void draw(&p1, &p2, &p3, &p4)
+
+<!--
+_syntax: draw(&p1, &p2, &p3, &p4)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &p1, const glm::vec3 &p2, const glm::vec3 &p3, const glm::vec3 &p4_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draws the texture at 4 points passed in as if you created 4 glVertices.
+
+
+**Parameters:**
+
+p1 Upper left position on the x axis.
+
+p2 Upper left position on the y axis.
+
+p3 Lower right position on the x axis.
+
+p4 Lower right position on the y axis.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void draw(&pos)
+
+<!--
+_syntax: draw(&pos)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &pos_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void draw(&pos, w, h)
+
+<!--
+_syntax: draw(&pos, w, h)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: const glm::vec3 &pos, float w, float h_
+_access: public_
+_version_started: _
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Draws the texture at 4 points passed in as if you created 4 glVertices.
 
 
 
@@ -988,7 +1142,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+\section Drawing
 
 
 
@@ -998,42 +1152,6 @@ _description: _
 
 Draws the texture at a given point (x,y), using the textures true width and height.
 Draws the texture at the point passed in.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void draw(x, y, z)
-
-<!--
-_syntax: draw(x, y, z)_
-_name: draw_
-_returns: void_
-_returns_description: _
-_parameters: float x, float y, float z_
-_access: public_
-_version_started: _
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Draws the texture at the point passed in in 3D space.
 
 
 
@@ -1078,6 +1196,42 @@ Draws the texture at the x, y and w, h.
 
 <!----------------------------------------------------------------------------->
 
+###void draw(x, y, z)
+
+<!--
+_syntax: draw(x, y, z)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float z_
+_access: public_
+_version_started: _
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Draws the texture at the point passed in in 3D space.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void draw(x, y, z, w, h)
 
 <!--
@@ -1101,11 +1255,16 @@ _inlined_description: _
 Draw the texture at a given size witdh and depth.
 
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
+
 z Draw position on the z axis.
+
 w Draw width.
+
 h Draw height.
 
 
@@ -1122,16 +1281,16 @@ Draws the texture at the x, y, z in 3D space with the width and height at w,h.
 
 <!----------------------------------------------------------------------------->
 
-###void draw(&p1, &p2, &p3, &p4)
+###void drawSubsection(&drawBounds, &subsectionBounds)
 
 <!--
-_syntax: draw(&p1, &p2, &p3, &p4)_
-_name: draw_
+_syntax: drawSubsection(&drawBounds, &subsectionBounds)_
+_name: drawSubsection_
 _returns: void_
 _returns_description: _
-_parameters: const ofPoint &p1, const ofPoint &p2, const ofPoint &p3, const ofPoint &p4_
+_parameters: const ofRectangle &drawBounds, const ofRectangle &subsectionBounds_
 _access: public_
-_version_started: _
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -1142,14 +1301,16 @@ _advanced: False_
 
 _inlined_description: _
 
-Draws the texture at 4 points passed in as if you created 4 glVertices.
+Draw a subsection of the texture with an offset.
 
 
-Parameters:
-p1 Upper left position on the x axis.
-p2 Upper left position on the y axis.
-p3 Lower right position on the x axis.
-p4 Lower right position on the y axis.
+**See also**: drawSubsection(ofRectangle& drawBounds, ofRectangle& subsectionBounds)
+
+**Parameters:**
+
+drawBounds Draw position and dimensions.
+
+subsectionBounds Subsection position and dimensions within the texture.
 
 
 
@@ -1157,7 +1318,7 @@ p4 Lower right position on the y axis.
 
 _description: _
 
-Draws the texture at 4 points passed in as if you created 4 glVertices.
+
 
 
 
@@ -1187,69 +1348,27 @@ _inlined_description: _
 
 Draw a subsection of the texture.
 
-Like ofDrawRectangle() depend on the current `OF_RECT_MODE`:
+Like ofRect() depend on the current `OF_RECT_MODE`:
 
 * `OF_RECT_MODE_CORNER`: drawn with the upper left corner = (x,y)
 * `OF_RECT_MODE_CENTER`: drawn centered on (x,y)
 
 
-See also: ofSetRectMode()
+**See also**: ofSetRectMode()
 
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
+
 w Draw width.
+
 h Draw height.
+
 sx Subsection x axis offset within the texture.
-sy Subsection y axis offset within the texture.
 
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void drawSubsection(x, y, z, w, h, sx, sy)
-
-<!--
-_syntax: drawSubsection(x, y, z, w, h, sx, sy)_
-_name: drawSubsection_
-_returns: void_
-_returns_description: _
-_parameters: float x, float y, float z, float w, float h, float sx, float sy_
-_access: public_
-_version_started: 0071_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Draw a subsection of the texture with depth.
-
-
-See also: drawSubsection(float x, float y, float w, float h, float sx, float sy)
-
-Parameters:
-x Draw position on the x axis.
-y Draw position on the y axis.
-z Draw position on the z axis.
-w Draw width.
-h Draw height.
-sx Subsection x axis offset within the texture.
 sy Subsection y axis offset within the texture.
 
 
@@ -1289,17 +1408,80 @@ _inlined_description: _
 Draw a subsection of the texture with an offset.
 
 
-See also: drawSubsection(float x, float y, float w, float h, float sx, float sy)
+**See also**: drawSubsection(float x, float y, float w, float h, float sx, float sy)
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
+
 w Draw width.
+
 h Draw height.
+
 sx Subsection x axis offset within the texture.
+
 sy Subsection y axis offset within the texture.
+
 sw Subsection width within the texture.
+
 sh Subsection height within the texture.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void drawSubsection(x, y, z, w, h, sx, sy)
+
+<!--
+_syntax: drawSubsection(x, y, z, w, h, sx, sy)_
+_name: drawSubsection_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float z, float w, float h, float sx, float sy_
+_access: public_
+_version_started: 0071_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Draw a subsection of the texture with depth.
+
+
+**See also**: drawSubsection(float x, float y, float w, float h, float sx, float sy)
+
+**Parameters:**
+
+x Draw position on the x axis.
+
+y Draw position on the y axis.
+
+z Draw position on the z axis.
+
+w Draw width.
+
+h Draw height.
+
+sx Subsection x axis offset within the texture.
+
+sy Subsection y axis offset within the texture.
 
 
 
@@ -1338,17 +1520,26 @@ _inlined_description: _
 Draw a subsection of the texture with an offset and depth.
 
 
-See also: drawSubsection(float x, float y, float w, float h, float sx, float sy)
+**See also**: drawSubsection(float x, float y, float w, float h, float sx, float sy)
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
+
 z Draw position on the z axis.
+
 w Draw width.
+
 h Draw height.
+
 sx Subsection x axis offset within the texture.
+
 sy Subsection y axis offset within the texture.
+
 sw Subsection width within the texture.
+
 sh Subsection height within the texture.
 
 
@@ -1385,6 +1576,7 @@ _advanced: False_
 
 _inlined_description: _
 
+\section Mipmapping
 Sets flag allowing texture to auto-generate a mipmap.
 
 By default, this will set your minFilter to GL_LINEAR_MIPMAP_LINEAR.
@@ -1394,11 +1586,11 @@ If you want to change your minFilter later use setTextureMinMagFilter()
 point in your code, use generateMipmap() instead.
 
 
-See also: generateMipmap()
+**See also**: generateMipmap()
 
-See also: disableMipmap()
+**See also**: disableMipmap()
 
-See also: setTextureMinMagFilter()
+**See also**: setTextureMinMagFilter()
 
 
 
@@ -1436,7 +1628,8 @@ _inlined_description: _
 
 Enable a texture target.
 
-Parameters:
+**Parameters:**
+
 textureLocation the OpenGL texture ID to enable as a target.
 
 
@@ -1476,15 +1669,15 @@ _inlined_description: _
 Generate mipmap for the current texture.
 
 
-Warning: Only GL_TEXTURE_RECTANGLE - which is the default openFrameworks
+**Warning**: Only GL_TEXTURE_RECTANGLE - which is the default openFrameworks
 texture target - does *not* support mipmaps, so make sure to call
 ofDisableArbTex() before loading texture
 data for a texture you want to generate mipmaps for.
 
 
-See also: ofEnableArbTex()
+**See also**: ofEnableArbTex()
 
-See also: ofDisableArbTex()
+**See also**: ofDisableArbTex()
 
 
 
@@ -1536,12 +1729,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofPoint getCoordFromPercent(xPts, yPts)
+###glm::vec2 getCoordFromPercent(xPts, yPts)
 
 <!--
 _syntax: getCoordFromPercent(xPts, yPts)_
 _name: getCoordFromPercent_
-_returns: ofPoint_
+_returns: glm::vec2_
 _returns_description: _
 _parameters: float xPts, float yPts_
 _access: public_
@@ -1558,11 +1751,13 @@ _inlined_description: _
 
 Helper to convert display coordinate to texture coordinate.
 
-Parameters:
+**Parameters:**
+
 xPts Horizontal position in a normalized percentage (0 - 1).
+
 yPts Vertical position in a normalized percentage (0 - 1).
 
-Returns: Texture coordinate or ofPoint::zero() if texture is not allocated.
+**Returns**: Texture coordinate or zero if texture is not allocated.
 
 
 
@@ -1578,12 +1773,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofPoint getCoordFromPoint(xPos, yPos)
+###glm::vec2 getCoordFromPoint(xPos, yPos)
 
 <!--
 _syntax: getCoordFromPoint(xPos, yPos)_
 _name: getCoordFromPoint_
-_returns: ofPoint_
+_returns: glm::vec2_
 _returns_description: _
 _parameters: float xPos, float yPos_
 _access: public_
@@ -1600,11 +1795,13 @@ _inlined_description: _
 
 Helper to convert display coordinate to texture coordinate.
 
-Parameters:
+**Parameters:**
+
 xPos Horizontal position in pixels.
+
 yPos Vertical position in pixels.
 
-Returns: Texture coordinate or ofPoint::zero() if texture is not allocated.
+**Returns**: Texture coordinate or zero if texture is not allocated.
 
 
 
@@ -1640,15 +1837,16 @@ _advanced: False_
 
 _inlined_description: _
 
+\section Size and Coordinates
 Display height of texture.
 
 Return value is pixel size (default) or normalized (0 - 1) if ofEnableNormalizedTextures() is set to true.
 
 
-See also: ofEnabledNormalizedTextures()
+**See also**: ofEnabledNormalizedTextures()
 
 
-Returns: Display height of texture in pixels.
+**Returns**: Display height of texture in pixels.
 
 
 
@@ -1687,19 +1885,30 @@ _inlined_description: _
 Get a mesh that has the texture coordinates set.
 
 
-See also: drawSubsection(float x, float y, float w, float h, float sx, float sy)
+**See also**: drawSubsection(float x, float y, float w, float h, float sx, float sy)
 
-Parameters:
+**Parameters:**
+
 x Draw position on the x axis.
+
 y Draw position on the y axis.
+
 z Draw position on the z axis.
+
 w Draw width.
+
 h Draw height.
+
 sx Subsection x axis offset within the texture.
+
 sy Subsection y axis offset within the texture.
+
 sw Subsection width within the texture.
+
 sh Subsection height within the texture.
+
 vflipped Takes into account the flipped state in OF.
+
 rectMode rectMode Taking x,y as the center or the top left corner.
 
 
@@ -1723,7 +1932,7 @@ _syntax: getQuad(&p1, &p2, &p3, &p4)_
 _name: getQuad_
 _returns: ofMesh_
 _returns_description: _
-_parameters: const ofPoint &p1, const ofPoint &p2, const ofPoint &p3, const ofPoint &p4_
+_parameters: const glm::vec3 &p1, const glm::vec3 &p2, const glm::vec3 &p3, const glm::vec3 &p4_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -1772,6 +1981,7 @@ _advanced: False_
 
 _inlined_description: _
 
+\section Texture Data
 Internal texture data access.
 
 This returns the internal texture data for this texture, for instance,
@@ -1779,7 +1989,7 @@ its textureID, type of texture, whether it's been allocated and other
 data about the state of the texture.
 
 
-Returns: a reference to the internal texture data struct.
+**Returns**: a reference to the internal texture data struct.
 
 
 
@@ -1810,14 +2020,14 @@ _summary: _
 _constant: False_
 _static: False_
 _visible: True_
-_advanced: True_
+_advanced: False_
 -->
 
 _inlined_description: _
 
 Const version of getTextureData().
 
-See also: ofTextureData::getTextureData()
+**See also**: ofTextureData::getTextureData()
 
 
 
@@ -1833,12 +2043,12 @@ This returns the internal texture data for this texture, for instance, its textu
 
 <!----------------------------------------------------------------------------->
 
-###const ofMatrix4x4 & getTextureMatrix()
+###const glm::mat4 & getTextureMatrix()
 
 <!--
 _syntax: getTextureMatrix()_
 _name: getTextureMatrix_
-_returns: const ofMatrix4x4 &_
+_returns: const glm::mat4 &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -1894,10 +2104,10 @@ Display width of texture.
 Return value is pixel size (default) or normalized (0 - 1) if ofEnableNormalizedTextures() is set to true.
 
 
-See also: ofEnabledNormalizedTextures()
+**See also**: ofEnabledNormalizedTextures()
 
 
-Returns: Display width of texture in pixels.
+**Returns**: Display width of texture in pixels.
 
 
 
@@ -1906,6 +2116,47 @@ Returns: Display width of texture in pixels.
 _description: _
 
 Returns the width of the texture. This will be in pixels unless you've set your application to use normalized coordinates.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool hasMipmap()
+
+<!--
+_syntax: hasMipmap()_
+_name: hasMipmap_
+_returns: bool_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Find out if a mipmap has been generated for the current texture.
+
+
+**See also**: generateMipmap()
+
+**See also**: enableMipmap()
+
+
+
+
+
+_description: _
+
+
 
 
 
@@ -1939,7 +2190,7 @@ This lets you check if a texture is safe to draw.  The texture can both
 be allocated by using `allocate()` or loading it with data `loadData()`.
 
 
-Returns: true if the texture has been allocated.
+**Returns**: true if the texture has been allocated.
 
 
 
@@ -1997,16 +2248,16 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void loadData(data, w, h, glFormat)
+###void loadData(&buffer, glFormat, glType)
 
 <!--
-_syntax: loadData(data, w, h, glFormat)_
+_syntax: loadData(&buffer, glFormat, glType)_
 _name: loadData_
 _returns: void_
 _returns_description: _
-_parameters: const unsigned char *const data, int w, int h, int glFormat_
+_parameters: const ofBufferObject &buffer, int glFormat, int glType_
 _access: public_
-_version_started: 007_
+_version_started: 0.9.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -2017,106 +2268,23 @@ _advanced: False_
 
 _inlined_description: _
 
-Load byte pixel data.
+Load pixels from an ofBufferObject
 
-glFormat can be different to the internal format of the texture on each
-load, i.e. we can upload GL_BGRA pixels into a GL_RGBA texture but the
-number of channels need to match according to the OpenGL standard.
+This is different to allocate(ofBufferObject,internal). That
+creates a texture which data lives in GL buffer while this
+copies the data from the buffer to the texture.
+
+This is usually used to upload data to be shown asynchronously
+by using a buffer object binded as a PBO
 
 
-Parameters:
-data Pointer to byte pixel data. Must not be nullptr.
-w Pixel data width.
-h Pixel data height.
+**Parameters:**
+
+buffer The buffer to load.
+
 glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
 
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void loadData(*data, w, h, glFormat)
-
-<!--
-_syntax: loadData(*data, w, h, glFormat)_
-_name: loadData_
-_returns: void_
-_returns_description: _
-_parameters: const unsigned short *data, int w, int h, int glFormat_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Load short (2 byte) pixel data.
-
-See also: loadData(const unsigned char* const data, int w, int h, int glFormat)
-
-Parameters:
-data Pointer to byte pixel data. Must not be nullptr.
-w Pixel data width.
-h Pixel data height.
-glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void loadData(*data, w, h, glFormat)
-
-<!--
-_syntax: loadData(*data, w, h, glFormat)_
-_name: loadData_
-_returns: void_
-_returns_description: _
-_parameters: const float *data, int w, int h, int glFormat_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-Load float pixel data.
-
-See also: loadData(const unsigned char* const data, int w, int h, int glFormat)
-
-Parameters:
-data Pointer to byte pixel data. Must not be nullptr.
-w Pixel data width.
-h Pixel data height.
-glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
+glType the GL type to load.
 
 
 
@@ -2154,7 +2322,8 @@ _inlined_description: _
 
 Load pixels from an ofPixels instance.
 
-Parameters:
+**Parameters:**
+
 pix Reference to ofPixels instance.
 
 
@@ -2196,9 +2365,10 @@ Load pixels from an ofShortPixels instance.
 Same as loadData(ofPixels &) but for ofShortPixels.
 
 
-See also: loadData(const ofPixels & pix)
+**See also**: loadData(const ofPixels & pix)
 
-Parameters:
+**Parameters:**
+
 pix Reference to ofShortPixels instance.
 
 
@@ -2240,9 +2410,10 @@ Load pixels from an ofFloatPixels instance.
 Same as loadData(ofPixels &) but for ofFloatPixels.
 
 
-See also: loadData(const ofPixels & pix)
+**See also**: loadData(const ofPixels & pix)
 
-Parameters:
+**Parameters:**
+
 pix Reference to ofFloatPixels instance.
 
 
@@ -2286,8 +2457,10 @@ load, ie. we can upload GL_BGRA pixels into a GL_RGBA texture, but the
 number of channels need to match according to the OpenGL standard.
 
 
-Parameters:
+**Parameters:**
+
 pix Reference to ofPixels instance.
+
 glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
 
 
@@ -2327,10 +2500,12 @@ _inlined_description: _
 Load pixels from an ofShortPixels instance & specify the format.
 
 
-See also: loadData(const ofPixels & pix, int glFormat)
+**See also**: loadData(const ofPixels & pix, int glFormat)
 
-Parameters:
+**Parameters:**
+
 pix Reference to ofShortPixels instance.
+
 glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
 
 
@@ -2370,10 +2545,12 @@ _inlined_description: _
 Load pixels from an ofFloatPixels instance and specify the format.
 
 
-See also: loadData(const ofPixels & pix, int glFormat)
+**See also**: loadData(const ofPixels & pix, int glFormat)
 
-Parameters:
+**Parameters:**
+
 pix Reference to ofFloatPixels instance.
+
 glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
 
 
@@ -2390,16 +2567,16 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void loadData(&buffer, glFormat, glType)
+###void loadData(*data, w, h, glFormat)
 
 <!--
-_syntax: loadData(&buffer, glFormat, glType)_
+_syntax: loadData(*data, w, h, glFormat)_
 _name: loadData_
 _returns: void_
 _returns_description: _
-_parameters: const ofBufferObject &buffer, int glFormat, int glType_
+_parameters: const uint16_t *data, int w, int h, int glFormat_
 _access: public_
-_version_started: 0.9.0_
+_version_started: 007_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -2410,20 +2587,211 @@ _advanced: False_
 
 _inlined_description: _
 
-Load pixels from an ofBufferObject
+Load short (2 byte) pixel data.
 
-This is different to allocate(ofBufferObject,internal). That
-creates a texture which data lives in GL buffer while this
-copies the data from the buffer to the texture.
+**See also**: loadData(const unsigned char* const data, int w, int h, int glFormat)
 
-This is usually used to upload data to be shown asynchronously
-by using a buffer object binded as a PBO
+**Parameters:**
 
+data Pointer to byte pixel data. Must not be nullptr.
 
-Parameters:
-buffer The buffer to load.
+w Pixel data width.
+
+h Pixel data height.
+
 glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
-glType the GL type to load.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void loadData(*data, w, h, glFormat)
+
+<!--
+_syntax: loadData(*data, w, h, glFormat)_
+_name: loadData_
+_returns: void_
+_returns_description: _
+_parameters: const uint32_t *data, int w, int h, int glFormat_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void loadData(*data, w, h, glFormat)
+
+<!--
+_syntax: loadData(*data, w, h, glFormat)_
+_name: loadData_
+_returns: void_
+_returns_description: _
+_parameters: const int8_t *data, int w, int h, int glFormat_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void loadData(*data, w, h, glFormat)
+
+<!--
+_syntax: loadData(*data, w, h, glFormat)_
+_name: loadData_
+_returns: void_
+_returns_description: _
+_parameters: const int16_t *data, int w, int h, int glFormat_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void loadData(*data, w, h, glFormat)
+
+<!--
+_syntax: loadData(*data, w, h, glFormat)_
+_name: loadData_
+_returns: void_
+_returns_description: _
+_parameters: const int32_t *data, int w, int h, int glFormat_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void loadData(*data, w, h, glFormat)
+
+<!--
+_syntax: loadData(*data, w, h, glFormat)_
+_name: loadData_
+_returns: void_
+_returns_description: _
+_parameters: const float *data, int w, int h, int glFormat_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Load float pixel data.
+
+**See also**: loadData(const unsigned char* const data, int w, int h, int glFormat)
+
+**Parameters:**
+
+data Pointer to byte pixel data. Must not be nullptr.
+
+w Pixel data width.
+
+h Pixel data height.
+
+glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
 
 
 
@@ -2447,7 +2815,7 @@ _name: loadData_
 _returns: void_
 _returns_description: _
 _parameters: const void *data, int w, int h, int glFormat, int glType_
-_access: protected_
+_access: public_
 _version_started: 0073_
 _version_deprecated: _
 _summary: _
@@ -2466,12 +2834,68 @@ load, i.e. we can upload GL_BGRA pixels into a GL_RGBA texture but the
 number of channels need to match according to the OpenGL standard.
 
 
-Parameters:
+**Parameters:**
+
 data Pointer to byte pixel data. Must not be nullptr.
+
 w Pixel data width.
+
 h Pixel data height.
+
 glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
+
 glType the OpenGL type of the data.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void loadData(data, w, h, glFormat)
+
+<!--
+_syntax: loadData(data, w, h, glFormat)_
+_name: loadData_
+_returns: void_
+_returns_description: _
+_parameters: const uint8_t *const data, int w, int h, int glFormat_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+Load byte pixel data.
+
+glFormat can be different to the internal format of the texture on each
+load, i.e. we can upload GL_BGRA pixels into a GL_RGBA texture but the
+number of channels need to match according to the OpenGL standard.
+
+
+**Parameters:**
+
+data Pointer to byte pixel data. Must not be nullptr.
+
+w Pixel data width.
+
+h Pixel data height.
+
+glFormat GL pixel type: GL_RGBA, GL_LUMINANCE, etc.
 
 
 
@@ -2516,13 +2940,17 @@ Make sure that you have allocated your texture (using `allocate()`)
 to be large enough to hold the region of the screen you wish to load.
 
 
-See also: http://www.opengl.org/sdk/docs/man4/html/glCopyTexSubImage2D.xhtml
+**See also**: http://www.opengl.org/sdk/docs/man4/html/glCopyTexSubImage2D.xhtml
 
 
-Parameters:
+**Parameters:**
+
 x Upper left corner horizontal screen position.
+
 y Upper left corner vertical screen position.
+
 w Width of the area to copy in pixels.
+
 h Height of the area to copy in pixels.
 
 
@@ -2540,27 +2968,27 @@ Load data from the current screen into this texture. Grabs a region of the scree
 
 <!----------------------------------------------------------------------------->
 
-### ofTexture()
+### ofTexture(&&mom)
 
 <!--
-_syntax: ofTexture()_
+_syntax: ofTexture(&&mom)_
 _name: ofTexture_
 _returns: _
 _returns_description: _
-_parameters: _
+_parameters: ofTexture &&mom_
 _access: public_
-_version_started: 006_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
 _static: False_
-_visible: False_
+_visible: True_
 _advanced: False_
 -->
 
 _inlined_description: _
 
-Construct an ofTexture instance.
+
 
 
 
@@ -2568,7 +2996,7 @@ Construct an ofTexture instance.
 
 _description: _
 
-Creates an empty ofTexture instance. You can't draw a texture right after it's been created as it has actually uploaded any data to the graphics card that can be drawn yet.
+
 
 
 
@@ -2598,8 +3026,82 @@ _inlined_description: _
 
 Construct an ofTexture from an existing ofTexture.
 
-Parameters:
+**Parameters:**
+
 mom The ofTexture to copy. Reuses internal GL texture ID.
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofTexture()
+
+<!--
+_syntax: ofTexture()_
+_name: ofTexture_
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 006_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: False_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+\section Construction and Allocation
+Construct an ofTexture instance.
+
+
+
+
+
+_description: _
+
+Creates an empty ofTexture instance. You can't draw a texture right after it's been created as it has actually uploaded any data to the graphics card that can be drawn yet.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###ofTexture & operator=(&&mom)
+
+<!--
+_syntax: operator=(&&mom)_
+_name: operator=_
+_returns: ofTexture &_
+_returns_description: _
+_parameters: ofTexture &&mom_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
 
 
 
@@ -2635,9 +3137,11 @@ _advanced: False_
 
 _inlined_description: _
 
+\section Update Texture
 Copy a given ofTexture into this texture.
 
-Parameters:
+**Parameters:**
+
 mom The ofTexture to copy from. Reuses internal GL texture ID.
 
 
@@ -2674,13 +3178,15 @@ _advanced: False_
 
 _inlined_description: _
 
+\section Read Pixel Data
 Read current texture data from the GPU into pixels.
 
 
-Warning: This is not supported in OpenGL ES and does nothing.
+**Warning**: This is not supported in OpenGL ES and does nothing.
 
 
-Parameters:
+**Parameters:**
+
 pixels Target ofPixels reference.
 
 
@@ -2720,10 +3226,11 @@ _inlined_description: _
 Read current texture data from the GPU into pixels.
 
 
-Warning: This is not supported in OpenGL ES and does nothing.
+**Warning**: This is not supported in OpenGL ES and does nothing.
 
 
-Parameters:
+**Parameters:**
+
 pixels Target pixels reference.
 
 
@@ -2763,10 +3270,11 @@ _inlined_description: _
 Read current texture data from the GPU into pixels.
 
 
-Warning: This is not supported in OpenGL ES and does nothing.
+**Warning**: This is not supported in OpenGL ES and does nothing.
 
 
-Parameters:
+**Parameters:**
+
 pixels Target pixels reference.
 
 
@@ -2798,7 +3306,7 @@ _summary: _
 _constant: False_
 _static: False_
 _visible: True_
-_advanced: True_
+_advanced: False_
 -->
 
 _inlined_description: _
@@ -2839,9 +3347,11 @@ _advanced: False_
 
 _inlined_description: _
 
+\section Texture Settings
 Set another ofTexture to use as an alpha mask.
 
-Parameters:
+**Parameters:**
+
 mask The texture to use as alpha mask.
 
 
@@ -2873,7 +3383,7 @@ _summary: _
 _constant: False_
 _static: False_
 _visible: True_
-_advanced: True_
+_advanced: False_
 -->
 
 _inlined_description: _
@@ -2884,8 +3394,10 @@ This can be useful if you want to rotate an image around a particular
 point.
 
 
-Parameters:
+**Parameters:**
+
 xPct Horizontal texture position as a percentage (0 - 1).
+
 yPct Vertical texture position as a percentage (0 - 1).
 
 
@@ -2928,8 +3440,10 @@ This can be useful if you want to rotate an image around a particular
 point.
 
 
-Parameters:
+**Parameters:**
+
 x Horizontal texture position in pixels.
+
 y Vertical texture position in pixels.
 
 
@@ -2970,7 +3484,7 @@ Set the texture compression.
 
 \warning: not yet implemented.
 
-See also: ofTexCompression
+**See also**: ofTexCompression
 
 
 
@@ -3012,9 +3526,9 @@ Swizzle RGBA to grayscale with alpha in the red channel.
 Use 1 channel GL_R as luminance instead of red channel in OpenGL 3+.
 
 
-Warning: This is not supported in OpenGL ES and does nothing.
+**Warning**: This is not supported in OpenGL ES and does nothing.
 
-See also: https://en.wikipedia.org/wiki/Swizzling_(computer_graphics)
+**See also**: https://en.wikipedia.org/wiki/Swizzling_(computer_graphics)
 
 
 
@@ -3062,9 +3576,9 @@ tex.setSwizzle(GL_TEXTURE_SWIZZLE_R,GL_ALPHA);
 will make channel 0 appear as alpha in the shader.
 
 
-Warning: This is not supported in OpenGL ES and does nothing.
+**Warning**: This is not supported in OpenGL ES and does nothing.
 
-See also: https://en.wikipedia.org/wiki/Swizzling_(computer_graphics)
+**See also**: https://en.wikipedia.org/wiki/Swizzling_(computer_graphics)
 
 
 
@@ -3087,7 +3601,7 @@ _syntax: setTextureMatrix(&m)_
 _name: setTextureMatrix_
 _returns: void_
 _returns_description: _
-_parameters: const ofMatrix4x4 &m_
+_parameters: const glm::mat4 &m_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -3102,7 +3616,8 @@ _inlined_description: _
 
 Sets a texture matrix to be uploaded whenever the texture is bound.
 
-Parameters:
+**Parameters:**
+
 m The 4x4 texture matrix.
 
 
@@ -3144,16 +3659,18 @@ Set texture minification/magnification scaling filters.
 Controls how OpenGL will scale this texture.
 
 
-See also: http://www.opengl.org/sdk/docs/man4/html/glTexParameter.xhtml
+**See also**: http://www.opengl.org/sdk/docs/man4/html/glTexParameter.xhtml
 
-See also: ofTextureSetMinMagFilters()
-
-
-Warning: May be overridden.
+**See also**: ofTextureSetMinMagFilters()
 
 
-Parameters:
+**Warning**: May be overridden.
+
+
+**Parameters:**
+
 minFilter minifying filter for scaling a pixel to a smaller area.
+
 magFilter magnifying filter for scaling a pixel to a larger area.
 
 
@@ -3197,16 +3714,18 @@ Setting a repeat mode like `GL_REPEAT` allows you to create tiled
 backgrounds with small textures.
 
 
-See also: ofTextureSetWrap()
+**See also**: ofTextureSetWrap()
 
-See also: http://www.opengl.org/sdk/docs/man4/html/glTexParameter.xhtml
-
-
-Warning: May be overridden.
+**See also**: http://www.opengl.org/sdk/docs/man4/html/glTexParameter.xhtml
 
 
-Parameters:
+**Warning**: May be overridden.
+
+
+**Parameters:**
+
 wrapModeHorizontal wrap parameter for texture coordinate s.
+
 wrapModeVertical wrap parameter for texture coordinate t.
 
 
@@ -3250,10 +3769,11 @@ Allows you to point the texture id to an externally allocated id
 textData parameters manually.
 
 
-Warning: When setting an external texture ID, the user must set the
+**Warning**: When setting an external texture ID, the user must set the
 remaining ofTextureData parameters manually.
 
-Parameters:
+**Parameters:**
+
 externTexID New texture ID.
 
 
@@ -3285,7 +3805,7 @@ _summary: _
 _constant: False_
 _static: False_
 _visible: True_
-_advanced: True_
+_advanced: False_
 -->
 
 _inlined_description: _
@@ -3296,7 +3816,7 @@ For advanced users who need to manually manage texture drawing without
 calling ofTexture::draw.
 
 
-See also: http://www.opengl.org/sdk/docs/man4/html/glBindTexture.xhtml
+**See also**: http://www.opengl.org/sdk/docs/man4/html/glBindTexture.xhtml
 
 
 

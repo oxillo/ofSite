@@ -34,7 +34,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+show an error message in an alert dialog box
 
 
 
@@ -69,7 +69,16 @@ _advanced: False_
 
 _inlined_description: _
 
+show a file load dialog box
 
+**Parameters:**
+
+windowTitle optional window title string, ie. "Load background image"
+
+bFolderSelection set to true to allow folder selection
+
+defaultPath optional default directory path to start the dialog in, ie. ofFilePath::getUserHomeDir()
+\return dialog result with selection (if any)
 
 
 
@@ -77,7 +86,15 @@ _inlined_description: _
 
 _description: _
 
+~~~~{.cpp}
+ofFileDialogResult result = ofSystemLoadDialog("Load file");
+if(result.bSuccess) {
+  string path = result.getPath();
+  // load your file at `path`
+}
+~~~~
 
+See also: [ofFileDialogResult](ofFileDialogResult).
 
 
 
@@ -104,7 +121,14 @@ _advanced: False_
 
 _inlined_description: _
 
+show a file save dialog box
 
+**Parameters:**
+
+defaultName suggested filename to start dialog, ie "screenshot.png"
+
+messageName descriptive text for the save action, ie. "Saving screenshot as"
+\return dialog result with selection (if any)
 
 
 
@@ -112,7 +136,15 @@ _inlined_description: _
 
 _description: _
 
+~~~~{.cpp}
+ofFileDialogResult result = ofSystemSaveDialog("default.jpg", "Save");
+if(result.bSuccess) {
+  string path = result.getPath();
+  // save your file to `path`
+}
+~~~~
 
+See also: [ofFileDialogResult](ofFileDialogResult).
 
 
 
@@ -139,7 +171,13 @@ _advanced: False_
 
 _inlined_description: _
 
+show a text entry dialog box
 
+**Parameters:**
+
+question descriptive text for the text entry, ie. "What's your favorite color?"
+
+text optional default text entry string, ie. "blue"
 
 
 

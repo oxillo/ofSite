@@ -1,9 +1,12 @@
+## -*- coding: utf-8 -*-
 ---
-date: 2013/03/07 10:00:00
-title: stl::vector의 기본
-summary: 기본적인 vector사용법에 대하여 간략히 살펴봅시다.
-author: Chris Sugrue
-author_site: http://csugrue.com
+.. date: 2013/03/07 10:00:00
+.. title: stl::vector의 기본
+.. summary: 기본적인 vector사용법에 대하여 간략히 살펴봅시다.
+.. author: Chris Sugrue
+.. author_site: http://csugrue.com
+.. translator: Yi donghoon
+.. translator_site: http://icq4ever.net
 ---
 
 <!-- A c++ vector is a type of container (like an array) that allows the storage of multiple elements (numbers, strings, objects etc.) in a format that can grow or shrink dynamically. Once a vector is created, new elements can be added, others erased and the entire vector can be sorted or shuffled. This tutorial is an overview of the basics of using vectors and is geared towards openFrameworks programmers that may be new or coming from other platforms and languages. It is not a comprehensive guide to all the functions of c++ vectors (additional resource links are provided below).  -->
@@ -383,8 +386,8 @@ vector에서 오브젝트를 가리키는 pointer를 삭제할 때, erase될 뿐
     }
 ~~~~ 
 
-<!-- Note that this means erase and remove_if demonstrated above will not be sufficient. If pointers are needed, it is worthwhile to consider using shared pointers instead. <a href="http://www.openframeworks.cc/documentation/types/ofPtr.html">See ofPtr</a> -->
-위에서의 erase와 remove_if 시연으로는 충분하지 않음을 명심하십시오. 만약 포인터를 사용해야 한다면, 공용 포인터(shared pointers)를 대신 사용하는 편이 낫습니다. <a href="http://www.openframeworks.cc/documentation/types/ofPtr.html">ofPtr를 살펴보세요</a>.
+<!-- Note that this means erase and remove_if demonstrated above will not be sufficient. If pointers are needed, it is worthwhile to consider using shared pointers instead. <a href="/documentation/types/ofPtr.html">See ofPtr</a> -->
+위에서의 erase와 remove_if 시연으로는 충분하지 않음을 명심하십시오. 만약 포인터를 사용해야 한다면, 공용 포인터(shared pointers)를 대신 사용하는 편이 낫습니다. <a href="/documentation/types/ofPtr.html">ofPtr를 살펴보세요</a>.
 
 ----------------------------------------------------------------------------------------------------------------------------
 <a name="optimizing"></a>

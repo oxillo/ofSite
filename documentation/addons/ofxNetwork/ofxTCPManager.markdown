@@ -134,6 +134,42 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+###bool CheckIsConnected()
+
+<!--
+_syntax: CheckIsConnected()_
+_name: CheckIsConnected_
+_returns: bool_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###void CleanUp()
 
 <!--
@@ -213,7 +249,7 @@ _syntax: Connect(*pAddrStr, usPort)_
 _name: Connect_
 _returns: bool_
 _returns_description: _
-_parameters: char *pAddrStr, unsigned short usPort_
+_parameters: const char *pAddrStr, unsigned short usPort_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -576,6 +612,42 @@ _returns_description: _
 _parameters: _
 _access: public_
 _version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool IsNonBlocking()
+
+<!--
+_syntax: IsNonBlocking()_
+_name: IsNonBlocking_
+_returns: bool_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -1070,16 +1142,16 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###int Write(*pBuff, iSize)
+###int WaitReceive(timeoutSeconds, timeoutMillis)
 
 <!--
-_syntax: Write(*pBuff, iSize)_
-_name: Write_
+_syntax: WaitReceive(timeoutSeconds, timeoutMillis)_
+_name: WaitReceive_
 _returns: int_
 _returns_description: _
-_parameters: const char *pBuff, const int iSize_
-_access: public_
-_version_started: 007_
+_parameters: time_t timeoutSeconds, time_t timeoutMillis_
+_access: private_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -1106,14 +1178,50 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ofxTCPManager()
+###int WaitSend(timeoutSeconds, timeoutMillis)
 
 <!--
-_syntax: ofxTCPManager()_
-_name: ofxTCPManager_
-_returns: _
+_syntax: WaitSend(timeoutSeconds, timeoutMillis)_
+_name: WaitSend_
+_returns: int_
 _returns_description: _
-_parameters: _
+_parameters: time_t timeoutSeconds, time_t timeoutMillis_
+_access: private_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int Write(*pBuff, iSize)
+
+<!--
+_syntax: Write(*pBuff, iSize)_
+_name: Write_
+_returns: int_
+_returns_description: _
+_parameters: const char *pBuff, const int iSize_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1152,6 +1260,42 @@ _returns_description: _
 _parameters: const ofxTCPManager &mom_
 _access: private_
 _version_started: 0.8.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofxTCPManager()
+
+<!--
+_syntax: ofxTCPManager()_
+_name: ofxTCPManager_
+_returns: _
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 007_
 _version_deprecated: _
 _summary: _
 _constant: False_

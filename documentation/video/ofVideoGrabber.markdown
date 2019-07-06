@@ -100,42 +100,6 @@ Closes the sequence grabber and de-allocates any allocated resources. Call this 
 
 <!----------------------------------------------------------------------------->
 
-###void draw(x, y, w, h)
-
-<!--
-_syntax: draw(x, y, w, h)_
-_name: draw_
-_returns: void_
-_returns_description: _
-_parameters: float x, float y, float w, float h_
-_access: public_
-_version_started: 006_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Draws the internal texture of the movie grabber class at the position (x,y) with the given width (w) and height (h). As the video grabber operates, it grabs pixel data and uploads it to it's internal texture (ie, on the GPU), unless you call setUseTexture(false), which disables the texture uploading. This draws that internal texture on screen.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###void draw(x, y)
 
 <!--
@@ -165,6 +129,42 @@ _inlined_description: _
 _description: _
 
 Draws the internal texture of the movie grabber class at the position (x,y) with the internal width and height of the movie grabber. It uses the native size of the grabber, so if you initialize the grabber at 320 x 240, it will draw a rectangle at x,y with a width and height of 320 x 240. Please note, ofSetRectMode() can have an effect on if the x,y is the top left corner or center point.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void draw(x, y, w, h)
+
+<!--
+_syntax: draw(x, y, w, h)_
+_name: draw_
+_returns: void_
+_returns_description: _
+_parameters: float x, float y, float w, float h_
+_access: public_
+_version_started: 006_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Draws the internal texture of the movie grabber class at the position (x,y) with the given width (w) and height (h). As the video grabber operates, it grabs pixel data and uploads it to it's internal texture (ie, on the GPU), unless you call setUseTexture(false), which disables the texture uploading. This draws that internal texture on screen.
 
 
 
@@ -532,12 +532,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofTexture > & getTexturePlanes()
+###int & getTexturePlanes()
 
 <!--
 _syntax: getTexturePlanes()_
 _name: getTexturePlanes_
-_returns: vector< ofTexture > &_
+_returns: int &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -568,12 +568,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###const vector< ofTexture > & getTexturePlanes()
+###const int & getTexturePlanes()
 
 <!--
 _syntax: getTexturePlanes()_
 _name: getTexturePlanes_
-_returns: const vector< ofTexture > &_
+_returns: const int &_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -674,10 +674,9 @@ Initializes either the default capture device or the capture device specified by
 myGrabber.setVerbose(true);
 myGrabber.setDeviceID(1);
 myGrabber.initGrabber(320,240);
-int grabW = myGrabber.width;
-int grabH = myGrabber.height;
-printf("asked for 320 by 240 - actual size is %i by %i 
-", grabW, grabH);
+int grabW = myGrabber.getWidth();
+int grabH = myGrabber.getHeight();
+printf("asked for 320 by 240 - actual size is %i by %i", grabW, grabH);
 ~~~~
 
 
@@ -807,12 +806,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofVideoDevice > listDevices()
+###int listDevices()
 
 <!--
 _syntax: listDevices()_
 _name: listDevices_
-_returns: vector< ofVideoDevice >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_

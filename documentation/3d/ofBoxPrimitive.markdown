@@ -177,12 +177,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f getResolution()
+###glm::vec3 getResolution()
 
 <!--
 _syntax: getResolution()_
 _name: getResolution_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -321,14 +321,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< ofIndexType > getSideIndices(sideIndex)
+###int getSideIndices()
 
 <!--
-_syntax: getSideIndices(sideIndex)_
+_syntax: getSideIndices()_
 _name: getSideIndices_
-_returns: vector< ofIndexType >_
+_returns: int_
 _returns_description: _
-_parameters: int sideIndex_
+_parameters: _
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -393,12 +393,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###ofVec3f getSize()
+###glm::vec3 getSize()
 
 <!--
 _syntax: getSize()_
 _name: getSize_
-_returns: ofVec3f_
+_returns: glm::vec3_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -573,14 +573,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(width, height, depth, resWidth, resHeight, resDepth)
+###void set(size)
 
 <!--
-_syntax: set(width, height, depth, resWidth, resHeight, resDepth)_
+_syntax: set(size)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: float width, float height, float depth, int resWidth, int resHeight, int resDepth_
+_parameters: float size_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _
@@ -645,14 +645,14 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###void set(size)
+###void set(width, height, depth, resWidth, resHeight, resDepth)
 
 <!--
-_syntax: set(size)_
+_syntax: set(width, height, depth, resWidth, resHeight, resDepth)_
 _name: set_
 _returns: void_
 _returns_description: _
-_parameters: float size_
+_parameters: float width, float height, float depth, int resWidth, int resHeight, int resDepth_
 _access: public_
 _version_started: 0073_
 _version_deprecated: _

@@ -17,6 +17,31 @@ _extends: _
 
 ##Description
 
+ofTimer lets you run code periodically with the specified frequency. Use it on a class that extends ofThread.
+
+~~~~{.cpp}
+
+class Scheduler: public ofThread {
+public:
+    Scheduler() {
+        timer.setPeriodicEvent(1000000000); // this is 1 second in nanoseconds
+        startThread();
+    }
+
+private:
+    ofTimer timer;
+    void threadedFunction() {
+        while(isThreadRunning()) {
+             timer.waitNext();
+             // Do your thing here. It will run once per second.
+        }
+    }
+}
+
+~~~~
+
+The timer above will wake up at 1 second intervals no matter how long the rest of the task takes. If the last execution took more than 1 second, it'll wake up right away and execute the next. It uses the most accurate timing functions in every OS.
+
 
 
 
@@ -81,7 +106,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+Constructs the default ofTimer().
 
 
 
@@ -117,7 +142,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+ Reset the starting instant of the periodic event to now.
 
 
 
@@ -153,7 +178,14 @@ _advanced: False_
 
 _inlined_description: _
 
+Sets the frequency in \p nanoseconds that events happen.
 
+The timer will begin calculating the events beginning the moment
+the function is called.
+
+**Parameters:**
+
+nanoseconds The number of nanoseconds between events.
 
 
 
@@ -189,7 +221,7 @@ _advanced: False_
 
 _inlined_description: _
 
-
+Sleep this thread until the next periodic event.
 
 
 

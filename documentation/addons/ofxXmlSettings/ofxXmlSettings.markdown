@@ -5,7 +5,7 @@
 _visible: True_
 _advanced: False_
 _istemplated: False_
-_extends: ofBaseFileSerializer_
+_extends: _
 -->
 
 ##InlineDescription
@@ -137,14 +137,14 @@ we can use push and pop to move into the recording tags as if they were the docu
 
 
 
-###int addAttribute(&tag, &attribute, value, which = 0)
+###int addAttribute(&tag, &attribute, &value)
 
 <!--
-_syntax: addAttribute(&tag, &attribute, value, which = 0)_
+_syntax: addAttribute(&tag, &attribute, &value)_
 _name: addAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int value, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, const __cxx11::string &value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -165,43 +165,7 @@ _inlined_description: _
 
 _description: _
 
-Adds a new attribute to the tag with with the given int value. If the tag doesn't exist it is created. If an attribute at index 'which' already exists its value replaced by the provided value
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###int addAttribute(&tag, &attribute, value, which = 0)
-
-<!--
-_syntax: addAttribute(&tag, &attribute, value, which = 0)_
-_name: addAttribute_
-_returns: int_
-_returns_description: _
-_parameters: const string &tag, const string &attribute, double value, int which=0_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Adds a new attribute to the tag with the given double value. 
+Adds a new attribute to the tag with with the given string value.
 
 
 
@@ -216,7 +180,7 @@ _syntax: addAttribute(&tag, &attribute, &value, which = 0)_
 _name: addAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, const string &value, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, const __cxx11::string &value, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -252,7 +216,7 @@ _syntax: addAttribute(&tag, &attribute, value)_
 _name: addAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int value_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -288,7 +252,7 @@ _syntax: addAttribute(&tag, &attribute, value)_
 _name: addAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, double value_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, double value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -317,14 +281,14 @@ Adds a new attribute to the tag with with the given double value.
 
 <!----------------------------------------------------------------------------->
 
-###int addAttribute(&tag, &attribute, &value)
+###int addAttribute(&tag, &attribute, value, which = 0)
 
 <!--
-_syntax: addAttribute(&tag, &attribute, &value)_
+_syntax: addAttribute(&tag, &attribute, value, which = 0)_
 _name: addAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, const string &value_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int value, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -345,7 +309,43 @@ _inlined_description: _
 
 _description: _
 
-Adds a new attribute to the tag with with the given string value.
+Adds a new attribute to the tag with with the given int value. If the tag doesn't exist it is created. If an attribute at index 'which' already exists its value replaced by the provided value
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int addAttribute(&tag, &attribute, value, which = 0)
+
+<!--
+_syntax: addAttribute(&tag, &attribute, value, which = 0)_
+_name: addAttribute_
+_returns: int_
+_returns_description: _
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, double value, int which=0_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Adds a new attribute to the tag with the given double value. 
 
 
 
@@ -360,7 +360,7 @@ _syntax: addTag(&tag)_
 _name: addTag_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag_
+_parameters: const __cxx11::string &tag_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -391,6 +391,42 @@ Return the number of tags with the same name at the current level.
 
 <!----------------------------------------------------------------------------->
 
+###int addValue(&tag, &value)
+
+<!--
+_syntax: addValue(&tag, &value)_
+_name: addValue_
+_returns: int_
+_returns_description: _
+_parameters: const __cxx11::string &tag, const __cxx11::string &value_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Adds a tag with tag name and string value to the document, returning the number of tags with the same name.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###int addValue(&tag, value)
 
 <!--
@@ -398,7 +434,7 @@ _syntax: addValue(&tag, value)_
 _name: addValue_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, int value_
+_parameters: const __cxx11::string &tag, int value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -436,7 +472,7 @@ _syntax: addValue(&tag, value)_
 _name: addValue_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, double value_
+_parameters: const __cxx11::string &tag, double value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -465,42 +501,6 @@ Adds a tag with tag name and double value to the document, returning the number 
 
 <!----------------------------------------------------------------------------->
 
-###int addValue(&tag, &value)
-
-<!--
-_syntax: addValue(&tag, &value)_
-_name: addValue_
-_returns: int_
-_returns_description: _
-_parameters: const string &tag, const string &value_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Adds a tag with tag name and string value to the document, returning the number of tags with the same name.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###bool attributeExists(&tag, &attribute, which = 0)
 
 <!--
@@ -508,7 +508,7 @@ _syntax: attributeExists(&tag, &attribute, which = 0)_
 _name: attributeExists_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -580,7 +580,7 @@ _syntax: clearTagAttributes(&tag, which = 0)_
 _name: clearTagAttributes_
 _returns: void_
 _returns_description: _
-_parameters: const string &tag, int which=0_
+_parameters: const __cxx11::string &tag, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -616,7 +616,7 @@ _syntax: clearTagContents(&tag, which = 0)_
 _name: clearTagContents_
 _returns: void_
 _returns_description: _
-_parameters: const string &tag, int which=0_
+_parameters: const __cxx11::string &tag, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -652,7 +652,7 @@ _syntax: copyXmlToString(&str)_
 _name: copyXmlToString_
 _returns: void_
 _returns_description: _
-_parameters: string &str_
+_parameters: __cxx11::string &str_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -681,16 +681,16 @@ Copies the contents of the ofxXmlSettings into the string str.
 
 <!----------------------------------------------------------------------------->
 
-###void deserialize(&parameter)
+###__cxx11::string getAttribute(&tag, &attribute, &defaultValue, which = 0)
 
 <!--
-_syntax: deserialize(&parameter)_
-_name: deserialize_
-_returns: void_
+_syntax: getAttribute(&tag, &attribute, &defaultValue, which = 0)_
+_name: getAttribute_
+_returns: __cxx11::string_
 _returns_description: _
-_parameters: ofAbstractParameter &parameter_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, const __cxx11::string &defaultValue, int which=0_
 _access: public_
-_version_started: 0.8.0_
+_version_started: 007_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -709,7 +709,7 @@ _inlined_description: _
 
 _description: _
 
-
+Returns the value of the attribute on tag at index which as a string.
 
 
 
@@ -724,7 +724,7 @@ _syntax: getAttribute(&tag, &attribute, defaultValue, which = 0)_
 _name: getAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int defaultValue, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int defaultValue, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -760,7 +760,7 @@ _syntax: getAttribute(&tag, &attribute, defaultValue, which = 0)_
 _name: getAttribute_
 _returns: double_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, double defaultValue, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, double defaultValue, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -789,42 +789,6 @@ Returns the value of the attribute on tag at index which as a double.
 
 <!----------------------------------------------------------------------------->
 
-###string getAttribute(&tag, &attribute, &defaultValue, which = 0)
-
-<!--
-_syntax: getAttribute(&tag, &attribute, &defaultValue, which = 0)_
-_name: getAttribute_
-_returns: string_
-_returns_description: _
-_parameters: const string &tag, const string &attribute, const string &defaultValue, int which=0_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Returns the value of the attribute on tag at index which as a string.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###bool getAttributeNames(&tag, &outNames, which = 0)
 
 <!--
@@ -832,7 +796,7 @@ _syntax: getAttributeNames(&tag, &outNames, which = 0)_
 _name: getAttributeNames_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, vector< string > &outNames, int which=0_
+_parameters: const __cxx11::string &tag, int &outNames, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -861,14 +825,14 @@ Returns an array of strings containing all attribute names on the tag.  This is 
 
 <!----------------------------------------------------------------------------->
 
-###TiXmlElement * getElementForAttribute(&tag, which)
+###int * getElementForAttribute()
 
 <!--
-_syntax: getElementForAttribute(&tag, which)_
+_syntax: getElementForAttribute()_
 _name: getElementForAttribute_
-_returns: TiXmlElement *_
+_returns: int *_
 _returns_description: _
-_parameters: const string &tag, int which_
+_parameters: _
 _access: protected_
 _version_started: 007_
 _version_deprecated: _
@@ -904,7 +868,7 @@ _syntax: getNumAttributes(&tag, which = 0)_
 _name: getNumAttributes_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, int which=0_
+_parameters: const __cxx11::string &tag, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -940,7 +904,7 @@ _syntax: getNumTags(&tag)_
 _name: getNumTags_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag_
+_parameters: const __cxx11::string &tag_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1005,6 +969,42 @@ getPushLevel returns the number of tags that have been pushed. Starting at 0 whe
 
 <!----------------------------------------------------------------------------->
 
+###__cxx11::string getValue(&tag, &defaultValue, which = 0)
+
+<!--
+_syntax: getValue(&tag, &defaultValue, which = 0)_
+_name: getValue_
+_returns: __cxx11::string_
+_returns_description: _
+_parameters: const __cxx11::string &tag, const __cxx11::string &defaultValue, int which=0_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Returns the value stored by the requested tag as a string. Refer above for description of how this method works.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ###int getValue(&tag, defaultValue, which = 0)
 
 <!--
@@ -1012,7 +1012,7 @@ _syntax: getValue(&tag, defaultValue, which = 0)_
 _name: getValue_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, int defaultValue, int which=0_
+_parameters: const __cxx11::string &tag, int defaultValue, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1062,7 +1062,7 @@ _syntax: getValue(&tag, defaultValue, which = 0)_
 _name: getValue_
 _returns: double_
 _returns_description: _
-_parameters: const string &tag, double defaultValue, int which=0_
+_parameters: const __cxx11::string &tag, double defaultValue, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1091,42 +1091,6 @@ Returns the value stored by the requested tag as a double. Refer above for descr
 
 <!----------------------------------------------------------------------------->
 
-###string getValue(&tag, &defaultValue, which = 0)
-
-<!--
-_syntax: getValue(&tag, &defaultValue, which = 0)_
-_name: getValue_
-_returns: string_
-_returns_description: _
-_parameters: const string &tag, const string &defaultValue, int which=0_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Returns the value stored by the requested tag as a string. Refer above for description of how this method works.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###bool load(&path)
 
 <!--
@@ -1134,7 +1098,7 @@ _syntax: load(&path)_
 _name: load_
 _returns: bool_
 _returns_description: _
-_parameters: const string &path_
+_parameters: const __cxx11::string &path_
 _access: public_
 _version_started: 0.8.0_
 _version_deprecated: _
@@ -1170,7 +1134,7 @@ _syntax: loadFile(&xmlFile)_
 _name: loadFile_
 _returns: bool_
 _returns_description: _
-_parameters: const string &xmlFile_
+_parameters: const __cxx11::string &xmlFile_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1206,7 +1170,7 @@ _syntax: loadFromBuffer(buffer)_
 _name: loadFromBuffer_
 _returns: bool_
 _returns_description: _
-_parameters: string buffer_
+_parameters: __cxx11::string buffer_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1228,6 +1192,42 @@ _inlined_description: _
 _description: _
 
 Populates the ofxXmlSettings object from a string of containing xml.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+### ofxXmlSettings(&xmlFile)
+
+<!--
+_syntax: ofxXmlSettings(&xmlFile)_
+_name: ofxXmlSettings_
+_returns: _
+_returns_description: _
+_parameters: const __cxx11::string &xmlFile_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Initializes an xml settings object and loads the file at xmlFile path.
 
 
 
@@ -1264,42 +1264,6 @@ _inlined_description: _
 _description: _
 
 Default constructor for ofxXmlSettings.  Initializes an empty object with no file set or loaded and no contents.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### ofxXmlSettings(&xmlFile)
-
-<!--
-_syntax: ofxXmlSettings(&xmlFile)_
-_name: ofxXmlSettings_
-_returns: _
-_returns_description: _
-_parameters: const string &xmlFile_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Initializes an xml settings object and loads the file at xmlFile path.
 
 
 
@@ -1350,7 +1314,7 @@ _syntax: pushTag(&tag, which = 0)_
 _name: pushTag_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, int which=0_
+_parameters: const __cxx11::string &tag, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1388,7 +1352,7 @@ _syntax: readDoubleAttribute(&tag, &attribute, &outValue, which)_
 _name: readDoubleAttribute_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, double &outValue, int which_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, double &outValue, int which_
 _access: protected_
 _version_started: 007_
 _version_deprecated: _
@@ -1424,7 +1388,7 @@ _syntax: readIntAttribute(&tag, &attribute, &valueString, which)_
 _name: readIntAttribute_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int &valueString, int which_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int &valueString, int which_
 _access: protected_
 _version_started: 007_
 _version_deprecated: _
@@ -1460,7 +1424,7 @@ _syntax: readStringAttribute(&tag, &attribute, &outValue, which)_
 _name: readStringAttribute_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, string &outValue, int which_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, __cxx11::string &outValue, int which_
 _access: protected_
 _version_started: 007_
 _version_deprecated: _
@@ -1496,7 +1460,7 @@ _syntax: readTag(&tag, &valHandle, which = 0)_
 _name: readTag_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, TiXmlHandle &valHandle, int which=0_
+_parameters: const __cxx11::string &tag, int &valHandle, int which=0_
 _access: protected_
 _version_started: 007_
 _version_deprecated: _
@@ -1532,7 +1496,7 @@ _syntax: removeAttribute(&tag, &attribute, which = 0)_
 _name: removeAttribute_
 _returns: void_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1568,7 +1532,7 @@ _syntax: removeTag(&tag, which = 0)_
 _name: removeTag_
 _returns: void_
 _returns_description: _
-_parameters: const string &tag, int which=0_
+_parameters: const __cxx11::string &tag, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1604,7 +1568,7 @@ _syntax: save(&path)_
 _name: save_
 _returns: bool_
 _returns_description: _
-_parameters: const string &path_
+_parameters: const __cxx11::string &path_
 _access: public_
 _version_started: 0.8.0_
 _version_deprecated: _
@@ -1640,7 +1604,7 @@ _syntax: saveFile(&xmlFile)_
 _name: saveFile_
 _returns: bool_
 _returns_description: _
-_parameters: const string &xmlFile_
+_parameters: const __cxx11::string &xmlFile_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1705,86 +1669,14 @@ Saves the current state of the xml file to its current path. The current path is
 
 <!----------------------------------------------------------------------------->
 
-###void serialize(&parameter)
+###int setAttribute(&tag, &attribute, &value)
 
 <!--
-_syntax: serialize(&parameter)_
-_name: serialize_
-_returns: void_
-_returns_description: _
-_parameters: const ofAbstractParameter &parameter_
-_access: public_
-_version_started: 0.8.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###int setAttribute(&tag, &attribute, value, which = 0)
-
-<!--
-_syntax: setAttribute(&tag, &attribute, value, which = 0)_
+_syntax: setAttribute(&tag, &attribute, &value)_
 _name: setAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int value, int which=0_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Returns the value of the attribute on tag as a double.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###int setAttribute(&tag, &attribute, value, which = 0)
-
-<!--
-_syntax: setAttribute(&tag, &attribute, value, which = 0)_
-_name: setAttribute_
-_returns: int_
-_returns_description: _
-_parameters: const string &tag, const string &attribute, double value, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, const __cxx11::string &value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1820,7 +1712,7 @@ _syntax: setAttribute(&tag, &attribute, &value, which = 0)_
 _name: setAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, const string &value, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, const __cxx11::string &value, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1856,7 +1748,7 @@ _syntax: setAttribute(&tag, &attribute, value)_
 _name: setAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, int value_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1892,7 +1784,7 @@ _syntax: setAttribute(&tag, &attribute, value)_
 _name: setAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, double value_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, double value_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1921,14 +1813,50 @@ Refer to addAttribute
 
 <!----------------------------------------------------------------------------->
 
-###int setAttribute(&tag, &attribute, &value)
+###int setAttribute(&tag, &attribute, value, which = 0)
 
 <!--
-_syntax: setAttribute(&tag, &attribute, &value)_
+_syntax: setAttribute(&tag, &attribute, value, which = 0)_
 _name: setAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, const string &value_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, int value, int which=0_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Returns the value of the attribute on tag as a double.
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int setAttribute(&tag, &attribute, value, which = 0)
+
+<!--
+_syntax: setAttribute(&tag, &attribute, value, which = 0)_
+_name: setAttribute_
+_returns: int_
+_returns_description: _
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, double value, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -1950,6 +1878,44 @@ _inlined_description: _
 _description: _
 
 Refer to addAttribute
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###int setValue(&tag, &value, which = 0)
+
+<!--
+_syntax: setValue(&tag, &value, which = 0)_
+_name: setValue_
+_returns: int_
+_returns_description: _
+_parameters: const __cxx11::string &tag, const __cxx11::string &value, int which=0_
+_access: public_
+_version_started: 007_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+Sets the value of a tag to a string value.  If the tag already exists, the current value is replaced with value otherwise a new tag is created.
+
+The number of tags with the same name at the current document level is returned.
 
 
 
@@ -1964,7 +1930,7 @@ _syntax: setValue(&tag, value, which = 0)_
 _name: setValue_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, int value, int which=0_
+_parameters: const __cxx11::string &tag, int value, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -2002,7 +1968,7 @@ _syntax: setValue(&tag, value, which = 0)_
 _name: setValue_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, double value, int which=0_
+_parameters: const __cxx11::string &tag, double value, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -2024,44 +1990,6 @@ _inlined_description: _
 _description: _
 
 Sets the value of a tag to an integer value.  If the tag already exists, the current value is replaced with value otherwise a new tag is created.
-
-The number of tags with the same name at the current document level is returned.
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###int setValue(&tag, &value, which = 0)
-
-<!--
-_syntax: setValue(&tag, &value, which = 0)_
-_name: setValue_
-_returns: int_
-_returns_description: _
-_parameters: const string &tag, const string &value, int which=0_
-_access: public_
-_version_started: 007_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-Sets the value of a tag to a string value.  If the tag already exists, the current value is replaced with value otherwise a new tag is created.
 
 The number of tags with the same name at the current document level is returned.
 
@@ -2114,7 +2042,7 @@ _syntax: tagExists(&tag, which = 0)_
 _name: tagExists_
 _returns: bool_
 _returns_description: _
-_parameters: const string &tag, int which=0_
+_parameters: const __cxx11::string &tag, int which=0_
 _access: public_
 _version_started: 007_
 _version_deprecated: _
@@ -2150,7 +2078,7 @@ _syntax: writeAttribute(&tag, &attribute, &valueString, which = 0)_
 _name: writeAttribute_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &attribute, const string &valueString, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &attribute, const __cxx11::string &valueString, int which=0_
 _access: protected_
 _version_started: 007_
 _version_deprecated: _
@@ -2186,7 +2114,7 @@ _syntax: writeTag(&tag, &valueString, which = 0)_
 _name: writeTag_
 _returns: int_
 _returns_description: _
-_parameters: const string &tag, const string &valueString, int which=0_
+_parameters: const __cxx11::string &tag, const __cxx11::string &valueString, int which=0_
 _access: protected_
 _version_started: 007_
 _version_deprecated: _

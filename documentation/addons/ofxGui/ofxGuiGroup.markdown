@@ -25,78 +25,6 @@ _extends: ofxBaseGui_
 
 
 
-###void add(*element)
-
-<!--
-_syntax: add(*element)_
-_name: add_
-_returns: void_
-_returns_description: _
-_parameters: ofxBaseGui *element_
-_access: public_
-_version_started: 0.8.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-###void add(&parameters)
-
-<!--
-_syntax: add(&parameters)_
-_name: add_
-_returns: void_
-_returns_description: _
-_parameters: const ofParameterGroup &parameters_
-_access: public_
-_version_started: 0.8.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
 ###typename enable_if<is_arithmetic< T>::value, void >::type add(&p)
 
 <!--
@@ -107,6 +35,42 @@ _returns_description: _
 _parameters: ofParameter< T > &p_
 _access: public_
 _version_started: 0.8.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void add(&parameter)
+
+<!--
+_syntax: add(&parameter)_
+_name: add_
+_returns: void_
+_returns_description: _
+_parameters: ofParameter< void > &parameter_
+_access: public_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -320,6 +284,114 @@ _syntax: add(&parameter)_
 _name: add_
 _returns: void_
 _returns_description: _
+_parameters: ofParameter< glm::vec2 > &parameter_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void add(&parameter)
+
+<!--
+_syntax: add(&parameter)_
+_name: add_
+_returns: void_
+_returns_description: _
+_parameters: ofParameter< glm::vec3 > &parameter_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void add(&parameter)
+
+<!--
+_syntax: add(&parameter)_
+_name: add_
+_returns: void_
+_returns_description: _
+_parameters: ofParameter< glm::vec4 > &parameter_
+_access: public_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void add(&parameter)
+
+<!--
+_syntax: add(&parameter)_
+_name: add_
+_returns: void_
+_returns_description: _
 _parameters: ofParameter< ofColor > &parameter_
 _access: public_
 _version_started: 0.8.0_
@@ -395,6 +467,114 @@ _returns_description: _
 _parameters: ofParameter< ofFloatColor > &parameter_
 _access: public_
 _version_started: 0.8.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void add(&parameters)
+
+<!--
+_syntax: add(&parameters)_
+_name: add_
+_returns: void_
+_returns_description: _
+_parameters: const ofParameterGroup &parameters_
+_access: public_
+_version_started: 0.8.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void add(*element)
+
+<!--
+_syntax: add(*element)_
+_name: add_
+_returns: void_
+_returns_description: _
+_parameters: ofxBaseGui *element_
+_access: public_
+_version_started: 0.8.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void add(string, &parameter)
+
+<!--
+_syntax: add(string, &parameter)_
+_name: add_
+_returns: void_
+_returns_description: _
+_parameters: ofReadOnlyParameter< string, F > &parameter_
+_access: public_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -601,12 +781,12 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-###vector< string > getControlNames()
+###int getControlNames()
 
 <!--
 _syntax: getControlNames()_
 _name: getControlNames_
-_returns: vector< string >_
+_returns: int_
 _returns_description: _
 _parameters: _
 _access: public_
@@ -863,6 +1043,42 @@ _returns_description: _
 _parameters: const string &name_
 _access: public_
 _version_started: 0.8.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###bool isMinimized()
+
+<!--
+_syntax: isMinimized()_
+_name: isMinimized_
+_returns: bool_
+_returns_description: _
+_parameters: _
+_access: public_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_
@@ -1213,6 +1429,42 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+### ofxGuiGroup(&parameters, &_filename, x, y)
+
+<!--
+_syntax: ofxGuiGroup(&parameters, &_filename, x, y)_
+_name: ofxGuiGroup_
+_returns: _
+_returns_description: _
+_parameters: const ofParameterGroup &parameters, const string &_filename, float x, float y_
+_access: public_
+_version_started: 0.8.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ### ofxGuiGroup()
 
 <!--
@@ -1249,16 +1501,52 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
-### ofxGuiGroup(&parameters, &_filename, x, y)
+###void onMaximize()
 
 <!--
-_syntax: ofxGuiGroup(&parameters, &_filename, x, y)_
-_name: ofxGuiGroup_
-_returns: _
+_syntax: onMaximize()_
+_name: onMaximize_
+_returns: void_
 _returns_description: _
-_parameters: const ofParameterGroup &parameters, const string &_filename, float x, float y_
-_access: public_
-_version_started: 0.8.0_
+_parameters: _
+_access: protected_
+_version_started: 0.10.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
+###void onMinimize()
+
+<!--
+_syntax: onMinimize()_
+_name: onMinimize_
+_returns: void_
+_returns_description: _
+_parameters: _
+_access: protected_
+_version_started: 0.10.0_
 _version_deprecated: _
 _summary: _
 _constant: False_

@@ -64,6 +64,42 @@ _description: _
 
 <!----------------------------------------------------------------------------->
 
+### Command(type, &centre, radiusX, radiusY, angleBegin, angleEnd)
+
+<!--
+_syntax: Command(type, &centre, radiusX, radiusY, angleBegin, angleEnd)_
+_name: Command_
+_returns: _
+_returns_description: _
+_parameters: ofPath::Command::Type type, const glm::vec3 &centre, float radiusX, float radiusY, float angleBegin, float angleEnd_
+_access: public_
+_version_started: 0.9.0_
+_version_deprecated: _
+_summary: _
+_constant: False_
+_static: False_
+_visible: True_
+_advanced: False_
+-->
+
+_inlined_description: _
+
+for arc
+
+
+
+
+
+_description: _
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------->
+
 ### Command(type, &p)
 
 <!--
@@ -71,7 +107,7 @@ _syntax: Command(type, &p)_
 _name: Command_
 _returns: _
 _returns_description: _
-_parameters: ofPath::Command::Type type, const ofPoint &p_
+_parameters: ofPath::Command::Type type, const glm::vec3 &p_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -107,7 +143,7 @@ _syntax: Command(type, &p, &cp1, &cp2)_
 _name: Command_
 _returns: _
 _returns_description: _
-_parameters: ofPath::Command::Type type, const ofPoint &p, const ofPoint &cp1, const ofPoint &cp2_
+_parameters: ofPath::Command::Type type, const glm::vec3 &p, const glm::vec3 &cp1, const glm::vec3 &cp2_
 _access: public_
 _version_started: 0.9.0_
 _version_deprecated: _
@@ -121,42 +157,6 @@ _advanced: False_
 _inlined_description: _
 
 for bezierTo
-
-
-
-
-
-_description: _
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------->
-
-### Command(type, &centre, radiusX, radiusY, angleBegin, angleEnd)
-
-<!--
-_syntax: Command(type, &centre, radiusX, radiusY, angleBegin, angleEnd)_
-_name: Command_
-_returns: _
-_returns_description: _
-_parameters: ofPath::Command::Type type, const ofPoint &centre, float radiusX, float radiusY, float angleBegin, float angleEnd_
-_access: public_
-_version_started: 0.9.0_
-_version_deprecated: _
-_summary: _
-_constant: False_
-_static: False_
-_visible: True_
-_advanced: False_
--->
-
-_inlined_description: _
-
-for arc
 
 
 
